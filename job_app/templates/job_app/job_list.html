@@ -1,0 +1,30 @@
+{% extends 'job_app/index.html' %}
+
+{% block title %}
+{% endblock title %}
+
+{% block content %}
+<br>
+<h1 class="text-center">99 Jobs</h1>
+<h6 class="text-center">Matthew 7:7</h6>
+<br>
+<ul>
+  {% for object in job_list %}
+  <li>
+<div class="list-group">
+    <a href="{% url 'detail' %}" class="list-group-item list-group-item-action" aria-current="true">
+      <div class="d-flex w-100 justify-content-between">
+        <h5 class="mb-1">Job title: {{job.job_title}}</h5>
+        <small>Closing date: {{job.closing_date}}</small>
+      </div>
+      <p class="mb-1">Company: {{job.company}}</p>
+      <small>Location: {{job.location}}</small>
+    </a>
+  </div>
+</li>
+<hr>
+{% empty %}
+<li>No jobs yet.</li>
+{% endfor %}
+<ul>
+{% endblock content %}

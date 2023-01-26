@@ -1,4 +1,7 @@
 from django.shortcuts import render
+from django.views.generic.detail import DetailView
+from django.views.generic.list import ListView
+from .models import job
 
 def home(request):
     return render(request,'job_app/index.html',{})
@@ -29,3 +32,9 @@ def recruitment(request):
 
 def submit_resume(request):
     return render(request,'job_app/site/submit_resume.html',{})
+
+class jobDetailView(DetailView):
+    model=job
+
+class jobListView(ListView):
+    model = job

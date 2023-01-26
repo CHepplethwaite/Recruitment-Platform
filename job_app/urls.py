@@ -2,7 +2,7 @@ from django.urls import path
 from . import views as job_views
 
 urlpatterns =[
-    path('',job_views.home,name='home'),
+    path('',job_views.jobListView.as_view(),name='home'),
     path('about/',job_views.about,name="about"),
     path('career_advice/',job_views.career_advice,name="career_advice"),
     path('contact/',job_views.contact,name="contact"),
@@ -12,4 +12,5 @@ urlpatterns =[
     path('post_job/',job_views.post_job,name="post_job"),
     path('recruitment/',job_views.recruitment,name="recruitment"),
     path('submit_resume/',job_views.submit_resume,name="submit_resume"),
+    path('detail/',job_views.jobDetailView.as_view(),name="detail"),
 ]
