@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="en">
+  {% load static %}
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -15,7 +16,7 @@
 
  <!--// custome background color //-->
 <style type="text/css">
-  body { background: #F6F6EF !important; } /* Adding !important forces the browser to overwrite the default style applied by Bootstrap */
+  body { background: #FFFFFF !important; } /* Adding !important forces the browser to overwrite the default style applied by Bootstrap */
 </style>
 <!-- purple-->
 
@@ -74,6 +75,9 @@
     </nav>
 
     <!--end navbar -->
+<div class="text-center" class="img-fluid" alt="Responsive image">
+  <img src="{% static 'job_app/images/logo.png' %}" alt="99 Jobs logo" width="200" height="200">
+</div>
 
 {% block content %}
 
