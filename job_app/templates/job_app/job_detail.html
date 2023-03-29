@@ -5,11 +5,13 @@
 
 {% block content %}
 
-<h1>{{object.job_title}}</h1>
-<p>{{object.company}}</p>
-<p>{{object.post_date}}</p>
-<p>{{object.closing_date}}</p>
-<p>{{object.location}}</p>
-<p>{{object.details}}</p>
+
+<h1>object Title: {{ object.object_title }}</h1>
+<p>Company: {{ object.company }}</p>
+<p>Date posted: {{ object.post_date }}</p>
+<p>Closing date: {{ object.closing_date }}</p>
+<p>Location: {{ object.location }}</p>
+<p>Details: {{ object.details }}</p>
+
 
 {% endblock content %}

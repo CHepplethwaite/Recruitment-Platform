@@ -9,7 +9,7 @@
   {% for object in job_list %}
 
 <div class="list-group">
-    <a href="#" class="list-group-item list-group-item-action" aria-current="true">
+    <a href="{% url 'job_detail' slug=object.slug %}" class="list-group-item list-group-item-action" aria-current="true">
       <div class="d-flex w-100 justify-content-between">
         <h5 class="mb-1">Title: {{object.job_title}}</h5>
         <small>Date posted: {{object.post_date}}</small>
