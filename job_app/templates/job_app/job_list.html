@@ -12,17 +12,33 @@
     <a href="{% url 'job_detail' slug=object.slug %}" class="list-group-item list-group-item-action" aria-current="true">
       <div class="d-flex w-100 justify-content-between">
         <h5 class="mb-1">Title: {{object.job_title}}</h5>
-        <small>Date posted: {{object.post_date}}</small>
+        <small><b>Date posted:</b> {{object.post_date}}</small>
       </div>
-      <p class="mb-1">Company: {{object.company}}</p>
-      <small>Location: {{object.location}}</small> 
+      <p class="mb-1"><b>Company:</b> {{object.company}}</p>
+      <small><b>Location:</b> {{object.location}}</small> 
       <br>
-      <small>Closing date: {{object.closing_date}}</small>
+     
+        {% if object.closing_date < today  %}
+          <small><b>Closing date:</b> {{object.closing_date}} (Closed) </small>
+        {% else %}
+          <small><b>Closing date:</b> {{object.closing_date}} (Open)</small>
+        {% endif %}
+
     </a>
   </div>
 <hr>
 {% empty %}
-<li>Oops...no jobs yet...</li>
+
+{% load static %}
+<p class="text-center">Oops...something seems to have gone wrong...</p> <!-- No records in DB -->
+<br>
+<div class="text-center" class="img-fluid" alt="Responsive image">
+  <img src="{% static 'job_app/images/no_entries.png' %}" alt="Error message" width="200" height="200">
+</div>
+
 {% endfor %}
 
 {% endblock content %}
+
+
+

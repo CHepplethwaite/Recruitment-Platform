@@ -1,8 +1,42 @@
 from django.db import models
 from django.urls import reverse
 from django.template.defaultfilters import slugify
+import datetime
 
 class job(models.Model):
+    ACCOUNTANCY = "ACC"
+    ADMINISTRATION = "ADM"
+    BANKING_AND_FINANCE = "BF"
+    DEVELOPMENT = "DEV"
+    EDUCATION = "EDU"
+    ENGINEERING_AND_CONSTRUCTION = "ENG"
+    HEALTH = "HTH"
+    HUMAN_RESOURCE = "HR"
+    ICT_AND_TELECO = "ICT"
+    LEGAL = "LG"
+    MANUFACTURING_FMCG = "MAN"
+    OTHER = "MISC"
+    PUBLIC_SECTOR = "PUB"
+    RETAIL_AND_SALES = "SAL"
+    TRANSPORT_AND_LOGISTICS = "TRA"
+    industry_choices = [
+        ("ACCOUNTACY","Accountancy"),
+        ("ADMINISTARTION","Administration"),
+        ("AGRICULTURE","Agriculture"),
+        ("BANKING_AND_FINANCE","Banking and Finance"),
+        ("DEVELOPMENT","Development"),
+        ("EDUCATION","Education"),
+        ("ENGINEERING_AND_CONSTRUCTION","Engineering and Construction"),
+        ("HEALTH","Health"),
+        ("HUMAN_RESOURCE","Human Resource"),
+        ("ICT_AND_TELECO","ICT and Telco"),
+        ("LEGAL","Legal"),
+        ("MANUFACTURING_FMCG","Manufacturing/FMCG"),
+        ("OTHER","Other"),
+        ("PUBLIC_SECTOR","Public Sector"),
+        ("RETAIL_AND_SALES","Retail and Sales"),
+        ("TRANSPORT_AND_LOGISTICS","Transport and Logistics")
+    ]
     company = models.CharField(max_length=50)
     job_title = models.CharField(max_length=50)
     slug = models.SlugField(max_length=250,null=False, unique_for_date='post_date', default="")
@@ -10,6 +44,10 @@ class job(models.Model):
     closing_date = models.DateField()
     location = models.CharField(max_length=50)
     details = models.TextField()
+    industry = models.CharField(choices=industry_choices,
+                                max_length=255,
+                                default=ACCOUNTANCY,
+                                )
 
     def __str__(self):
         return self.job_title+" - "+self.company
@@ -21,5 +59,4 @@ class job(models.Model):
         if not self.slug:
             self.slug  = slugify(self.job_title+" - "+self.company)
         return super().save(*args,**kwargs)
-        
-
+    
