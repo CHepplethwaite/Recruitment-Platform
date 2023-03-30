@@ -5,6 +5,7 @@ from .models import job
 from django.utils.encoding import uri_to_iri
 
 
+
 def home(request):
     return render(request,'job_app/index.html',{})
 
@@ -37,6 +38,9 @@ def submit_resume(request):
 
 class jobListView(ListView):
     model = job
+    paginate_by = 10
+
+
 
 
 class jobDetailView(DetailView):

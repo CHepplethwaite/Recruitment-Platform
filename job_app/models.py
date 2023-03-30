@@ -1,7 +1,8 @@
 from django.db import models
 from django.urls import reverse
 from django.template.defaultfilters import slugify
-import datetime
+from datetime import date
+
 
 class job(models.Model):
     ACCOUNTANCY = "ACC"
@@ -35,7 +36,7 @@ class job(models.Model):
         ("OTHER","Other"),
         ("PUBLIC_SECTOR","Public Sector"),
         ("RETAIL_AND_SALES","Retail and Sales"),
-        ("TRANSPORT_AND_LOGISTICS","Transport and Logistics")
+        ("TRANSPORT_AND_LOGISTICS","Transport and Logistics"),
     ]
     company = models.CharField(max_length=50)
     job_title = models.CharField(max_length=50)

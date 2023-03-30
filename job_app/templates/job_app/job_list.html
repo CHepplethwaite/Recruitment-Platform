@@ -6,7 +6,7 @@
 {% block content %}
 <br>
 <br>
-  {% for object in job_list %}
+  {% for object in page_obj %}
 
 <div class="list-group">
     <a href="{% url 'job_detail' slug=object.slug %}" class="list-group-item list-group-item-action" aria-current="true">
@@ -18,10 +18,10 @@
       <small><b>Location:</b> {{object.location}}</small> 
       <br>
      
-        {% if object.closing_date < today  %}
-          <small><b>Closing date:</b> {{object.closing_date}} (Closed) </small>
+        {% if object.closing_date < now  %}
+          <small><b>Closing date:</b> {{object.closing_date}} <span class="badge text-bg-danger">Closed</span></small>
         {% else %}
-          <small><b>Closing date:</b> {{object.closing_date}} (Open)</small>
+          <small><b>Closing date:</b> {{object.closing_date}} <span class="badge text-bg-warning">Open</span></small>
         {% endif %}
 
     </a>
@@ -37,6 +37,24 @@
 </div>
 
 {% endfor %}
+
+<div class="pagination">
+  <span class="step-links">
+      {% if page_obj.has_previous %}
+          <a href="?page=1">&laquo; first</a>
+          <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+      {% endif %}
+
+      <span class="current">
+          Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+      </span>
+
+      {% if page_obj.has_next %}
+          <a href="?page={{ page_obj.next_page_number }}">next</a>
+          <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+      {% endif %}
+  </span>
+</div>
 
 {% endblock content %}
 
