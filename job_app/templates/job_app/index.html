@@ -20,25 +20,71 @@
 </style>
 <!-- purple-->
 
-
 <div class="text-center" class="img-fluid" alt="Responsive image">
   <img src="{% static 'job_app/images/logo.png' %}" alt="99 Jobs logo" width="150" height="150">
 </div>
 
+<br>
+<br>
+<div class="card">
+  <div class="card-header">
+    What is Tumpe?
+  </div>
+  <div class="card-body">
+    <blockquote class="blockquote mb-0">
+  Tumpe is a website that connects employers with suitably qualified cantidates. Whether you want to post a job advertisment, apply for a job, submit your resume, or recruit new talent, Tumpe will address your needs.
+  Please do not forget to read the <a href="{% url 'about' %}">about</a> section and our <a href="#">terms and conditions</a>.
+      
+    </blockquote>
+  </div>
+</div>
+<br>
 
+<br>
+
+<div class="card">
+  <div class="card-header">
+    Categories
+  </div>
+  <div class="card-body">
+    <blockquote class="blockquote mb-0">
+      <a  href="{% url 'job_list' %}">All jobs</a>&nbsp;
+      <a href="#">Academia and Research</a>&nbsp;
+      <a href="#">Accountancy</a>&nbsp;
+      <a href="#">Administration</a>&nbsp;
+      <a href="#">Agriculture</a>&nbsp;
+      <a href="#">Banking and Finance</a>&nbsp;
+      <a href="#">Development</a>&nbsp;
+      <a href="#">Education</a>&nbsp;
+      <a href="#">Engineering and Construction</a>&nbsp;
+      <a href="#">Health</a>&nbsp;
+      <a href="#">Human Resource</a>&nbsp;
+      <a href="#">Technology</a>&nbsp;
+      <a href="#">Legal</a>&nbsp;
+      <a href="#">Manufacturing/FMCG</a>&nbsp;
+      <a href="#">Other</a>&nbsp;
+      <a href="#">Public Sector</a>&nbsp;
+      <a href="#">Retail and Sales</a>&nbsp;
+      <a href="#">Transportation and Logistics</a>&nbsp;
+    </blockquote>
+  </div>
+</div>
+<br>
 
 {% block content %}
 
 
 
 {% endblock content %}
+<br>
 
 <p class="text-center">
-<a href="{% url 'job_list' %}">Home</a> &nbsp;
+<a href="{% url 'job_list' %}">All jobs</a> &nbsp;
 <a href="{% url 'job_list' %}">Blog</a> &nbsp;
 <a href="{% url 'contact' %}">Contact</a> &nbsp;
 <a href="{% url 'job_list' %}">Advertise</a> &nbsp;
 <a href="{% url 'about' %}">About</a> &nbsp;
+<a href="{% url 'legal' %}">Legal</a> &nbsp;
 </p>
 <br>
 

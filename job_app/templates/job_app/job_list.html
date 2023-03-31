@@ -4,48 +4,9 @@
 {% endblock title %}
 
 {% block content %}
+{% load static %}
 
-<br>
-<div class="card">
-  <div class="card-header">
-    What is Tumpe?
-  </div>
-  <div class="card-body">
-    <blockquote class="blockquote mb-0">
-Tumpe is a website that connects employers with suitably qualified cantidates. Job advertisements are updated every day.
-    </blockquote>
-  </div>
-</div>
-<br>
-
-<div class="card">
-  <div class="card-header">
-    Categories
-  </div>
-  <div class="card-body">
-    <blockquote class="blockquote mb-0">
-      <a class="text-warning" href="{% url 'job_list' %}">All jobs</a>&nbsp;
-      <a href="#">Academia and Research</a>&nbsp;
-      <a href="#">Accountancy</a>&nbsp;
-      <a href="#">Administration</a>&nbsp;
-      <a href="#">Agriculture</a>&nbsp;
-      <a href="#">Banking and Finance</a>&nbsp;
-      <a href="#">Development</a>&nbsp;
-      <a href="#">Education</a>&nbsp;
-      <a href="#">Engineering and Construction</a>&nbsp;
-      <a href="#">Health</a>&nbsp;
-      <a href="#">Human Resource</a>&nbsp;
-      <a href="#">Technology</a>&nbsp;
-      <a href="#">Legal</a>&nbsp;
-      <a href="#">Manufacturing/FMCG</a>&nbsp;
-      <a href="#">Other</a>&nbsp;
-      <a href="#">Public Sector</a>&nbsp;
-      <a href="#">Retail and Sales</a>&nbsp;
-      <a href="#">Transportation and Logistics</a>&nbsp;
-    </blockquote>
-  </div>
-</div>
-
+<!-- begin top pagination -->
 <br>
 <div class="pagination">
   {% if page_obj.has_previous %}
@@ -63,19 +24,22 @@ Tumpe is a website that connects employers with suitably qualified cantidates. J
   {% endif %}
 </span>
 </div>
+<!--end top pagination-->
+
+<!-- begin list template -->
 <br>
   {% for object in page_obj %}
 
 <div class="list-group">
     <a href="{% url 'job_detail' slug=object.slug %}" class="list-group-item list-group-item-action" aria-current="true">
       <div class="d-flex w-100 justify-content-between">
-        <h5 class="mb-1"> {{object.job_title}}</h5>
+        <h5 class="mb-1"> {{object.job_title}}</h5> 
         <small><b>Date posted:</b> {{object.post_date}}</small>
       </div>
       <p class="mb-1"><b>Company:</b> {{object.company}}</p>
       <small><b>Location:</b> {{object.location}}</small> 
+
       <br>
-     
         {% if object.is_closed  %}
           <small><b>Closing date:</b> {{object.closing_date}} <span class="badge text-bg-danger">Closed</span></small>
         {% else %}
@@ -85,11 +49,11 @@ Tumpe is a website that connects employers with suitably qualified cantidates. J
                 {% else %}
                 <small><b>Closing date:</b> {{object.closing_date}} <span class="badge text-bg-success">Open</span></small>
                 {% endif %}
-        
+              </div>
           {% endif %}
-
     </a>
-  </div>
+ <!-- end list template -->
+
 <hr>
 {% empty %}
 
@@ -101,6 +65,8 @@ Tumpe is a website that connects employers with suitably qualified cantidates. J
 </div>
 
 {% endfor %}
+
+<!-- begin bottom pagination -->
 
 <p class="text-center">
 <div class="pagination">
@@ -119,6 +85,8 @@ Tumpe is a website that connects employers with suitably qualified cantidates. J
       {% endif %}
   </span>
 </div>
+<!-- end bottom pagination -->
+
 <br>
 
 {% endblock content %}

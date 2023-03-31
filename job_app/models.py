@@ -2,6 +2,7 @@ from django.db import models
 from django.urls import reverse
 from django.template.defaultfilters import slugify
 import datetime
+import uuid
 
 
 class job(models.Model):

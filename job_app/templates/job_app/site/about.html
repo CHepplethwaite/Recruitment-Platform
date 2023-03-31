@@ -1,4 +1,4 @@
-{% extends 'job_app/index.html' %}
+{% extends 'job_app/site_base.html' %}
 
 {% block title %}
 {% endblock title %}
@@ -6,6 +6,40 @@
 {% block content %}
 <h1 class="text-center">About</h1>
 
+<br>
+<div class="card">
+  <div class="card-header">
+    What is Tumpe?
+  </div>
+  <div class="card-body">
+    <blockquote class="blockquote mb-0">
+Tumpe is a website that connects employers with suitably qualified cantidates. Whether you want to post a job advertisment, apply for a job, submit your resume, or recruit new talent, Tumpe will address your needs.
+    </blockquote>
+  </div>
+</div>
+<br>
 
+<div class="card">
+  <div class="card-header">
+    How do I post a job advertisment?
+  </div>
+  <div class="card-body">
+    <blockquote class="blockquote mb-0">
+If you wish to post a job advertisement kindly <a href="{% url 'contact' %}">contact</a> our team. We will be more that glad to assist you. Also, don't forget to read our <a href="#">terms and conditions</a>.
+
+    </blockquote>
+  </div>
+</div>
+
+<div class="card">
+    <div class="card-header">
+      How do I submit my CV?
+    </div>
+    <div class="card-body">
+      <blockquote class="blockquote mb-0">
+Looking for a job? Then casting your net wide is always a goos idea. Feel free to <a href="{% url 'contact' %}">contact</a> our team and we will see how best we can assist you to make your job hunt a more fruitful.
+      </blockquote>
+    </div>
+  </div>
 
 {% endblock content %}
