@@ -61,3 +61,7 @@ class job(models.Model):
             self.slug  = slugify(self.job_title+" - "+self.company)
         return super().save(*args,**kwargs)
     
+    @property
+    def is_closed(self):
+        return date.today() > self.closing_date
+    
