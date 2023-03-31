@@ -79,8 +79,14 @@ Tumpe is a website that connects employers with suitably qualified cantidates. J
         {% if object.is_closed  %}
           <small><b>Closing date:</b> {{object.closing_date}} <span class="badge text-bg-danger">Closed</span></small>
         {% else %}
-          <small><b>Closing date:</b> {{object.closing_date}} <span class="badge text-bg-success">Open</span></small>
-        {% endif %}
+              
+                {% if object.closing_soon  %}
+                <small><b>Closing date:</b> {{object.closing_date}} <span class="badge text-bg-warning">Closing soon</span></small>
+                {% else %}
+                <small><b>Closing date:</b> {{object.closing_date}} <span class="badge text-bg-success">Open</span></small>
+                {% endif %}
+        
+          {% endif %}
 
     </a>
   </div>

@@ -9,7 +9,19 @@
 <p><b>Job Title:</b> {{ object.job_title }}</p>
 <p><b>Company: </b>{{ object.company }}</p>
 <p><b>Date posted: </b>{{ object.post_date }}</p>
-<p><b>Closing date: </b>{{ object.closing_date }}</p>
+
+{% if object.is_closed  %}
+<small><b>Closing date:</b> {{object.closing_date}} <span class="badge text-bg-danger">Closed</span></small>
+{% else %}
+    
+      {% if object.closing_soon  %}
+      <small><b>Closing date:</b> {{object.closing_date}} <span class="badge text-bg-warning">Closing soon</span></small>
+      {% else %}
+      <small><b>Closing date:</b> {{object.closing_date}} <span class="badge text-bg-success">Open</span></small>
+      {% endif %}
+
+{% endif %}
+
 <p><b>Location: </b>{{ object.location }}</p>
 <p><b>Details: </b>{{ object.details }}</p>
 

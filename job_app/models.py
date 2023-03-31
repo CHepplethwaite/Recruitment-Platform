@@ -1,7 +1,7 @@
 from django.db import models
 from django.urls import reverse
 from django.template.defaultfilters import slugify
-from datetime import date
+import datetime
 
 
 class job(models.Model):
@@ -63,5 +63,13 @@ class job(models.Model):
     
     @property
     def is_closed(self):
-        return date.today() > self.closing_date
+        return datetime.date.today() > self.closing_date
+    
+    @property
+    def closing_soon(self):
+        today = datetime.date.today()
+        margin = datetime.timedelta(days = 1)
+        return today - margin <= self.closing_date <= today + margin
+    
+
     
