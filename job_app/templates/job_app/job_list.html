@@ -34,6 +34,9 @@
     <a href="{% url 'job_detail' slug=object.slug %}" class="list-group-item list-group-item-action" aria-current="true">
       <div class="d-flex w-100 justify-content-between">
         <h5 class="mb-1"> {{object.job_title}}</h5> 
+        
+        
+
         <small><b>Date posted:</b> {{object.post_date}}</small>
       </div>
       <p class="mb-1"><b>Company:</b> {{object.company}}</p>
@@ -45,7 +48,7 @@
         {% else %}
               
                 {% if object.closing_soon  %}
-                <small><b>Closing date:</b> {{object.closing_date}} <span class="badge text-bg-warning">Closing soon</span></small>
+                <small><b>Closing date:</b> <mark>{{object.closing_date}}</mark> <span class="badge text-bg-warning">Closing soon</span></small>
                 {% else %}
                 <small><b>Closing date:</b> {{object.closing_date}} <span class="badge text-bg-success">Open</span></small>
                 {% endif %}

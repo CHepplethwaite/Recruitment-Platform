@@ -4,16 +4,18 @@
 {% endblock title %}
 
 {% block content %}
-<h1 class="text-center">About</h1>
+
 
 <br>
 <div class="card">
   <div class="card-header">
-    What is Tumpe?
+    About
   </div>
   <div class="card-body">
     <blockquote class="blockquote mb-0">
-Tumpe is a website that connects employers with suitably qualified cantidates. Whether you want to post a job advertisment, apply for a job, submit your resume, or recruit new talent, Tumpe will address your needs.
+        Tumpe is a website that connects employers with suitably qualified candidates. Whether you want to post a job advertisment, apply for a job, submit your resume, or recruit new talent, Tumpe will address your needs.
+     
+            
     </blockquote>
   </div>
 </div>
@@ -21,25 +23,20 @@ Tumpe is a website that connects employers with suitably qualified cantidates. W
 
 <div class="card">
   <div class="card-header">
-    How do I post a job advertisment?
+    Frequently Asked Questions
   </div>
   <div class="card-body">
     <blockquote class="blockquote mb-0">
-If you wish to post a job advertisement kindly <a href="{% url 'contact' %}">contact</a> our team. We will be more that glad to assist you. Also, don't forget to read our <a href="#">terms and conditions</a>.
+        <b>How do I post a job or an advertisment?</b>&nbsp;
+If you wish to post a job, publish an advert, etc kindly <a href="{% url 'contact' %}">contact</a> our team. We will be more that glad to assist you. Also, don't forget to read our <a href="#">terms and conditions</a>.
+<br>
+<br>
+<b>How do I submit my Curriculum Vitae?</b>&nbsp;
+If you are a job seeker you are encouranged to share your documents with us so that you are added to our database; a pool of professional profiles that we share with prospective employers. You can <a href="{% url 'contact' %}">email</a> your Curriculum Vitae and we will contact you ASAP.
 
     </blockquote>
   </div>
 </div>
 
-<div class="card">
-    <div class="card-header">
-      How do I submit my CV?
-    </div>
-    <div class="card-body">
-      <blockquote class="blockquote mb-0">
-Looking for a job? Then casting your net wide is always a goos idea. Feel free to <a href="{% url 'contact' %}">contact</a> our team and we will see how best we can assist you to make your job hunt a more fruitful.
-      </blockquote>
-    </div>
-  </div>
 
 {% endblock content %}
