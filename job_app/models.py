@@ -72,5 +72,14 @@ class job(models.Model):
         margin = datetime.timedelta(days = 1)
         return today - margin <= self.closing_date <= today + margin
     
+    @property
+    def get_x_days_ago(self):
+        today = str(datetime.date.today())
+        post_date = str(self.post_date)
+        todays_date = datetime.datetime.strptime(today, "%Y-%m-%d").date()
+        post_date1 = datetime.datetime.strptime(post_date, "%Y-%m-%d").date()
+        delta =  (todays_date - post_date1).days + 1
+        return delta
+    
 
     
