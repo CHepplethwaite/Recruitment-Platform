@@ -32,13 +32,11 @@
 
 <div class="list-group">
     <a href="{% url 'job_detail' slug=object.slug %}" class="list-group-item list-group-item-action" aria-current="true">
+     <p><small>Posted {{object.get_x_days_ago}} days ago.</small></p>
       <div class="d-flex w-100 justify-content-between">
-        <small>Posted {{object.get_x_days_ago}} days ago.</small> 
         <h5 class="mb-1"> {{object.job_title}}</h5> 
         
-        
-
-        <small><b>Date posted:</b> {{object.post_date}}</small>
+      
       </div>
       <p class="mb-1"><b>Company:</b> {{object.company}}</p>
       <small><b>Location:</b> {{object.location}}</small> 
