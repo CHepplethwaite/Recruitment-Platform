@@ -5,6 +5,7 @@ from .models import job
 from django.utils.encoding import uri_to_iri
 
 
+# site views
 
 def home(request):
     return render(request,'job_app/index.html',{})
@@ -51,3 +52,56 @@ class jobDetailView(DetailView):
     def get_object(self, **kwargs):
         slug = self.kwargs.get('slug')
         return get_object_or_404(job, slug=uri_to_iri(slug))
+    
+
+    # category views
+
+    def academia(request):
+        return render(request,'job_app/categories/academia.html',{})
+    
+    def accountaancy_list(request):
+        return render(request,'job_app/categories/accountancy_list.html',{})
+    
+    def administration_list(request):
+        return render(request,'job_app/categories/administration_list.html',{})
+    
+    def agriculture_list(request):
+        return render(request,'job_app/categories/agriculture_list.html',{})
+    
+    def banking_and_finance(request):
+        return render(request,'job_app/categories/banking_and_finance.html',{})
+    
+    def development_list(request):
+        return render(request,'job_app/categories/development_list.html',{})
+    
+    def engineering_and_construction_list(request):
+        return render(request,'job_app/categories/engineering_and_construction_list.html',{})
+    
+    def health_list(request):
+        return render(request,'job_app/categories/health_list.html',{})
+    
+    def human_resource_list(request):
+        return render(request,'job_app/categories/human_resource_list.html',{})
+    
+    def legal_list(request):
+        return render(request,'job_app/categories/legal_list.html',{})
+    
+    def manufacturing_list(request):
+        return render(request,'job_app/categories/manufacturing_list.html',{})
+    
+    def other_list(request):
+        return render(request,'job_app/categories/other_list.html',{})
+    
+    def public_sector(request):
+        return render(request,'job_app/categories/public_sector.html',{})
+    
+    def retail_and_sales(request):
+        return render(request,'job_app/categories/retail_and_sales.html',{})
+    
+    def technology_list(request):
+        return render(request,'job_app/categories/technology_list.html',{})
+    
+    def transportation_and_logistics_list(request):
+        return render(request,'job_app/categories/transportation_and_logistics_list.html',{})
+    
+    
