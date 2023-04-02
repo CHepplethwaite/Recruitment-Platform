@@ -42,8 +42,6 @@ class jobListView(ListView):
     ordering = ['-post_date']
 
 
-
-
 class jobDetailView(DetailView):
     model = job
     template_name = 'job_app/job_detail.html'
