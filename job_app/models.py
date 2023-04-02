@@ -41,7 +41,7 @@ class job(models.Model):
     ]
     company = models.CharField(max_length=50)
     job_title = models.CharField(max_length=50)
-    slug = models.SlugField(max_length=250,null=True, unique_for_date='post_date', default="")
+    slug = models.SlugField(max_length=250,null=False, unique_for_date='post_date', default="")
     post_date = models.DateField(auto_now=False, auto_now_add=True)
     closing_date = models.DateField()
     location = models.CharField(max_length=50)
