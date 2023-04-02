@@ -39,6 +39,7 @@ def submit_resume(request):
 class jobListView(ListView):
     model = job
     paginate_by = 10
+    ordering = ['-post_date']
 
 
 

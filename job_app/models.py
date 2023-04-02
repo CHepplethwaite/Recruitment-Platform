@@ -81,5 +81,11 @@ class job(models.Model):
         delta =  (todays_date - post_date1).days - 1
         return delta
     
+    @property
+    def posted_today(self):
+        today = datetime.date.today()
+        margin = datetime.timedelta(days = 1)
+        return today - margin <= self.post_date <= today + margin
+    
 
     
