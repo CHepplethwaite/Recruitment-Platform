@@ -14,5 +14,22 @@ urlpatterns =[
     path('post_job/', job_views.post_job, name="post_job"),
     path('recruitment/', job_views.recruitment, name="recruitment"),
     path('submit_resume/', job_views.submit_resume, name="submit_resume"),
-
+   
+   # category urls
+    path('academia/',job_views.education,name="academia"),
+    path('accountancy/',job_views.accountancy_list,name="accountancy"),
+    path('administration',job_views.administration_list,name="admin"),
+    path('agriculture/' ,job_views.agriculture_list),
+    path('banking_and_finance',job_views.banking_and_finance_list,name="banking"),
+    path('development',job_views.development_list,name="dev"),
+    path('engineering_and_construction',job_views.engineering_and_construction_list,name="eng" ),
+    path('health/',job_views.health_list,name="health"),
+    path('human_resource/',job_views.human_resource_list,name="HR"),
+    path('legal/',job_views.legal_list,name="legal"),
+    path('manufacturing/',job_views.manufacturing_list,name="manufacturing"),
+    path('miscellaneous/',job_views.other_list,name="misc"),
+    path('public_sector/',job_views.public_sector_list,name="public_sector"),
+    path('retail/',job_views.retail_and_sales_list,name="retail"),
+    path('technology/',job_views.technology_list,name="technology"),
+    path('transportation_and_logistics/',job_views.transportation_and_logistics_list,name="transport"),
 ]
