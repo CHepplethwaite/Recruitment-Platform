@@ -80,7 +80,7 @@ def health_list(request):
 def human_resource_list(request):
     return render(request,'job_app/categories/human_resource_list.html',{})
     
-def legal_list(request):
+def law(request):
      return render(request,'job_app/categories/legal_list.html',{})
     
 def manufacturing_list(request):
@@ -90,7 +90,7 @@ def other_list(request):
     return render(request,'job_app/categories/other_list.html',{})
     
 def public_sector_list(request):
-    return render(request,'job_app/categories/public_sector.html',{})
+    return render(request,'job_app/categories/public_sector_list.html',{})
     
 def retail_and_sales_list(request):
     return render(request,'job_app/categories/retail_and_sales.html',{})

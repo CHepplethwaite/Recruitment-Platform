@@ -16,7 +16,7 @@ urlpatterns =[
     path('submit_resume/', job_views.submit_resume, name="submit_resume"),
    
    # category urls
-    path('academia/',job_views.education,name="academia"),
+    path('academia/',job_views.academia_list,name="academia"),
     path('accountancy/',job_views.accountancy_list,name="accountancy"),
     path('administration',job_views.administration_list,name="admin"),
     path('agriculture/' ,job_views.agriculture_list,name="agric"),
@@ -25,7 +25,7 @@ urlpatterns =[
     path('engineering_and_construction',job_views.engineering_and_construction_list,name="eng" ),
     path('health/',job_views.health_list,name="health"),
     path('human_resource/',job_views.human_resource_list,name="HR"),
-    path('legal/',job_views.legal_list,name="law"),
+    path('law/',job_views.law,name="law"),
     path('manufacturing/',job_views.manufacturing_list,name="manufacturing"),
     path('miscellaneous/',job_views.other_list,name="misc"),
     path('public_sector/',job_views.public_sector_list,name="public_sector"),
