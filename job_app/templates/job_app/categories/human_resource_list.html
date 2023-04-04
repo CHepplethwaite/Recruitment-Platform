@@ -5,5 +5,106 @@
 
 
 {% block content %}
-<h1 id="" class="text-center">Human Resource</h1>
+
+<h1 id="all_jobs" class="text-center">Human Resource</h1>
+<small><p class="text-center"><a href="{% url 'contact' %}">[ Post a job ]</a></p></small>
+
+<!-- begin top pagination -->
+<div class="pagination">
+  {% if page_obj.has_previous %}
+      <a href="?page=1">&laquo; first</a> &nbsp;
+      <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+  {% endif %}
+
+  <span class="current">
+    &nbsp;   Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+  </span>
+
+  {% if page_obj.has_next %}
+  &nbsp; <a href="?page={{ page_obj.next_page_number }}">next</a>&nbsp;
+      <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+  {% endif %}
+</span>
+<br>
+</div>
+<!--end top pagination-->
+
+<!-- begin list template -->
+<br>
+{% for object in page_obj %}
+
+<div class="list-group">
+    <a href="{% url 'job_detail' slug=object.slug %}" class="list-group-item list-group-item-action" aria-current="true">
+ {% if object.posted_today  %}
+      <p class="text-warning"><small>
+      New  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bell-fill" viewBox="0 0 16 16">
+        <path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2zm.995-14.901a1 1 0 1 0-1.99 0A5.002 5.002 0 0 0 3 6c0 1.098-.5 6-2 7h14c-1.5-1-2-5.902-2-7 0-2.42-1.72-4.44-4.005-4.901z"/>
+      </svg>
+    </small></p>
+{% else %}
+                <p><small>
+                Posted {{object.get_x_days_ago }} days ago.
+              </small></p>
+{% endif %}
+      
+      
+ 
+
+      <div class="d-flex w-100 justify-content-between">
+        <h5 class="mb-1"> {{object.job_title}}</h5> 
+        
+      
+      </div>
+      <p class="mb-1"><b>Company:</b> {{object.company}}</p>
+      <small><b>Location:</b> {{object.location}}</small> 
+
+      <br>
+        {% if object.is_closed  %}
+          <small><b>Closing date:</b> {{object.closing_date}} <span class="badge text-bg-danger">Closed</span></small>
+        {% else %}
+              
+                {% if object.closing_soon  %}
+                <small><b>Closing date:</b> <mark>{{object.closing_date}}</mark> <span class="badge text-bg-warning">Closing soon</span></small>
+                {% else %}
+                <small><b>Closing date:</b> {{object.closing_date}} <span class="badge text-bg-success">Open</span></small>
+                {% endif %}
+              </div>
+          {% endif %}
+    </a>
+ <!-- end list template -->
+
+<hr>
+{% empty %}
+
+{% load static %}
+<p class="text-center">Oops...something seems to have gone wrong...</p> <!-- No records in DB -->
+<br>
+<div class="text-center" class="img-fluid" alt="Responsive image">
+  <img src="{% static 'job_app/images/no_entries.png' %}" alt="Error message" width="200" height="200">
+</div>
+
+{% endfor %}
+
+<!-- begin bottom pagination -->
+
+<p class="text-center">
+<div class="pagination">
+      {% if page_obj.has_previous %}
+          <a href="?page=1">&laquo; first</a> &nbsp;
+          <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+      {% endif %}
+
+      <span class="current">
+        &nbsp;  Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+      </span>
+
+      {% if page_obj.has_next %}
+      &nbsp; <a href="?page={{ page_obj.next_page_number }}">next</a>&nbsp;
+          <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+      {% endif %}
+  </span>
+</div>
+<!-- end bottom pagination -->
+<br>
+
 {% endblock content %}

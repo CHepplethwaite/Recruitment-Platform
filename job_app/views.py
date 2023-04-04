@@ -42,7 +42,6 @@ class jobListView(ListView):
     paginate_by = 10
     ordering = ['-post_date']
 
-
 class jobDetailView(DetailView):
     model = job
     template_name = 'job_app/job_detail.html'
@@ -52,53 +51,102 @@ class jobDetailView(DetailView):
     def get_object(self, **kwargs):
         slug = self.kwargs.get('slug')
         return get_object_or_404(job, slug=uri_to_iri(slug))
-  
-def academia_list(request):
-    return render(request,'job_app/categories/academia.html',{})
+
+class academiaListView(ListView):
+    model = job
+    paginate_by = 10
+    ordering = ['-post_date']
+    template_name = 'job_app/categories/academia.html'
+
+class adminListView(ListView):
+    model = job
+    paginate_by = 10
+    ordering = ['-post_date']
+    template_name = 'job_app/categories/administration_list.html'
+
+class accountancyListView(ListView):
+    model = job
+    paginate_by = 10
+    ordering = ['-post_date']
+    template_name = 'job_app/categories/accountancy_list.html'
     
-def accountancy_list(request):
-    return render(request,'job_app/categories/accountancy_list.html',{})
+class agricultureListView(ListView):
+    model = job
+    paginate_by = 10
+    ordering = ['-post_date']
+    template_name = 'job_app/categories/agriculture_list.html'
+
+class bankingListView(ListView):
+    model = job
+    paginate_by = 10
+    ordering = ['-post_date']
+    template_name = 'job_app/categories/banking_and_finance.html'
     
-def administration_list(request):
-    return render(request,'job_app/categories/administration_list.html',{})
+class developmentListView(ListView):
+    model = job
+    paginate_by = 10
+    ordering = ['-post_date']
+    template_name = 'job_app/categories/development_list.html'
+
+class engineeringListView(ListView):
+    model = job
+    paginate_by = 10
+    ordering = ['-post_date']
+    template_name = 'job_app/categories/engineering_and_construction_list.html'
+
+class healthListView(ListView):
+    model = job
+    paginate_by = 10
+    ordering = ['-post_date']
+    template_name = 'job_app/categories/health_list.html'
+
+class hrListView(ListView):
+    model = job
+    paginate_by = 10
+    ordering = ['-post_date']
+    template_name = 'job_app/categories/human_resource_list.html'
+
+class lawListView(ListView):
+    model = job
+    paginate_by = 10
+    ordering = ['-post_date']
+    template_name = 'job_app/categories/legal_list.html'
     
-def agriculture_list(request):
-    return render(request,'job_app/categories/agriculture_list.html',{})
+class manufacturingListView(ListView):
+    model = job
+    paginate_by = 10
+    ordering = ['-post_date']
+    template_name = 'job_app/categories/manufacturing_list.html'
     
-def banking_and_finance_list(request):
-    return render(request,'job_app/categories/banking_and_finance.html',{})
+class miscListView(ListView):
+    model = job
+    paginate_by = 10
+    ordering = ['-post_date']
+    template_name = 'job_app/categories/other_list.html'
     
-def development_list(request):
-    return render(request,'job_app/categories/development_list.html',{})
-    
-def engineering_and_construction_list(request):
-    return render(request,'job_app/categories/engineering_and_construction_list.html',{})
-    
-def health_list(request):
-    return render(request,'job_app/categories/health_list.html',{})
-    
-def human_resource_list(request):
-    return render(request,'job_app/categories/human_resource_list.html',{})
-    
-def law(request):
-     return render(request,'job_app/categories/legal_list.html',{})
-    
-def manufacturing_list(request):
-    return render(request,'job_app/categories/manufacturing_list.html',{})
-    
-def other_list(request):
-    return render(request,'job_app/categories/other_list.html',{})
-    
-def public_sector_list(request):
-    return render(request,'job_app/categories/public_sector_list.html',{})
-    
-def retail_and_sales_list(request):
-    return render(request,'job_app/categories/retail_and_sales.html',{})
-    
-def technology_list(request):
-    return render(request,'job_app/categories/technology_list.html',{})
-    
-def transportation_and_logistics_list(request):
-    return render(request,'job_app/categories/transportation_and_logistics_list.html',{})
+class retailListView(ListView):
+    model = job
+    paginate_by = 10
+    ordering = ['-post_date']
+    template_name = 'job_app/categories/retail_and_sales.html'
+
+class techListView(ListView):
+    model = job
+    paginate_by = 10
+    ordering = ['-post_date']
+    template_name = 'job_app/categories/technology_list.html'
+
+class publicSectorListView(ListView):
+    model = job
+    paginate_by = 10
+    ordering = ['-post_date']
+    template_name = 'job_app/categories/technology_list.html'
+
+class transportListView(ListView):
+    model = job
+    paginate_by = 10
+    ordering = ['-post_date']
+    template_name = 'job_app/categories/transportation_and_logistics_list.html'
+
     
     
