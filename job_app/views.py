@@ -52,6 +52,8 @@ class jobDetailView(DetailView):
         slug = self.kwargs.get('slug')
         return get_object_or_404(job, slug=uri_to_iri(slug))
 
+# category views
+
 class academiaListView(ListView):
     model = job
     paginate_by = 10
@@ -69,6 +71,13 @@ class accountancyListView(ListView):
     paginate_by = 10
     ordering = ['-post_date']
     template_name = 'job_app/categories/accountancy_list.html'
+
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        fil = queryset.filter(industry__iexact="Accountancy")
+        return fil
+    
+    
     
 class agricultureListView(ListView):
     model = job

@@ -87,5 +87,6 @@ class job(models.Model):
         margin = datetime.timedelta(days = 1)
         return today - margin <= self.post_date <= today + margin
     
+    
 
     
