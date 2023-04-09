@@ -41,6 +41,7 @@ class job(models.Model):
     ]
     company = models.CharField(max_length=50)
     url = models.URLField(max_length=200, default=None)
+    email = models.EmailField(default = 'info@tumpetech.com')
     job_title = models.CharField(max_length=50)
     slug = models.SlugField(max_length=250,null=False, unique_for_date='post_date', default="")
     post_date = models.DateField(auto_now=False, auto_now_add=True)
