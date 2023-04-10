@@ -3,6 +3,7 @@ from django.urls import reverse
 from django.template.defaultfilters import slugify
 import datetime
 import uuid
+from django.conf import settings
 
 
 class job(models.Model):
@@ -43,7 +44,13 @@ class job(models.Model):
         (True,"Approved"),
         (False,"Pending"),
     ]
-    approval_status = models.BooleanField(choices=approval_choices,default=False)
+    status = models.BooleanField(choices=approval_choices,default=False)
+    user = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE,
+        blank=True,
+        null=True,
+    )
     company = models.CharField(max_length=50)
     url = models.URLField(max_length=200, default="www.tumpetech.com")
     email = models.EmailField(default = 'info@tumpetech.com')
