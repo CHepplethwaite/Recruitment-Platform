@@ -39,6 +39,11 @@ class job(models.Model):
         ("RETAIL_AND_SALES","Retail and Sales"),
         ("TRANSPORT_AND_LOGISTICS","Transport and Logistics"),
     ]
+    approval_choices = [
+        ("True","Approved"),
+        ("False","Pending"),
+    ]
+    approval_status = models.BooleanField(choices=approval_choices,default=False)
     company = models.CharField(max_length=50)
     url = models.URLField(max_length=200, default=None)
     email = models.EmailField(default = 'info@tumpetech.com')
