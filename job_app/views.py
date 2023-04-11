@@ -58,24 +58,21 @@ class academiaListView(ListView):
     paginate_by = 10
     ordering = ['-post_date']
     template_name = 'job_app/categories/academia.html'
+    queryset=job.objects.filter(industry__exact="ACADEMIA")
 
 class adminListView(ListView):
     model = job
     paginate_by = 10
     ordering = ['-post_date']
     template_name = 'job_app/categories/administration_list.html'
+    queryset=job.objects.filter(industry__exact="ADMINISTRATION")
 
 class accountancyListView(ListView):
     model = job
     paginate_by = 10
     ordering = ['-post_date']
     template_name = 'job_app/categories/accountancy_list.html'
-
-    def get_queryset(self):
-        queryset = super().get_queryset()
-        fil = queryset.filter(industry__iexact="Accountancy")
-        return fil
-    
+    queryset=job.objects.filter(industry__exact="ACCOUNTANCY")
     
     
 class agricultureListView(ListView):
@@ -83,78 +80,91 @@ class agricultureListView(ListView):
     paginate_by = 10
     ordering = ['-post_date']
     template_name = 'job_app/categories/agriculture_list.html'
+    queryset=job.objects.filter(industry__exact="AGRICULTURE")
 
 class bankingListView(ListView):
     model = job
     paginate_by = 10
     ordering = ['-post_date']
     template_name = 'job_app/categories/banking_and_finance.html'
+    queryset=job.objects.filter(industry__exact="BANKING_AND_FINANCE")
     
 class developmentListView(ListView):
     model = job
     paginate_by = 10
     ordering = ['-post_date']
     template_name = 'job_app/categories/development_list.html'
+    queryset=job.objects.filter(industry__exact="DEVELOPMENT")
 
 class engineeringListView(ListView):
     model = job
     paginate_by = 10
     ordering = ['-post_date']
     template_name = 'job_app/categories/engineering_and_construction_list.html'
+    queryset=job.objects.filter(industry__exact="ENGINEERING_AND_CONSTRUCTION")
 
 class healthListView(ListView):
     model = job
     paginate_by = 10
     ordering = ['-post_date']
     template_name = 'job_app/categories/health_list.html'
+    queryset=job.objects.filter(industry__exact="HEALTH")
 
 class hrListView(ListView):
     model = job
     paginate_by = 10
     ordering = ['-post_date']
     template_name = 'job_app/categories/human_resource_list.html'
+    queryset=job.objects.filter(industry__exact="HUMAN_RESOURCE")
 
 class lawListView(ListView):
     model = job
     paginate_by = 10
     ordering = ['-post_date']
     template_name = 'job_app/categories/legal_list.html'
+    queryset=job.objects.filter(industry__exact="LAW")
     
 class manufacturingListView(ListView):
     model = job
     paginate_by = 10
     ordering = ['-post_date']
     template_name = 'job_app/categories/manufacturing_list.html'
+    queryset=job.objects.filter(industry__exact="MANUFACTURING_FMCG")
     
 class miscListView(ListView):
     model = job
     paginate_by = 10
     ordering = ['-post_date']
     template_name = 'job_app/categories/other_list.html'
+    queryset=job.objects.filter(industry__exact="OTHER")
     
 class retailListView(ListView):
     model = job
     paginate_by = 10
     ordering = ['-post_date']
     template_name = 'job_app/categories/retail_and_sales.html'
+    queryset=job.objects.filter(industry__exact="RETAIL_AND_SALES")
 
 class techListView(ListView):
     model = job
     paginate_by = 10
     ordering = ['-post_date']
     template_name = 'job_app/categories/technology_list.html'
+    queryset=job.objects.filter(industry__exact="ICT_AND_TELCO")
 
 class publicSectorListView(ListView):
     model = job
     paginate_by = 10
     ordering = ['-post_date']
-    template_name = 'job_app/categories/technology_list.html'
+    template_name = 'job_app/categories/public_sector_list.html'
+    queryset=job.objects.filter(industry__exact="PUBLIC_SECTOR")
 
 class transportListView(ListView):
     model = job
     paginate_by = 10
     ordering = ['-post_date']
     template_name = 'job_app/categories/transportation_and_logistics_list.html'
+    queryset=job.objects.filter(industry__exact="TRANSPORT_AND_LOGISTICS")
 
     
     

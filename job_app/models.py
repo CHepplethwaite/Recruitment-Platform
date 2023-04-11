@@ -7,33 +7,34 @@ from django.conf import settings
 
 
 class job(models.Model):
+    ACADEMIA = "EDU"
     ACCOUNTANCY = "ACC"
     ADMINISTRATION = "ADM"
+    AGRICULTURE = "AGR"
     BANKING_AND_FINANCE = "BF"
     DEVELOPMENT = "DEV"
-    EDUCATION = "EDU"
     ENGINEERING_AND_CONSTRUCTION = "ENG"
     HEALTH = "HTH"
     HUMAN_RESOURCE = "HR"
-    ICT_AND_TELECO = "ICT"
-    LEGAL = "LG"
+    ICT_AND_TELCO = "ICT"
+    LAW = "LAW"
     MANUFACTURING_FMCG = "MAN"
     OTHER = "MISC"
     PUBLIC_SECTOR = "PUB"
     RETAIL_AND_SALES = "SAL"
     TRANSPORT_AND_LOGISTICS = "TRA"
     industry_choices = [
-        ("ACCOUNTACY","Accountancy"),
-        ("ADMINISTARTION","Administration"),
+        ("ACADEMIA","Academia"),
+        ("ACCOUNTANCY","Accountancy"),
+        ("ADMINISTRATION","Administration"),
         ("AGRICULTURE","Agriculture"),
         ("BANKING_AND_FINANCE","Banking and Finance"),
         ("DEVELOPMENT","Development"),
-        ("EDUCATION","Education"),
         ("ENGINEERING_AND_CONSTRUCTION","Engineering and Construction"),
         ("HEALTH","Health"),
         ("HUMAN_RESOURCE","Human Resource"),
-        ("ICT_AND_TELECO","ICT and Telco"),
-        ("LEGAL","Legal"),
+        ("ICT_AND_TELCO","ICT and Telco"),
+        ("LAW","Law"),
         ("MANUFACTURING_FMCG","Manufacturing/FMCG"),
         ("OTHER","Other"),
         ("PUBLIC_SECTOR","Public Sector"),
@@ -62,7 +63,7 @@ class job(models.Model):
     details = models.TextField()
     industry = models.CharField(choices=industry_choices,
                                 max_length=255,
-                                default=ACCOUNTANCY,
+                                default=ACADEMIA,
                                 )
 
     def __str__(self):
