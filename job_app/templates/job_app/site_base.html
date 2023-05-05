@@ -33,6 +33,7 @@
 
 {% endblock content %}
 
+<div class="w-100 p-3">
 <div class="card">
   <div class="card-header">
     Categories
@@ -59,7 +60,9 @@
     </blockquote>
   </div>
 </div>
+</div>
   <br>
+
 
 <p class="text-center">
   <a href="{% url 'job_list' %}">All jobs</a> &nbsp;
@@ -68,8 +71,9 @@
   <a href="#">Submit CV</a> &nbsp;
   <a href="{% url 'job_list' %}">Advertise</a> &nbsp;
   <a href="{% url 'about' %}">About</a> &nbsp;
-  <a href="{% url 'legal' %}">Legal</a> &nbsp;
+  <a href="{% url 'legal' %}">Disclaimer</a> &nbsp;
 </p>
+
 <p class="text-center"> &copy; 2023-<script>document.write(new Date().getFullYear())</script> All Rights Reserved<br>
 
 <br>

@@ -166,5 +166,3 @@ class transportListView(ListView):
     template_name = 'job_app/categories/transportation_and_logistics_list.html'
     queryset=job.objects.filter(industry__exact="TRANSPORT_AND_LOGISTICS")
 
-    
-    
