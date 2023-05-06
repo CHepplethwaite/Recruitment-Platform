@@ -32,4 +32,14 @@ urlpatterns =[
     path('retail/',job_views.retailListView.as_view(),name="retail"),
     path('technology/',job_views.techListView.as_view(),name="technology"),
     path('transportation_and_logistics/',job_views.transportListView.as_view(),name="transport"),
+
+    #job article urls
+    path('career-advice/career-exploration/',job_views.career_exploration,name="exploration"),
+    path('career-advice/education-and-training/',job_views.education,name="education"),
+    path('career-advice/job-interview-skills/',job_views.job_interviews,name="interviews"),
+    path('career-advice/job-market-trends/',job_views.job_market,name="job_market"),
+    path('career-advice/networking/',job_views.networking,name="networking"),
+    path('career-advice/salary-negotiations/',job_views.salary,name="salary"),
+    path('career-advice/self-assessment/',job_views.self_assessment,name="self_assessment"),
+    path('career-advice/resume-and-cover-letter-writing/',job_views.writing,name="writing"),
 ]

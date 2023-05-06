@@ -166,3 +166,28 @@ class transportListView(ListView):
     template_name = 'job_app/categories/transportation_and_logistics_list.html'
     queryset=job.objects.filter(industry__exact="TRANSPORT_AND_LOGISTICS")
 
+#career article views
+
+def career_exploration(request):
+    return render(request,'job_app/career_articles/career_exploration.html',{})
+
+def education(request):
+    return render(request,'job_app/career_articles/education.html',{})
+
+def job_interviews(request):
+    return render(request,'job_app/career_articles/job_interviews.html',{})
+
+def job_market(request):
+    return render(request,'job_app/career_articles/job_market.html',{})
+
+def networking(request):
+    return render(request,'job_app/career_articles/networking.html',{})
+
+def salary(request):
+    return render(request,'job_app/career_articles/salary_negotiations.html',{})
+
+def self_assessment(request):
+    return render(request,'job_app/career_articles/self_assessment.html',{})
+
+def writing(request):
+    return render(request,'job_app/career_articles/writing.html',{})
