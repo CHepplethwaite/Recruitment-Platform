@@ -23,6 +23,11 @@ class job(models.Model):
     PUBLIC_SECTOR = "PUB"
     RETAIL_AND_SALES = "SAL"
     TRANSPORT_AND_LOGISTICS = "TRA"
+    FULL_TIME = "FT"
+    PART_TIME = "PT"
+    CONTRACT = "CT"
+    TEMPORARY = "TMP"
+    INTERNSHIP = "INT"
     industry_choices = [
         ("ACADEMIA","Academia"),
         ("ACCOUNTANCY","Accountancy"),
@@ -45,7 +50,19 @@ class job(models.Model):
         (True,"Approved"),
         (False,"Pending"),
     ]
+    employment_choices = [
+        ("FULL_TIME","Full-time"),
+        ("PART_TIME","Part-time"),
+        ("CONTRACT","Contract"),
+        ("TEMPORARY","Temporary"),
+        ("INTERSHIP","Internship"),
+    ]
     status = models.BooleanField(choices=approval_choices,default=False)
+    employment_type = models.CharField(
+        choices=employment_choices,
+        default=FULL_TIME,
+        max_length=15,
+        )
     user = models.ForeignKey(
         settings.AUTH_USER_MODEL,
         on_delete=models.CASCADE,
@@ -63,7 +80,7 @@ class job(models.Model):
     location = models.CharField(max_length=50)
     details = models.TextField()
     industry = models.CharField(choices=industry_choices,
-                                max_length=255,
+                                max_length=30,
                                 default=ACADEMIA,
                                 )
 

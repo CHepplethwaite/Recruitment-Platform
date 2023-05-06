@@ -25,8 +25,8 @@
 {% load static %}
 
 <div class="text-center" class="img-fluid" alt="Responsive image">
-    <img src="{% static 'job_app/images/logo.png' %}" alt="99 Jobs logo" width="150" height="150">
-  </div>
+  <a href="{% url 'job_list'%}" alt="Tumpe logo"><img src="{% static 'job_app/images/logo.png' %}" alt="99 Jobs logo" width="150" height="150"></a>
+</div>
 
 
 {% block content %}
