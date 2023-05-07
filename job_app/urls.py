@@ -35,7 +35,7 @@ urlpatterns =[
 
     #job article urls
     path('career-advice/career-exploration/',job_views.career_exploration,name="exploration"),
-    path('career-advice/education-and-training/',job_views.education,name="education"),
+    path('career_advice/education_and_training/',job_views.education,name="education"),
     path('career-advice/job-interview-skills/',job_views.job_interviews,name="interviews"),
     path('career-advice/job-market-trends/',job_views.job_market,name="job_market"),
     path('career-advice/networking/',job_views.networking,name="networking"),
