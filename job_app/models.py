@@ -69,7 +69,6 @@ class job(models.Model):
         blank=True,
         null=True,
     )
-    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     company = models.CharField(max_length=50)
     url = models.URLField(max_length=200, default="www.tumpetech.com")
     email = models.EmailField(default = 'info@tumpetech.com')
