@@ -2,7 +2,6 @@ from django.db import models
 from django.urls import reverse
 from django.template.defaultfilters import slugify
 import datetime
-import uuid
 from django.conf import settings
 
 
@@ -157,7 +156,7 @@ class job(models.Model):
     NYIMBA_D = "NYD"
     PETAUKE_D = "PTD"
     SINDA_D = "SND"
-    VUBWI = "VBD"
+    VUBWI_D = "VBD"
 
     #Luapula districts
     CHEMBE_D = "CHBD"
@@ -192,7 +191,7 @@ class job(models.Model):
     SHIWANG_ANDU_D = "SHGD"
 
     #Northern districts
-    CHILUBI_D = "CHBD"
+    CHILUBI_D = "CHLBD"
     KAPUTA_D = "KPTD"
     KASAMA_D = "KSMD"
     LUNTE_D = "LNTD"
@@ -200,7 +199,7 @@ class job(models.Model):
     LUWINGU_D = "LWD"
     MBALA_D = "MBLD"
     MPOROKOSO_D = "MPOD"
-    MPULUNDU_D = "MPUD"
+    MPULUNGU_D = "MPUD"
     MUNGWI_D = "MGWD"
     NSAMA = "NSMD"
     SENGA_D = "SND"
@@ -240,7 +239,7 @@ class job(models.Model):
     KAOMA_D = "KOMAD"
     LIMULUNGA_D = "LMGAD"
     LUAMPA_D = "LMPD"
-    LUKULU_D = "LKUD"
+    LUKULU_D = "LUKUD"
     MITETE_D = "MTTD"
     MONGU_D = "MONGD"
     MULOBEZI_D = "MLBZD"
@@ -381,6 +380,113 @@ class job(models.Model):
         ("ZAMBEZI","Zambezi"),
         ("ZIMBA","Zimba"),
     ]
+    district_choices = [
+        ("CHILILABOMBWE_D","Chililabombwe"),
+        ("CHINGOLA_D","Chingola"),
+        ("KALULUSHI_D","Kalulushi"),
+        ("KITWE_D","Kitwe"),
+        ("LUANSHYA_D","Luanshya"),
+        ("LUFWANYAMA_D","Lufwanyama"),
+        ("MASAITI_D","Masaiti"),
+        ("MPONGWE_D","Mpongwe"),
+        ("MUFULIRA_D","Mufulira"),
+        ("NDOLA_D","Ndola"),
+        ("CHADIZA_D","Chadiza"),
+        ("CHAMA_D","Chama"),
+        ("CHASEFU_D","Chasefu"),
+        ("CHIPANGALI_D","Chipangali"),
+        ("CHIPATA_D","Chipata"),
+        ("KASENENGWA_D","Kasenengwa"),
+        ("KATETE_D","Katete"),
+        ("LUMEZI_D","Lumezi"),
+        ("LUNDAZI_D","Lundazi"),
+        ("LUSANGAZI_D","Lusangazi"),
+        ("MAMBWE_D","Mambwe"),
+        ("NYIMBA_D","Nyimba"),
+        ("PETAUKE_D","Petauke"),
+        ("SINDA_D","Sinda"),
+        ("VUBWI_D","Vubwi"),
+        ("CHEMBE_D","Chembe"),
+        ("CHIENGI_D","Chiengi"),
+        ("CHIFUNABULI_D","Chifunabuli"),
+        ("CHIPILI_D","Chipili"),
+        ("KAWAMBWA_D","Kawambwa"),
+        ("LUNGA_D","Lunga"),
+        ("MANSA_D","Mansa"),
+        ("MILENGE_D","Milenge"),
+        ("MWANSABOMBWE_D","Mwansabombwe"),
+        ("MWENSE_D","Mwense"),
+        ("NCHEKENGE_D","Nchekenge"),
+        ("SAMFYA_D","Samfya"),
+        ("CHILANGA_D","Chilanga"),
+        ("CHONGWE_D","Chongwe"),
+        ("KAFUE_D","Kafue"),
+        ("LUANGWA_D","Luangwa"),
+        ("LUSAKA_D","Lusaka"),
+        ("RUFUNSA_D","Rufunsa"),
+        ("CHINSALI_D","Chinsali"),
+        ("ISOKA_D","Isoka"),
+        ("KANCHIBIYA_D","Kanchibiya"),
+        ("LAVUSHIMANDA_D","Lavushimanda"),
+        ("MAFINGA_D","Mafinga"),
+        ("MPIKA_D","Mpika"),
+        ("NAKONDE_D","Nakonde"),
+        ("SHIWANG_ANDU_D","Shiwang'andu"),
+        ("CHILUBU_D","Chilubi"),
+        ("KAPUTA_D","Kaputa"),
+        ("KASAMA_D","Kasama"),
+        ("LUNTE_D","Lunte"),
+        ("LUPOSOSHI_D","Lupososhi"),
+        ("LUWINGU_D","Luwingu"),
+        ("MBALA_D","Mbala"),
+        ("MPOROKOSO_D","Mporokoso"),
+        ("MPULUNGU_D","Mpulungu"),
+        ("MUNGWI_D","Mungwi"),
+        ("NSAMA_D","Nsama"),
+        ("SENGA_D","Senga"),
+        ("CHAVUMA_D","Chavuma"),
+        ('IKELENGE_D','Ikelenge'),
+        ("KABOMPO_D","Kabompo"),
+        ("KASEMPA_D","Kasempa"),
+        ("KALUMBILA_D","Kalumbila"),
+        ("MANYINGA_D","Manyinga"),
+        ("MUFUMBWE_D","Mufumbwe"),
+        ("MUSHINDAMO_D","Mushindamo"),
+        ("MWINILUNGA_D","Mwinilunga"),
+        ("SOLWEZI_D","Solwezi"),
+        ("ZAMBEZI_D","Zambezi"),
+        ("CHIKANKATA_D","Chikankata"),
+        ("CHIRUNDU_D","Chirundu"),
+        ("CHOMA_D","Choma"),
+        ("GWEMBE_D","Gwembe"),
+        ("ITEZHI_TEZHI_D","Itezhi tezhi"),
+        ("KALOMO_D","Kalomo"),
+        ("KAZUNGULA_D","Kazungula"),
+        ("LIVINGSTONE_D","Livingstone"),
+        ("MAZABUKA_D","Mazabuka"),
+        ("MONZE_D","Monze"),
+        ("NAMWALA_D","Namwala"),
+        ("PEMBA_D","Pemba"),
+        ("SIAVONGA_D","Siavonga"),
+        ("SINAZONGWE_D","Sinazongwe"),
+        ("ZIMBA_D","Zimba"),
+        ("KALABO_D","Kalabo"),
+        ("KAOMA_D","Kaoma"),
+        ("LIMULUNGA_D","Limulunga"),
+        ("LUAMPA_D","Luampa"),
+        {"LUKULU_D","Lukulu"},
+        ("MITETE_D","Mitete"),
+        ("MONGU_D","Mongu"),
+        ("MULOBEZI_D","Mulobezi"),
+        ("MWANDI_D","Mwandi"),
+        ("NALOLO_D","Nalolo"),
+        ("NKEYEMBA_D","Nkeyemba"),
+        ("SENANGA_D","Senanga"),
+        ("SESHEKE_D","Sesheke"),
+        ("SHANG_OMBO_D","Shang'ombo"),
+        ("SIKONGO_D","Sikongo"),
+        ("SIOMA_D","Sioma"),
+    ]
     status = models.BooleanField(choices=approval_choices,default=False)
     employment_type = models.CharField(
         choices=employment_choices,
@@ -400,14 +506,18 @@ class job(models.Model):
     slug = models.SlugField(max_length=250,null=False, unique_for_date='post_date', default="")
     post_date = models.DateField(auto_now=False, auto_now_add=True)
     closing_date = models.DateField()
-    location = models.CharField(choices=towns_choices,
-                                max_length=30,
-                                default=LUSAKA,
-                                )
+    town = models.CharField(choices=towns_choices,
+                            max_length=30,
+                            default=LUSAKA,
+                            )
     details = models.TextField()
     province = models.CharField(choices=province_choices,
                                 max_length=30,
                                 default=LUSAKA_P,
+                                )
+    district = models.CharField(choices=district_choices,
+                                max_length=30,
+                                default=LUSAKA_D,
                                 )
     industry = models.CharField(choices=industry_choices,
                                 max_length=30,
