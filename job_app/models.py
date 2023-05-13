@@ -510,19 +510,19 @@ class job(models.Model):
                             max_length=30,
                             default=LUSAKA,
                             )
-    details = models.TextField()
-    province = models.CharField(choices=province_choices,
-                                max_length=30,
-                                default=LUSAKA_P,
-                                )
     district = models.CharField(choices=district_choices,
                                 max_length=30,
                                 default=LUSAKA_D,
+                                )
+    province = models.CharField(choices=province_choices,
+                                max_length=30,
+                                default=LUSAKA_P,
                                 )
     industry = models.CharField(choices=industry_choices,
                                 max_length=30,
                                 default=ACADEMIA,
                                 )
+    details = models.TextField()
 
     def __str__(self):
         return self.job_title+" - "+self.company
