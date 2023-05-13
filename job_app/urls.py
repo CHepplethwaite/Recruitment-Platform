@@ -16,7 +16,7 @@ urlpatterns =[
     path('submit-resume/', job_views.submit_resume, name="submit_resume"),
    
    # category urls
-    path('jobs/academia/',job_views.academiaListView.as_view(),name="academia"),
+    path('jobs/academia-and-research/',job_views.academiaListView.as_view(),name="academia"),
     path('jobs/accountancy/',job_views.accountancyListView.as_view(),name="accountancy"),
     path('jobs/administration/',job_views.adminListView.as_view(),name="admin"),
     path('jobs/agriculture/' ,job_views.agricultureListView.as_view(),name="agric"),
@@ -26,10 +26,10 @@ urlpatterns =[
     path('jobs/health/',job_views.healthListView.as_view(),name="health"),
     path('jobs/human-resource/',job_views.hrListView.as_view(),name="HR"),
     path('jobs/law/',job_views.lawListView.as_view(),name="law"),
-    path('jobs/manufacturing/',job_views.manufacturingListView.as_view(),name="manufacturing"),
+    path('jobs/manufacturing-and-fmcg/',job_views.manufacturingListView.as_view(),name="manufacturing"),
     path('jobs/miscellaneous/',job_views.miscListView.as_view(),name="misc"),
     path('jobs/public-sector/',job_views.publicSectorListView.as_view(),name="public_sector"),
-    path('jobs/retail/',job_views.retailListView.as_view(),name="retail"),
+    path('jobs/retail-and-sales/',job_views.retailListView.as_view(),name="retail"),
     path('jobs/technology/',job_views.techListView.as_view(),name="technology"),
     path('jobs/transportation-and-logistics/',job_views.transportListView.as_view(),name="transport"),
 
