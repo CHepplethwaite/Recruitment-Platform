@@ -58,21 +58,21 @@ class academiaListView(ListView):
     paginate_by = 10
     ordering = ['-post_date']
     template_name = 'job_app/categories/academia.html'
-    queryset=job.objects.filter(industry__exact="ACADEMIA")
+    queryset=job.objects.filter(industry__exact="ACADEMIA", status__exact=f"{True}")
 
 class adminListView(ListView):
     model = job
     paginate_by = 10
     ordering = ['-post_date']
     template_name = 'job_app/categories/administration_list.html'
-    queryset=job.objects.filter(industry__exact="ADMINISTRATION")
+    queryset=job.objects.filter(industry__exact="ADMINISTRATION", status__exact=f"{True}")
 
 class accountancyListView(ListView):
     model = job
     paginate_by = 10
     ordering = ['-post_date']
     template_name = 'job_app/categories/accountancy_list.html'
-    queryset=job.objects.filter(industry__exact="ACCOUNTANCY")
+    queryset=job.objects.filter(industry__exact="ACCOUNTANCY", status__exact=f"{True}")
     
     
 class agricultureListView(ListView):
@@ -80,91 +80,91 @@ class agricultureListView(ListView):
     paginate_by = 10
     ordering = ['-post_date']
     template_name = 'job_app/categories/agriculture_list.html'
-    queryset=job.objects.filter(industry__exact="AGRICULTURE")
+    queryset=job.objects.filter(industry__exact="AGRICULTURE", status__exact=f"{True}")
 
 class bankingListView(ListView):
     model = job
     paginate_by = 10
     ordering = ['-post_date']
     template_name = 'job_app/categories/banking_and_finance.html'
-    queryset=job.objects.filter(industry__exact="BANKING_AND_FINANCE")
+    queryset=job.objects.filter(industry__exact="BANKING_AND_FINANCE", status__exact=f"{True}")
     
 class developmentListView(ListView):
     model = job
     paginate_by = 10
     ordering = ['-post_date']
     template_name = 'job_app/categories/development_list.html'
-    queryset=job.objects.filter(industry__exact="DEVELOPMENT")
+    queryset=job.objects.filter(industry__exact="DEVELOPMENT", status__exact=f"{True}")
 
 class engineeringListView(ListView):
     model = job
     paginate_by = 10
     ordering = ['-post_date']
     template_name = 'job_app/categories/engineering_and_construction_list.html'
-    queryset=job.objects.filter(industry__exact="ENGINEERING_AND_CONSTRUCTION")
+    queryset=job.objects.filter(industry__exact="ENGINEERING_AND_CONSTRUCTION", status__exact=f"{True}")
 
 class healthListView(ListView):
     model = job
     paginate_by = 10
     ordering = ['-post_date']
     template_name = 'job_app/categories/health_list.html'
-    queryset=job.objects.filter(industry__exact="HEALTH")
+    queryset=job.objects.filter(industry__exact="HEALTH", status__exact=f"{True}")
 
 class hrListView(ListView):
     model = job
     paginate_by = 10
     ordering = ['-post_date']
     template_name = 'job_app/categories/human_resource_list.html'
-    queryset=job.objects.filter(industry__exact="HUMAN_RESOURCE")
+    queryset=job.objects.filter(industry__exact="HUMAN_RESOURCE", status__exact=f"{True}")
 
 class lawListView(ListView):
     model = job
     paginate_by = 10
     ordering = ['-post_date']
     template_name = 'job_app/categories/legal_list.html'
-    queryset=job.objects.filter(industry__exact="LAW")
+    queryset=job.objects.filter(industry__exact="LAW", status__exact=f"{True}")
     
 class manufacturingListView(ListView):
     model = job
     paginate_by = 10
     ordering = ['-post_date']
     template_name = 'job_app/categories/manufacturing_list.html'
-    queryset=job.objects.filter(industry__exact="MANUFACTURING_FMCG")
+    queryset=job.objects.filter(industry__exact="MANUFACTURING_FMCG", status__exact=f"{True}")
     
 class miscListView(ListView):
     model = job
     paginate_by = 10
     ordering = ['-post_date']
     template_name = 'job_app/categories/other_list.html'
-    queryset=job.objects.filter(industry__exact="OTHER")
+    queryset=job.objects.filter(industry__exact="OTHER", status__exact=f"{True}")
     
 class retailListView(ListView):
     model = job
     paginate_by = 10
     ordering = ['-post_date']
     template_name = 'job_app/categories/retail_and_sales.html'
-    queryset=job.objects.filter(industry__exact="RETAIL_AND_SALES")
+    queryset=job.objects.filter(industry__exact="RETAIL_AND_SALES", status__exact=f"{True}")
 
 class techListView(ListView):
     model = job
     paginate_by = 10
     ordering = ['-post_date']
     template_name = 'job_app/categories/technology_list.html'
-    queryset=job.objects.filter(industry__exact="ICT_AND_TELCO")
+    queryset=job.objects.filter(industry__exact="ICT_AND_TELCO", status__exact=f"{True}")
 
 class publicSectorListView(ListView):
     model = job
     paginate_by = 10
     ordering = ['-post_date']
     template_name = 'job_app/categories/public_sector_list.html'
-    queryset=job.objects.filter(industry__exact="PUBLIC_SECTOR")
+    queryset=job.objects.filter(industry__exact="PUBLIC_SECTOR", status__exact=f"{True}")
 
 class transportListView(ListView):
     model = job
     paginate_by = 10
     ordering = ['-post_date']
     template_name = 'job_app/categories/transportation_and_logistics_list.html'
-    queryset=job.objects.filter(industry__exact="TRANSPORT_AND_LOGISTICS")
+    queryset=job.objects.filter(industry__exact="TRANSPORT_AND_LOGISTICS", status__exact=f"{True}")
 
 #career article views
 
