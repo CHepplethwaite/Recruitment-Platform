@@ -35,7 +35,7 @@
 {% for object in page_obj %}
 
 <div class="list-group">
-    <a href="{% url 'job_detail' slug=object.slug %}" class="list-group-item list-group-item-action" aria-current="true">
+    <a href="{% url 'job_detail' slug=object.slug pk=object.id %}" class="list-group-item list-group-item-action" aria-current="true">
    
       
       {% if object.posted_today  %}

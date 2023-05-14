@@ -503,7 +503,7 @@ class job(models.Model):
     url = models.URLField(max_length=200, default="www.tumpetech.com")
     email = models.EmailField(default = 'info@tumpetech.com')
     job_title = models.CharField(max_length=50)
-    slug = models.SlugField(max_length=250,null=False, unique_for_date='post_date', default="")
+    slug = models.SlugField(max_length=250,null=False, default="")
     post_date = models.DateField(auto_now=False, auto_now_add=True)
     closing_date = models.DateField()
     town = models.CharField(choices=towns_choices,

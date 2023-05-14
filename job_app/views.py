@@ -40,16 +40,13 @@ class jobListView(ListView):
     model = job
     paginate_by = 10
     ordering = ['-post_date']
+    queryset=job.objects.filter(status__exact=f"{True}")
 
 class jobDetailView(DetailView):
     model = job
     template_name = 'job_app/job_detail.html'
     slug_field = 'slug'
     slug_url_kwarg = 'job_detail'
-
-    def get_object(self, **kwargs):
-        slug = self.kwargs.get('slug')
-        return get_object_or_404(job, slug=uri_to_iri(slug))
 
 # category views
 
