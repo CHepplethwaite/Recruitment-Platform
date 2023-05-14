@@ -35,19 +35,24 @@
 
 <div class="list-group">
     <a href="{% url 'job_detail' slug=object.slug %}" class="list-group-item list-group-item-action" aria-current="true">
- {% if object.posted_today  %}
+   
+      
+      {% if object.posted_today  %}
       <p class="text-warning"><small>
       New  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bell-fill" viewBox="0 0 16 16">
         <path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2zm.995-14.901a1 1 0 1 0-1.99 0A5.002 5.002 0 0 0 3 6c0 1.098-.5 6-2 7h14c-1.5-1-2-5.902-2-7 0-2.42-1.72-4.44-4.005-4.901z"/>
       </svg>
     </small></p>
-{% else %}
+                {% else %}
                 <p><small>
                 Posted {{object.get_x_days_ago }} days ago.
               </small></p>
-{% endif %}
+                {% endif %}
       
       
+      
+    
+  
  
 
       <div class="d-flex w-100 justify-content-between">
@@ -55,23 +60,27 @@
         
       
       </div>
-      <p class="mb-1"><b>Company:</b> {{object.company}}</p>
-      <small><b>Location:</b> {{object.location}}</small> 
-
-      <br>
+      <p><b>Company:</b> {{object.company}}&nbsp;&nbsp;
+      <b>Employment type:</b> {{object.get_employment_type_display}}&nbsp;&nbsp;
+      <b>Town:</b> {{object.get_town_display}}&nbsp;&nbsp;
+      <b>District:</b> {{object.get_district_display}}&nbsp;&nbsp;
+      <b>Province:</b> {{object.get_province_display}}&nbsp;&nbsp;
+    
         {% if object.is_closed  %}
-          <small><b>Closing date:</b> {{object.closing_date}} <span class="badge text-bg-danger">Closed</span></small>
+          <b>Closing date:</b> {{object.closing_date}} <span class="badge text-bg-danger">Closed</span></p>
         {% else %}
               
                 {% if object.closing_soon  %}
-                <small><b>Closing date:</b> <mark>{{object.closing_date}}</mark> <span class="badge text-bg-warning">Closing soon</span></small>
+                <b>Closing date:</b> <mark>{{object.closing_date}}</mark> <span class="badge text-bg-warning">Closing soon</span></p>
                 {% else %}
-                <small><b>Closing date:</b> {{object.closing_date}} <span class="badge text-bg-success">Open</span></small>
+                <b>Closing date:</b> {{object.closing_date}} <span class="badge text-bg-success">Available</span></p>
                 {% endif %}
-              </div>
           {% endif %}
+        </div>
     </a>
- <!-- end list template -->
+
+
+<!-- end list template -->
 
 <hr>
 {% empty %}

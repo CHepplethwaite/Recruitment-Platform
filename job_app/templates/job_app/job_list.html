@@ -62,17 +62,20 @@
         
       
       </div>
-      <p>Company: {{object.company}}</p>
-      <p>Location: {{object.location}}</p>
-      <p>Employment type: {{object.get_employment_type_display}}</P>
+      <p><b>Company:</b> {{object.company}}&nbsp;&nbsp;
+      <b>Employment type:</b> {{object.get_employment_type_display}}&nbsp;&nbsp;
+      <b>Town:</b> {{object.get_town_display}}&nbsp;&nbsp;
+      <b>District:</b> {{object.get_district_display}}&nbsp;&nbsp;
+      <b>Province:</b> {{object.get_province_display}}&nbsp;&nbsp;
+    
         {% if object.is_closed  %}
-          <p>Closing date: {{object.closing_date}} <span class="badge text-bg-danger">Closed</span></p>
+          <b>Closing date:</b> {{object.closing_date}} <span class="badge text-bg-danger">Closed</span></p>
         {% else %}
               
                 {% if object.closing_soon  %}
-                <p>Closing date: <mark>{{object.closing_date}}</mark> <span class="badge text-bg-warning">Closing soon</span></p>
+                <b>Closing date:</b> <mark>{{object.closing_date}}</mark> <span class="badge text-bg-warning">Closing soon</span></p>
                 {% else %}
-                <p>Closing date:</b> {{object.closing_date}} <span class="badge text-bg-success">Available</span></p>
+                <b>Closing date:</b> {{object.closing_date}} <span class="badge text-bg-success">Available</span></p>
                 {% endif %}
           {% endif %}
         </div>

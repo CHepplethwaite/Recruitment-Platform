@@ -6,10 +6,14 @@
 {% block content %}
 
 
-<H1 class="text-center"><b></b> {{ object.job_title }}</H1>
-<p>Company: </b>{{ object.company }}</p>
-<p>Employment type: </b>{{ object.get_employment_type_display }}</p>
-<p>Date posted: </b>{{ object.post_date }}</p>
+<H1 class="text-center"> {{ object.job_title }}</H1>
+<p>Company: {{ object.company }}</p>
+<p>Employment type: {{ object.get_employment_type_display }}</p>
+<p>Town: {{ object.get_town_display}}</p>
+<p>District: {{ object.get_district_display}}
+<p>Province: {{ object.get_province_display}}
+<p>Date posted: {{ object.post_date }}</p>
+
 
 {% if object.is_closed  %}
 <p>Closing date: {{object.closing_date}} <span class="badge text-bg-danger">Closed</span></p>
@@ -24,7 +28,6 @@
 
 {% endif %}
 
-<p>Location: {{ object.location }}</p>
 <p>Details: {{ object.details }}</p>
 
 {% if object.is_closed  %}

@@ -6,7 +6,7 @@ SECURITY POLICY:
 
 The following are security measures that should be adhered to for for the safe operation of this website:
 
-1. The admin url will have to be changed to /samisongo1986/. This url must be kept secret.
+1. The admin url will have to be changed to /samisongo1986_ykw/. This url must be kept secret.
 
 2. The site much run using TLS/HTTPS security at all times. 
 
