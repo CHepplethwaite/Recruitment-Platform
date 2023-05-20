@@ -21,10 +21,14 @@
 </style>
 <!-- purple-->
 
+<a href="{% url 'log_in' %}">Log in</a>
+
 <div class="text-center" class="img-fluid" alt="Responsive image">
-  <a href="{% url 'job_list'%}" alt="Tumpe logo"><img src="{% static 'job_app/images/logo.png' %}" alt="99 Jobs logo" width="150" height="150"></a>
+  <a href="{% url 'job_list'%}" alt="Tumpe logo"><img src="{% static 'job_app/images/logo.png' %}" alt="Tumpe logo" width="150" height="150"></a>
 </div>
 
+
+<!-- start message  -->
 {% if messages %}
   {% for message in messages %}
     <div class="alert alert-{{ message.tags }} d-flex flex-column justfy-content-center align-items-center">
@@ -32,6 +36,7 @@
     </div>
   {% endfor %}
 {% endif %}
+<!-- end message  -->
 
 <div class="w-100 p-3">
 <div class="card">

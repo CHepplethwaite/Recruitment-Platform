@@ -1,0 +1,23 @@
+{% extends 'job_app/footer_only_base.html' %}
+
+
+{% block title %}
+<title>Log out</title>
+{% endblock title %}
+
+
+
+{% block content %}
+
+<h3 class="text-center">Logged out.</h3>
+
+<div class="border-top pt-3 justfy-content-center align-items-center d-flex flex-column " >
+    <small class="text-muted">Thanks for spending time on Tumpe today.
+        <a class="ml-2" href="{% url 'log_in' %}">Log in again</a>
+    </small>
+</div>
+</div>
+<br>
+{% endblock content %}
+
+class="content-section 
