@@ -19,9 +19,13 @@
 <style type="text/css">
   body { background: #EEF2FF !important; } /* Adding !important forces the browser to overwrite the default style applied by Bootstrap */
 </style>
-<!-- purple-->
 
+
+{% if user.is_authenticated %}
+<a href="{% url 'log_out' %}">Log out</a>
+{% else %}
 <a href="{% url 'log_in' %}">Log in</a>
+{% endif %}
 
 <div class="text-center" class="img-fluid" alt="Responsive image">
   <a href="{% url 'job_list'%}" alt="Tumpe logo"><img src="{% static 'job_app/images/logo.png' %}" alt="Tumpe logo" width="150" height="150"></a>
