@@ -25,6 +25,14 @@
   <a href="{% url 'job_list'%}" alt="Tumpe logo"><img src="{% static 'job_app/images/logo.png' %}" alt="99 Jobs logo" width="150" height="150"></a>
 </div>
 
+{% if messages %}
+  {% for message in messages %}
+    <div class="alert alert-{{ message.tags }}">
+      {{ message }}
+    </div>
+  {% endfor %}
+{% endif %}
+
 <div class="w-100 p-3">
 <div class="card">
   <div class="card-header">

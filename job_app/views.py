@@ -4,6 +4,7 @@ from django.views.generic import ListView
 from .models import job
 from django.utils.encoding import uri_to_iri
 
+
 # site views
 
 def home(request):
