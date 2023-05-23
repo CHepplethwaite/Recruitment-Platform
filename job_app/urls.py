@@ -11,7 +11,6 @@ urlpatterns =[
     path('education/',job_views.education, name="education"),
     path('disclaimer/', job_views.legal, name="legal"),
     path('payroll/', job_views.payroll, name="payroll"),
-    path('post-job/', job_views.post_job, name="post_job"),
     path('recruitment/', job_views.recruitment, name="recruitment"),
     path('submit-resume/', job_views.submit_resume, name="submit_resume"),
    

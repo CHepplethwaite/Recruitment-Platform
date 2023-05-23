@@ -189,3 +189,5 @@ def self_assessment(request):
 
 def writing(request):
     return render(request,'job_app/career_articles/writing.html',{})
+
+
