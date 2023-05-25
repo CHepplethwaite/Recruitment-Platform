@@ -3,6 +3,8 @@ from django.views.generic.detail import DetailView
 from django.views.generic import ListView
 from .models import job
 from django.utils.encoding import uri_to_iri
+from django.contrib.auth.mixins import LoginRequiredMixin
+
 
 
 # site views
@@ -27,9 +29,6 @@ def legal(request):
 
 def payroll(request):
     return render(request,'job_app/site/payroll.html',{})
-
-def post_job(request):
-    return render(request,'job_app/site/post_job.html',{})
 
 def recruitment(request):
     return render(request,'job_app/site/recruitment.html',{})
@@ -191,3 +190,19 @@ def writing(request):
     return render(request,'job_app/career_articles/writing.html',{})
 
 
+# post job
+
+class PostJobListView(LoginRequiredMixin,ListView):
+    model = job
+    paginate_by = 10
+    ordering = ['-post_date']
+    template_name = 'job_app/site/post_job.html'
+
+    def get_queryset(self):
+        # Retrieve the current logged-in user
+        logged_in_user = self.request.user
+
+        # Filter the queryset to include only jobs posted by the logged-in user
+        queryset = job.objects.filter(user=logged_in_user)
+
+        return queryset

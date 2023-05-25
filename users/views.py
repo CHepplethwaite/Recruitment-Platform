@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from .forms import UserRegistrationForm
-from django.contrib.auth.decorators import login_required
+
 
 #user registration views
 
@@ -17,6 +17,3 @@ def register(request):
         form = UserRegistrationForm()
     return render(request,'users/register.html',{'form':form})
 
-@login_required
-def post_job(request):
-    return render(request, 'users/post_job.html',{})
