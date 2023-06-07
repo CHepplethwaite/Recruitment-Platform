@@ -1,13 +1,12 @@
+from typing import Any, Dict
 from django.views.generic.detail import DetailView
 from django.views.generic import ListView
 from .models import job
+from django.shortcuts import render
 
 
 
 # site views
-
-def home(request):
-    return render(request,'job_app/index.html',{})
 
 def about(request):
     return render(request,'job_app/site/about.html',{})
@@ -38,6 +37,43 @@ class jobListView(ListView):
     paginate_by = 10
     ordering = ['-post_date']
     queryset=job.objects.filter(status__exact=f"{True}")
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        
+        province_choices = job.province_choices
+        province_choices = [{'value': value, 'label': label} for value, label in province_choices]
+        
+        district_choices = job.district_choices
+        district_choices = [{'value': value, 'label': label} for value, label in district_choices]
+        
+        town_choices = job.towns_choices
+        town_choices = [{'value': value, 'label': label} for value, label in town_choices]
+        
+        context["provinces"] = province_choices
+        context["districts"] = district_choices
+        context["towns"] = town_choices
+        
+        return context
+
+
+
+    def get_queryset(self):
+        queryset = super().get_queryset()
+
+        district = self.request.GET.get('district')
+        town = self.request.GET.get('town')
+        province = self.request.GET.get('province')
+
+        if district:
+            queryset = queryset.filter(district__name=district)
+        if town:
+            queryset = queryset.filter(town__name=town)
+        if province:
+            queryset = queryset.filter(province__name=province)
+
+        return queryset
+
 
 class jobDetailView(DetailView):
     model = job
@@ -185,5 +221,8 @@ def self_assessment(request):
 
 def writing(request):
     return render(request,'job_app/career_articles/writing.html',{})
+
+# view for filtering results
+
 
 
