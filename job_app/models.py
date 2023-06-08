@@ -316,7 +316,7 @@ class job(models.Model):
         ("GWEMBE", "Gwembe"),
         ("IKELENGE","Ikelenge"),
         ("ISOKA", "Isoka"),
-        ("ITEZHI","Itezhi Tezhi")
+        ("ITEZHI","Itezhi-tezhi")
         ("KABOMPO", "Kabompo"),
         ("KABWE", "Kabwe"),
         ("KAFUE", "Kafue"),
