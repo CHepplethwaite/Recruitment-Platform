@@ -399,6 +399,7 @@ class job(models.Model):
         ("CHIPATA_D","Chipata"),
         ("KASENENGWA_D","Kasenengwa"),
         ("KATETE_D","Katete"),
+        ("KABWE_D","Kabwe"),
         ("LUMEZI_D","Lumezi"),
         ("LUNDAZI_D","Lundazi"),
         ("LUSANGAZI_D","Lusangazi"),
