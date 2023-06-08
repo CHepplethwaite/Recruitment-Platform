@@ -387,7 +387,7 @@ class job(models.Model):
         ("SENANGA", "Senanga"),
         ("SERENJE", "Serenje"),
         ("SESHEKE", "Sesheke"),
-        ("SHANGONMBO","Shangombo")x,
+        ("SHANGONMBO","Shangombo"),
         ("SHIWANG_ANGU", "Shiwang'andu"),
         ("SIAVONGA", "Siavonga"),
         ("SIKALONGO", "Sikalongo"),
