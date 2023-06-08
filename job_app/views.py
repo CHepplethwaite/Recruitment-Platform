@@ -46,12 +46,8 @@ class jobListView(ListView):
         district_choices = job.district_choices
         district_choices = [{'value': value, 'label': label} for value, label in district_choices]
         
-        town_choices = job.towns_choices
-        town_choices = [{'value': value, 'label': label} for value, label in town_choices]
-        
         context["provinces"] = province_choices
         context["districts"] = district_choices
-        context["towns"] = town_choices
         
         return context
 
@@ -59,13 +55,10 @@ class jobListView(ListView):
         queryset = super().get_queryset()
 
         district = self.request.GET.get('district')
-        town = self.request.GET.get('town')
         province = self.request.GET.get('province')
 
         if district:
             queryset = queryset.filter(district=district)
-        if town:
-            queryset = queryset.filter(town=town)
         if province:
             queryset = queryset.filter(province=province)
 
@@ -86,40 +79,7 @@ class academiaListView(ListView):
     ordering = ['-post_date']
     template_name = 'job_app/categories/academia.html'
     queryset=job.objects.filter(industry__exact="ACADEMIA", status__exact=f"{True}")
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        
-        province_choices = job.province_choices
-        province_choices = [{'value': value, 'label': label} for value, label in province_choices]
-        
-        district_choices = job.district_choices
-        district_choices = [{'value': value, 'label': label} for value, label in district_choices]
-        
-        town_choices = job.towns_choices
-        town_choices = [{'value': value, 'label': label} for value, label in town_choices]
-        
-        context["provinces"] = province_choices
-        context["districts"] = district_choices
-        context["towns"] = town_choices
-        
-        return context
-
-    def get_queryset(self):
-        queryset = super().get_queryset()
-
-        district = self.request.GET.get('district')
-        town = self.request.GET.get('town')
-        province = self.request.GET.get('province')
-
-        if district:
-            queryset = queryset.filter(district=district)
-        if town:
-            queryset = queryset.filter(town=town)
-        if province:
-            queryset = queryset.filter(province=province)
-
-        return queryset
+    
 
 
 class adminListView(ListView):
@@ -138,12 +98,8 @@ class adminListView(ListView):
         district_choices = job.district_choices
         district_choices = [{'value': value, 'label': label} for value, label in district_choices]
         
-        town_choices = job.towns_choices
-        town_choices = [{'value': value, 'label': label} for value, label in town_choices]
-        
         context["provinces"] = province_choices
         context["districts"] = district_choices
-        context["towns"] = town_choices
         
         return context
 
@@ -151,13 +107,10 @@ class adminListView(ListView):
         queryset = super().get_queryset()
 
         district = self.request.GET.get('district')
-        town = self.request.GET.get('town')
         province = self.request.GET.get('province')
 
         if district:
             queryset = queryset.filter(district=district)
-        if town:
-            queryset = queryset.filter(town=town)
         if province:
             queryset = queryset.filter(province=province)
 
@@ -179,12 +132,8 @@ class accountancyListView(ListView):
         district_choices = job.district_choices
         district_choices = [{'value': value, 'label': label} for value, label in district_choices]
         
-        town_choices = job.towns_choices
-        town_choices = [{'value': value, 'label': label} for value, label in town_choices]
-        
         context["provinces"] = province_choices
         context["districts"] = district_choices
-        context["towns"] = town_choices
         
         return context
 
@@ -192,13 +141,10 @@ class accountancyListView(ListView):
         queryset = super().get_queryset()
 
         district = self.request.GET.get('district')
-        town = self.request.GET.get('town')
         province = self.request.GET.get('province')
 
         if district:
             queryset = queryset.filter(district=district)
-        if town:
-            queryset = queryset.filter(town=town)
         if province:
             queryset = queryset.filter(province=province)
 
@@ -221,12 +167,8 @@ class agricultureListView(ListView):
         district_choices = job.district_choices
         district_choices = [{'value': value, 'label': label} for value, label in district_choices]
         
-        town_choices = job.towns_choices
-        town_choices = [{'value': value, 'label': label} for value, label in town_choices]
-        
         context["provinces"] = province_choices
         context["districts"] = district_choices
-        context["towns"] = town_choices
         
         return context
 
@@ -234,13 +176,10 @@ class agricultureListView(ListView):
         queryset = super().get_queryset()
 
         district = self.request.GET.get('district')
-        town = self.request.GET.get('town')
         province = self.request.GET.get('province')
 
         if district:
             queryset = queryset.filter(district=district)
-        if town:
-            queryset = queryset.filter(town=town)
         if province:
             queryset = queryset.filter(province=province)
 
@@ -263,12 +202,8 @@ class bankingListView(ListView):
         district_choices = job.district_choices
         district_choices = [{'value': value, 'label': label} for value, label in district_choices]
         
-        town_choices = job.towns_choices
-        town_choices = [{'value': value, 'label': label} for value, label in town_choices]
-        
         context["provinces"] = province_choices
         context["districts"] = district_choices
-        context["towns"] = town_choices
         
         return context
 
@@ -276,13 +211,10 @@ class bankingListView(ListView):
         queryset = super().get_queryset()
 
         district = self.request.GET.get('district')
-        town = self.request.GET.get('town')
         province = self.request.GET.get('province')
 
         if district:
             queryset = queryset.filter(district=district)
-        if town:
-            queryset = queryset.filter(town=town)
         if province:
             queryset = queryset.filter(province=province)
 
@@ -305,12 +237,8 @@ class developmentListView(ListView):
         district_choices = job.district_choices
         district_choices = [{'value': value, 'label': label} for value, label in district_choices]
         
-        town_choices = job.towns_choices
-        town_choices = [{'value': value, 'label': label} for value, label in town_choices]
-        
         context["provinces"] = province_choices
         context["districts"] = district_choices
-        context["towns"] = town_choices
         
         return context
 
@@ -318,13 +246,10 @@ class developmentListView(ListView):
         queryset = super().get_queryset()
 
         district = self.request.GET.get('district')
-        town = self.request.GET.get('town')
         province = self.request.GET.get('province')
 
         if district:
             queryset = queryset.filter(district=district)
-        if town:
-            queryset = queryset.filter(town=town)
         if province:
             queryset = queryset.filter(province=province)
 
@@ -347,12 +272,8 @@ class engineeringListView(ListView):
         district_choices = job.district_choices
         district_choices = [{'value': value, 'label': label} for value, label in district_choices]
         
-        town_choices = job.towns_choices
-        town_choices = [{'value': value, 'label': label} for value, label in town_choices]
-        
         context["provinces"] = province_choices
         context["districts"] = district_choices
-        context["towns"] = town_choices
         
         return context
 
@@ -360,13 +281,10 @@ class engineeringListView(ListView):
         queryset = super().get_queryset()
 
         district = self.request.GET.get('district')
-        town = self.request.GET.get('town')
         province = self.request.GET.get('province')
 
         if district:
             queryset = queryset.filter(district=district)
-        if town:
-            queryset = queryset.filter(town=town)
         if province:
             queryset = queryset.filter(province=province)
 
@@ -389,12 +307,8 @@ class healthListView(ListView):
         district_choices = job.district_choices
         district_choices = [{'value': value, 'label': label} for value, label in district_choices]
         
-        town_choices = job.towns_choices
-        town_choices = [{'value': value, 'label': label} for value, label in town_choices]
-        
         context["provinces"] = province_choices
         context["districts"] = district_choices
-        context["towns"] = town_choices
         
         return context
 
@@ -402,13 +316,10 @@ class healthListView(ListView):
         queryset = super().get_queryset()
 
         district = self.request.GET.get('district')
-        town = self.request.GET.get('town')
         province = self.request.GET.get('province')
 
         if district:
             queryset = queryset.filter(district=district)
-        if town:
-            queryset = queryset.filter(town=town)
         if province:
             queryset = queryset.filter(province=province)
 
@@ -431,12 +342,8 @@ class hrListView(ListView):
         district_choices = job.district_choices
         district_choices = [{'value': value, 'label': label} for value, label in district_choices]
         
-        town_choices = job.towns_choices
-        town_choices = [{'value': value, 'label': label} for value, label in town_choices]
-        
         context["provinces"] = province_choices
         context["districts"] = district_choices
-        context["towns"] = town_choices
         
         return context
 
@@ -444,13 +351,10 @@ class hrListView(ListView):
         queryset = super().get_queryset()
 
         district = self.request.GET.get('district')
-        town = self.request.GET.get('town')
         province = self.request.GET.get('province')
 
         if district:
             queryset = queryset.filter(district=district)
-        if town:
-            queryset = queryset.filter(town=town)
         if province:
             queryset = queryset.filter(province=province)
 
@@ -473,12 +377,8 @@ class lawListView(ListView):
         district_choices = job.district_choices
         district_choices = [{'value': value, 'label': label} for value, label in district_choices]
         
-        town_choices = job.towns_choices
-        town_choices = [{'value': value, 'label': label} for value, label in town_choices]
-        
         context["provinces"] = province_choices
         context["districts"] = district_choices
-        context["towns"] = town_choices
         
         return context
 
@@ -486,13 +386,10 @@ class lawListView(ListView):
         queryset = super().get_queryset()
 
         district = self.request.GET.get('district')
-        town = self.request.GET.get('town')
         province = self.request.GET.get('province')
 
         if district:
             queryset = queryset.filter(district=district)
-        if town:
-            queryset = queryset.filter(town=town)
         if province:
             queryset = queryset.filter(province=province)
 
@@ -515,12 +412,8 @@ class manufacturingListView(ListView):
         district_choices = job.district_choices
         district_choices = [{'value': value, 'label': label} for value, label in district_choices]
         
-        town_choices = job.towns_choices
-        town_choices = [{'value': value, 'label': label} for value, label in town_choices]
-        
         context["provinces"] = province_choices
         context["districts"] = district_choices
-        context["towns"] = town_choices
         
         return context
 
@@ -528,13 +421,10 @@ class manufacturingListView(ListView):
         queryset = super().get_queryset()
 
         district = self.request.GET.get('district')
-        town = self.request.GET.get('town')
         province = self.request.GET.get('province')
 
         if district:
             queryset = queryset.filter(district=district)
-        if town:
-            queryset = queryset.filter(town=town)
         if province:
             queryset = queryset.filter(province=province)
 
@@ -557,12 +447,8 @@ class miscListView(ListView):
         district_choices = job.district_choices
         district_choices = [{'value': value, 'label': label} for value, label in district_choices]
         
-        town_choices = job.towns_choices
-        town_choices = [{'value': value, 'label': label} for value, label in town_choices]
-        
         context["provinces"] = province_choices
         context["districts"] = district_choices
-        context["towns"] = town_choices
         
         return context
 
@@ -570,13 +456,10 @@ class miscListView(ListView):
         queryset = super().get_queryset()
 
         district = self.request.GET.get('district')
-        town = self.request.GET.get('town')
         province = self.request.GET.get('province')
 
         if district:
             queryset = queryset.filter(district=district)
-        if town:
-            queryset = queryset.filter(town=town)
         if province:
             queryset = queryset.filter(province=province)
 
@@ -599,12 +482,8 @@ class retailListView(ListView):
         district_choices = job.district_choices
         district_choices = [{'value': value, 'label': label} for value, label in district_choices]
         
-        town_choices = job.towns_choices
-        town_choices = [{'value': value, 'label': label} for value, label in town_choices]
-        
         context["provinces"] = province_choices
         context["districts"] = district_choices
-        context["towns"] = town_choices
         
         return context
 
@@ -612,13 +491,10 @@ class retailListView(ListView):
         queryset = super().get_queryset()
 
         district = self.request.GET.get('district')
-        town = self.request.GET.get('town')
         province = self.request.GET.get('province')
 
         if district:
             queryset = queryset.filter(district=district)
-        if town:
-            queryset = queryset.filter(town=town)
         if province:
             queryset = queryset.filter(province=province)
 
@@ -641,12 +517,8 @@ class techListView(ListView):
         district_choices = job.district_choices
         district_choices = [{'value': value, 'label': label} for value, label in district_choices]
         
-        town_choices = job.towns_choices
-        town_choices = [{'value': value, 'label': label} for value, label in town_choices]
-        
         context["provinces"] = province_choices
         context["districts"] = district_choices
-        context["towns"] = town_choices
         
         return context
 
@@ -654,13 +526,10 @@ class techListView(ListView):
         queryset = super().get_queryset()
 
         district = self.request.GET.get('district')
-        town = self.request.GET.get('town')
         province = self.request.GET.get('province')
 
         if district:
             queryset = queryset.filter(district=district)
-        if town:
-            queryset = queryset.filter(town=town)
         if province:
             queryset = queryset.filter(province=province)
 
@@ -683,12 +552,8 @@ class publicSectorListView(ListView):
         district_choices = job.district_choices
         district_choices = [{'value': value, 'label': label} for value, label in district_choices]
         
-        town_choices = job.towns_choices
-        town_choices = [{'value': value, 'label': label} for value, label in town_choices]
-        
         context["provinces"] = province_choices
         context["districts"] = district_choices
-        context["towns"] = town_choices
         
         return context
 
@@ -696,13 +561,10 @@ class publicSectorListView(ListView):
         queryset = super().get_queryset()
 
         district = self.request.GET.get('district')
-        town = self.request.GET.get('town')
         province = self.request.GET.get('province')
 
         if district:
             queryset = queryset.filter(district=district)
-        if town:
-            queryset = queryset.filter(town=town)
         if province:
             queryset = queryset.filter(province=province)
 
@@ -725,12 +587,8 @@ class transportListView(ListView):
         district_choices = job.district_choices
         district_choices = [{'value': value, 'label': label} for value, label in district_choices]
         
-        town_choices = job.towns_choices
-        town_choices = [{'value': value, 'label': label} for value, label in town_choices]
-        
         context["provinces"] = province_choices
         context["districts"] = district_choices
-        context["towns"] = town_choices
         
         return context
 
@@ -738,13 +596,10 @@ class transportListView(ListView):
         queryset = super().get_queryset()
 
         district = self.request.GET.get('district')
-        town = self.request.GET.get('town')
         province = self.request.GET.get('province')
 
         if district:
             queryset = queryset.filter(district=district)
-        if town:
-            queryset = queryset.filter(town=town)
         if province:
             queryset = queryset.filter(province=province)
 
