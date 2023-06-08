@@ -9,6 +9,36 @@
 <h1 id="all_jobs" class="text-center">Academia and Research</h1>
 <small><p class="text-center"><a href="{% url 'contact' %}">[ Post a job ]</a></p></small>
 
+<!-- begin filter -->
+
+<form method="GET" action="{% url 'academia' %}">
+  <select name="province">
+    <option value="">All Provinces</option>
+    {% for province in provinces %}
+      <option value="{{ province.value }}">{{ province.label }}</option>
+    {% endfor %}
+  </select>
+
+  <select name="district">
+    <option value="">All Districts</option>
+    {% for district in districts %}
+      <option value="{{ district.value }}">{{ district.label }}</option>
+    {% endfor %}
+  </select>
+  
+  <select name="town">
+    <option value="">All Towns</option>
+    {% for town in towns %}
+      <option value="{{ town.value }}">{{ town.label }}</option>
+    {% endfor %}
+  </select>
+  
+  <button type="submit">Filter</button>
+</form>
+
+<!-- end filter -->
+<br>
+
 <!-- begin top pagination -->
 <div class="pagination">
   {% if page_obj.has_previous %}
