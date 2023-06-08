@@ -56,8 +56,6 @@ class jobListView(ListView):
         
         return context
 
-
-
     def get_queryset(self):
         queryset = super().get_queryset()
 
@@ -66,11 +64,11 @@ class jobListView(ListView):
         province = self.request.GET.get('province')
 
         if district:
-            queryset = queryset.filter(district__name=district)
+            queryset = queryset.filter(district=district)
         if town:
-            queryset = queryset.filter(town__name=town)
+            queryset = queryset.filter(town=town)
         if province:
-            queryset = queryset.filter(province__name=province)
+            queryset = queryset.filter(province=province)
 
         return queryset
 
@@ -90,6 +88,41 @@ class academiaListView(ListView):
     template_name = 'job_app/categories/academia.html'
     queryset=job.objects.filter(industry__exact="ACADEMIA", status__exact=f"{True}")
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        
+        province_choices = job.province_choices
+        province_choices = [{'value': value, 'label': label} for value, label in province_choices]
+        
+        district_choices = job.district_choices
+        district_choices = [{'value': value, 'label': label} for value, label in district_choices]
+        
+        town_choices = job.towns_choices
+        town_choices = [{'value': value, 'label': label} for value, label in town_choices]
+        
+        context["provinces"] = province_choices
+        context["districts"] = district_choices
+        context["towns"] = town_choices
+        
+        return context
+
+    def get_queryset(self):
+        queryset = super().get_queryset()
+
+        district = self.request.GET.get('district')
+        town = self.request.GET.get('town')
+        province = self.request.GET.get('province')
+
+        if district:
+            queryset = queryset.filter(district=district)
+        if town:
+            queryset = queryset.filter(town=town)
+        if province:
+            queryset = queryset.filter(province=province)
+
+        return queryset
+
+
 class adminListView(ListView):
     model = job
     paginate_by = 10
@@ -97,13 +130,81 @@ class adminListView(ListView):
     template_name = 'job_app/categories/administration_list.html'
     queryset=job.objects.filter(industry__exact="ADMINISTRATION", status__exact=f"{True}")
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        
+        province_choices = job.province_choices
+        province_choices = [{'value': value, 'label': label} for value, label in province_choices]
+        
+        district_choices = job.district_choices
+        district_choices = [{'value': value, 'label': label} for value, label in district_choices]
+        
+        town_choices = job.towns_choices
+        town_choices = [{'value': value, 'label': label} for value, label in town_choices]
+        
+        context["provinces"] = province_choices
+        context["districts"] = district_choices
+        context["towns"] = town_choices
+        
+        return context
+
+    def get_queryset(self):
+        queryset = super().get_queryset()
+
+        district = self.request.GET.get('district')
+        town = self.request.GET.get('town')
+        province = self.request.GET.get('province')
+
+        if district:
+            queryset = queryset.filter(district=district)
+        if town:
+            queryset = queryset.filter(town=town)
+        if province:
+            queryset = queryset.filter(province=province)
+
+        return queryset
+
 class accountancyListView(ListView):
     model = job
     paginate_by = 10
     ordering = ['-post_date']
     template_name = 'job_app/categories/accountancy_list.html'
     queryset=job.objects.filter(industry__exact="ACCOUNTANCY", status__exact=f"{True}")
-    
+  
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        
+        province_choices = job.province_choices
+        province_choices = [{'value': value, 'label': label} for value, label in province_choices]
+        
+        district_choices = job.district_choices
+        district_choices = [{'value': value, 'label': label} for value, label in district_choices]
+        
+        town_choices = job.towns_choices
+        town_choices = [{'value': value, 'label': label} for value, label in town_choices]
+        
+        context["provinces"] = province_choices
+        context["districts"] = district_choices
+        context["towns"] = town_choices
+        
+        return context
+
+    def get_queryset(self):
+        queryset = super().get_queryset()
+
+        district = self.request.GET.get('district')
+        town = self.request.GET.get('town')
+        province = self.request.GET.get('province')
+
+        if district:
+            queryset = queryset.filter(district=district)
+        if town:
+            queryset = queryset.filter(town=town)
+        if province:
+            queryset = queryset.filter(province=province)
+
+        return queryset
+   
     
 class agricultureListView(ListView):
     model = job
@@ -112,19 +213,124 @@ class agricultureListView(ListView):
     template_name = 'job_app/categories/agriculture_list.html'
     queryset=job.objects.filter(industry__exact="AGRICULTURE", status__exact=f"{True}")
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        
+        province_choices = job.province_choices
+        province_choices = [{'value': value, 'label': label} for value, label in province_choices]
+        
+        district_choices = job.district_choices
+        district_choices = [{'value': value, 'label': label} for value, label in district_choices]
+        
+        town_choices = job.towns_choices
+        town_choices = [{'value': value, 'label': label} for value, label in town_choices]
+        
+        context["provinces"] = province_choices
+        context["districts"] = district_choices
+        context["towns"] = town_choices
+        
+        return context
+
+    def get_queryset(self):
+        queryset = super().get_queryset()
+
+        district = self.request.GET.get('district')
+        town = self.request.GET.get('town')
+        province = self.request.GET.get('province')
+
+        if district:
+            queryset = queryset.filter(district=district)
+        if town:
+            queryset = queryset.filter(town=town)
+        if province:
+            queryset = queryset.filter(province=province)
+
+        return queryset
+
+
 class bankingListView(ListView):
     model = job
     paginate_by = 10
     ordering = ['-post_date']
     template_name = 'job_app/categories/banking_and_finance.html'
     queryset=job.objects.filter(industry__exact="BANKING_AND_FINANCE", status__exact=f"{True}")
-    
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        
+        province_choices = job.province_choices
+        province_choices = [{'value': value, 'label': label} for value, label in province_choices]
+        
+        district_choices = job.district_choices
+        district_choices = [{'value': value, 'label': label} for value, label in district_choices]
+        
+        town_choices = job.towns_choices
+        town_choices = [{'value': value, 'label': label} for value, label in town_choices]
+        
+        context["provinces"] = province_choices
+        context["districts"] = district_choices
+        context["towns"] = town_choices
+        
+        return context
+
+    def get_queryset(self):
+        queryset = super().get_queryset()
+
+        district = self.request.GET.get('district')
+        town = self.request.GET.get('town')
+        province = self.request.GET.get('province')
+
+        if district:
+            queryset = queryset.filter(district=district)
+        if town:
+            queryset = queryset.filter(town=town)
+        if province:
+            queryset = queryset.filter(province=province)
+
+        return queryset
+
+
 class developmentListView(ListView):
     model = job
     paginate_by = 10
     ordering = ['-post_date']
     template_name = 'job_app/categories/development_list.html'
     queryset=job.objects.filter(industry__exact="DEVELOPMENT", status__exact=f"{True}")
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        
+        province_choices = job.province_choices
+        province_choices = [{'value': value, 'label': label} for value, label in province_choices]
+        
+        district_choices = job.district_choices
+        district_choices = [{'value': value, 'label': label} for value, label in district_choices]
+        
+        town_choices = job.towns_choices
+        town_choices = [{'value': value, 'label': label} for value, label in town_choices]
+        
+        context["provinces"] = province_choices
+        context["districts"] = district_choices
+        context["towns"] = town_choices
+        
+        return context
+
+    def get_queryset(self):
+        queryset = super().get_queryset()
+
+        district = self.request.GET.get('district')
+        town = self.request.GET.get('town')
+        province = self.request.GET.get('province')
+
+        if district:
+            queryset = queryset.filter(district=district)
+        if town:
+            queryset = queryset.filter(town=town)
+        if province:
+            queryset = queryset.filter(province=province)
+
+        return queryset
+
 
 class engineeringListView(ListView):
     model = job
@@ -133,12 +339,82 @@ class engineeringListView(ListView):
     template_name = 'job_app/categories/engineering_and_construction_list.html'
     queryset=job.objects.filter(industry__exact="ENGINEERING_AND_CONSTRUCTION", status__exact=f"{True}")
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        
+        province_choices = job.province_choices
+        province_choices = [{'value': value, 'label': label} for value, label in province_choices]
+        
+        district_choices = job.district_choices
+        district_choices = [{'value': value, 'label': label} for value, label in district_choices]
+        
+        town_choices = job.towns_choices
+        town_choices = [{'value': value, 'label': label} for value, label in town_choices]
+        
+        context["provinces"] = province_choices
+        context["districts"] = district_choices
+        context["towns"] = town_choices
+        
+        return context
+
+    def get_queryset(self):
+        queryset = super().get_queryset()
+
+        district = self.request.GET.get('district')
+        town = self.request.GET.get('town')
+        province = self.request.GET.get('province')
+
+        if district:
+            queryset = queryset.filter(district=district)
+        if town:
+            queryset = queryset.filter(town=town)
+        if province:
+            queryset = queryset.filter(province=province)
+
+        return queryset
+
+
 class healthListView(ListView):
     model = job
     paginate_by = 10
     ordering = ['-post_date']
     template_name = 'job_app/categories/health_list.html'
     queryset=job.objects.filter(industry__exact="HEALTH", status__exact=f"{True}")
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        
+        province_choices = job.province_choices
+        province_choices = [{'value': value, 'label': label} for value, label in province_choices]
+        
+        district_choices = job.district_choices
+        district_choices = [{'value': value, 'label': label} for value, label in district_choices]
+        
+        town_choices = job.towns_choices
+        town_choices = [{'value': value, 'label': label} for value, label in town_choices]
+        
+        context["provinces"] = province_choices
+        context["districts"] = district_choices
+        context["towns"] = town_choices
+        
+        return context
+
+    def get_queryset(self):
+        queryset = super().get_queryset()
+
+        district = self.request.GET.get('district')
+        town = self.request.GET.get('town')
+        province = self.request.GET.get('province')
+
+        if district:
+            queryset = queryset.filter(district=district)
+        if town:
+            queryset = queryset.filter(town=town)
+        if province:
+            queryset = queryset.filter(province=province)
+
+        return queryset
+
 
 class hrListView(ListView):
     model = job
@@ -147,33 +423,208 @@ class hrListView(ListView):
     template_name = 'job_app/categories/human_resource_list.html'
     queryset=job.objects.filter(industry__exact="HUMAN_RESOURCE", status__exact=f"{True}")
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        
+        province_choices = job.province_choices
+        province_choices = [{'value': value, 'label': label} for value, label in province_choices]
+        
+        district_choices = job.district_choices
+        district_choices = [{'value': value, 'label': label} for value, label in district_choices]
+        
+        town_choices = job.towns_choices
+        town_choices = [{'value': value, 'label': label} for value, label in town_choices]
+        
+        context["provinces"] = province_choices
+        context["districts"] = district_choices
+        context["towns"] = town_choices
+        
+        return context
+
+    def get_queryset(self):
+        queryset = super().get_queryset()
+
+        district = self.request.GET.get('district')
+        town = self.request.GET.get('town')
+        province = self.request.GET.get('province')
+
+        if district:
+            queryset = queryset.filter(district=district)
+        if town:
+            queryset = queryset.filter(town=town)
+        if province:
+            queryset = queryset.filter(province=province)
+
+        return queryset
+
+
 class lawListView(ListView):
     model = job
     paginate_by = 10
     ordering = ['-post_date']
     template_name = 'job_app/categories/legal_list.html'
     queryset=job.objects.filter(industry__exact="LAW", status__exact=f"{True}")
-    
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        
+        province_choices = job.province_choices
+        province_choices = [{'value': value, 'label': label} for value, label in province_choices]
+        
+        district_choices = job.district_choices
+        district_choices = [{'value': value, 'label': label} for value, label in district_choices]
+        
+        town_choices = job.towns_choices
+        town_choices = [{'value': value, 'label': label} for value, label in town_choices]
+        
+        context["provinces"] = province_choices
+        context["districts"] = district_choices
+        context["towns"] = town_choices
+        
+        return context
+
+    def get_queryset(self):
+        queryset = super().get_queryset()
+
+        district = self.request.GET.get('district')
+        town = self.request.GET.get('town')
+        province = self.request.GET.get('province')
+
+        if district:
+            queryset = queryset.filter(district=district)
+        if town:
+            queryset = queryset.filter(town=town)
+        if province:
+            queryset = queryset.filter(province=province)
+
+        return queryset
+
+
 class manufacturingListView(ListView):
     model = job
     paginate_by = 10
     ordering = ['-post_date']
     template_name = 'job_app/categories/manufacturing_list.html'
     queryset=job.objects.filter(industry__exact="MANUFACTURING_FMCG", status__exact=f"{True}")
-    
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        
+        province_choices = job.province_choices
+        province_choices = [{'value': value, 'label': label} for value, label in province_choices]
+        
+        district_choices = job.district_choices
+        district_choices = [{'value': value, 'label': label} for value, label in district_choices]
+        
+        town_choices = job.towns_choices
+        town_choices = [{'value': value, 'label': label} for value, label in town_choices]
+        
+        context["provinces"] = province_choices
+        context["districts"] = district_choices
+        context["towns"] = town_choices
+        
+        return context
+
+    def get_queryset(self):
+        queryset = super().get_queryset()
+
+        district = self.request.GET.get('district')
+        town = self.request.GET.get('town')
+        province = self.request.GET.get('province')
+
+        if district:
+            queryset = queryset.filter(district=district)
+        if town:
+            queryset = queryset.filter(town=town)
+        if province:
+            queryset = queryset.filter(province=province)
+
+        return queryset
+
+
 class miscListView(ListView):
     model = job
     paginate_by = 10
     ordering = ['-post_date']
     template_name = 'job_app/categories/other_list.html'
     queryset=job.objects.filter(industry__exact="OTHER", status__exact=f"{True}")
-    
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        
+        province_choices = job.province_choices
+        province_choices = [{'value': value, 'label': label} for value, label in province_choices]
+        
+        district_choices = job.district_choices
+        district_choices = [{'value': value, 'label': label} for value, label in district_choices]
+        
+        town_choices = job.towns_choices
+        town_choices = [{'value': value, 'label': label} for value, label in town_choices]
+        
+        context["provinces"] = province_choices
+        context["districts"] = district_choices
+        context["towns"] = town_choices
+        
+        return context
+
+    def get_queryset(self):
+        queryset = super().get_queryset()
+
+        district = self.request.GET.get('district')
+        town = self.request.GET.get('town')
+        province = self.request.GET.get('province')
+
+        if district:
+            queryset = queryset.filter(district=district)
+        if town:
+            queryset = queryset.filter(town=town)
+        if province:
+            queryset = queryset.filter(province=province)
+
+        return queryset
+
+
 class retailListView(ListView):
     model = job
     paginate_by = 10
     ordering = ['-post_date']
     template_name = 'job_app/categories/retail_and_sales.html'
     queryset=job.objects.filter(industry__exact="RETAIL_AND_SALES", status__exact=f"{True}")
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        
+        province_choices = job.province_choices
+        province_choices = [{'value': value, 'label': label} for value, label in province_choices]
+        
+        district_choices = job.district_choices
+        district_choices = [{'value': value, 'label': label} for value, label in district_choices]
+        
+        town_choices = job.towns_choices
+        town_choices = [{'value': value, 'label': label} for value, label in town_choices]
+        
+        context["provinces"] = province_choices
+        context["districts"] = district_choices
+        context["towns"] = town_choices
+        
+        return context
+
+    def get_queryset(self):
+        queryset = super().get_queryset()
+
+        district = self.request.GET.get('district')
+        town = self.request.GET.get('town')
+        province = self.request.GET.get('province')
+
+        if district:
+            queryset = queryset.filter(district=district)
+        if town:
+            queryset = queryset.filter(town=town)
+        if province:
+            queryset = queryset.filter(province=province)
+
+        return queryset
+
 
 class techListView(ListView):
     model = job
@@ -182,6 +633,41 @@ class techListView(ListView):
     template_name = 'job_app/categories/technology_list.html'
     queryset=job.objects.filter(industry__exact="ICT_AND_TELCO", status__exact=f"{True}")
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        
+        province_choices = job.province_choices
+        province_choices = [{'value': value, 'label': label} for value, label in province_choices]
+        
+        district_choices = job.district_choices
+        district_choices = [{'value': value, 'label': label} for value, label in district_choices]
+        
+        town_choices = job.towns_choices
+        town_choices = [{'value': value, 'label': label} for value, label in town_choices]
+        
+        context["provinces"] = province_choices
+        context["districts"] = district_choices
+        context["towns"] = town_choices
+        
+        return context
+
+    def get_queryset(self):
+        queryset = super().get_queryset()
+
+        district = self.request.GET.get('district')
+        town = self.request.GET.get('town')
+        province = self.request.GET.get('province')
+
+        if district:
+            queryset = queryset.filter(district=district)
+        if town:
+            queryset = queryset.filter(town=town)
+        if province:
+            queryset = queryset.filter(province=province)
+
+        return queryset
+
+
 class publicSectorListView(ListView):
     model = job
     paginate_by = 10
@@ -189,12 +675,82 @@ class publicSectorListView(ListView):
     template_name = 'job_app/categories/public_sector_list.html'
     queryset=job.objects.filter(industry__exact="PUBLIC_SECTOR", status__exact=f"{True}")
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        
+        province_choices = job.province_choices
+        province_choices = [{'value': value, 'label': label} for value, label in province_choices]
+        
+        district_choices = job.district_choices
+        district_choices = [{'value': value, 'label': label} for value, label in district_choices]
+        
+        town_choices = job.towns_choices
+        town_choices = [{'value': value, 'label': label} for value, label in town_choices]
+        
+        context["provinces"] = province_choices
+        context["districts"] = district_choices
+        context["towns"] = town_choices
+        
+        return context
+
+    def get_queryset(self):
+        queryset = super().get_queryset()
+
+        district = self.request.GET.get('district')
+        town = self.request.GET.get('town')
+        province = self.request.GET.get('province')
+
+        if district:
+            queryset = queryset.filter(district=district)
+        if town:
+            queryset = queryset.filter(town=town)
+        if province:
+            queryset = queryset.filter(province=province)
+
+        return queryset
+
+
 class transportListView(ListView):
     model = job
     paginate_by = 10
     ordering = ['-post_date']
     template_name = 'job_app/categories/transportation_and_logistics_list.html'
     queryset=job.objects.filter(industry__exact="TRANSPORT_AND_LOGISTICS", status__exact=f"{True}")
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        
+        province_choices = job.province_choices
+        province_choices = [{'value': value, 'label': label} for value, label in province_choices]
+        
+        district_choices = job.district_choices
+        district_choices = [{'value': value, 'label': label} for value, label in district_choices]
+        
+        town_choices = job.towns_choices
+        town_choices = [{'value': value, 'label': label} for value, label in town_choices]
+        
+        context["provinces"] = province_choices
+        context["districts"] = district_choices
+        context["towns"] = town_choices
+        
+        return context
+
+    def get_queryset(self):
+        queryset = super().get_queryset()
+
+        district = self.request.GET.get('district')
+        town = self.request.GET.get('town')
+        province = self.request.GET.get('province')
+
+        if district:
+            queryset = queryset.filter(district=district)
+        if town:
+            queryset = queryset.filter(town=town)
+        if province:
+            queryset = queryset.filter(province=province)
+
+        return queryset
+
 
 #career article views
 
