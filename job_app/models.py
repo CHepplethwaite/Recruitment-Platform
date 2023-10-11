@@ -217,7 +217,7 @@ class job(models.Model):
     SOLWEZI_D = "SOLWD"
     ZAMBEZI_D = "ZMBZD"
 
-    #Southern province districts
+    #Southern province districtspip install crispy-bootstrap5
     CHIKANKATA_D = "CHIKD"
     CHIRUNDU_D = "CHIRD"
     CHOMA_D = "CHMD"
@@ -436,7 +436,7 @@ class job(models.Model):
         return self.job_title+" - "+self.company
         
     def get_absolute_url(self):
-        return reverse("job_detail", kwargs={'uuid':self.id,"slug": self.slug})
+        return reverse("job_detail", kwargs={"slug": self.slug})
 
     def save(self, *args,**kwargs):
         if not self.slug:
