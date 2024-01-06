@@ -1,6 +1,7 @@
 <!doctype html>
 <html lang="en">
   {% load static %}
+  {% load i18n %}
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -23,12 +24,15 @@
 
 {% if user.is_authenticated %}
 &nbsp;
-<a href="{% url 'log_out' %}">Log out</a>
+<form id="logout-form" method="post" action="{% url 'logout' %}">
+  {% csrf_token %}
+  <button type="submit">{% translate "Log out" %}</button>
+</form>
 &nbsp;
 <a href="{% url 'manage-jobs:index' %}">Manage jobs</a>
 {% else %}
 &nbsp;
-<a href="{% url 'log_in' %}">Log in</a>
+<a href="{% url 'login' %}">Log in</a>
 {% endif %}
 
 <div class="text-center" class="img-fluid" alt="Responsive image">

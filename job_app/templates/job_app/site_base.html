@@ -2,9 +2,12 @@
 <!doctype html>
 <html lang="en">
   {% load static %}
+  {% load i18n %}
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{% static 'job_app/css/style.css' %}">
+
 
     {% block title %}
     <title>Tumpe Tech</title>
@@ -21,9 +24,12 @@
 </style>
 
 {% if user.is_authenticated %}
-<a href="{% url 'log_out' %}">Log out</a>
+<form id="logout-form" method="post" action="{% url 'admin:logout' %}">
+  {% csrf_token %}
+  <button type="submit">{% translate "Log out" %}</button>
+</form>
 {% else %}
-<a href="{% url 'log_in' %}">Log in</a>
+<a href="{% url 'login' %}">Log in</a>
 {% endif %}
 <br>
 
