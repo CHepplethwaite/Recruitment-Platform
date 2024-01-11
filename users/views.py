@@ -93,7 +93,7 @@ def activateEmail(request, user, to_email):
     })
     email = EmailMessage(mail_subject, message, to=[to_email])
     if email.send():
-        messages.warning(request, f'Dear {user}, please go to you email ({to_email}) inbox and click on \
+        messages.warning(request, f'Dear {user}, please go to your email ({to_email}) inbox and click on \
                 the received activation link to confirm and complete your registration. Note: Check your \
                      spam folder if you cannot see the email.')
     else:
@@ -110,7 +110,7 @@ def register(request):
             user.save()
             activateEmail(request, user, form.cleaned_data.get('email'))
             username = form.cleaned_data['username']
-            messages.success(request, f'Your account has been created, {username}! You are now able to log in.')
+            messages.success(request, f'Your account has been created, {username}! Please activate it.')
             return redirect('login')
         else:
             for error in list(form.errors.values()):
