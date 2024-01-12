@@ -1,0 +1,9 @@
+{% extends 'job_app/footer_only_base.html' %}
+{% block content %}   
+    <h1>User List</h1>
+    <ul>
+        {% for user in users %}
+            <li><a href="{% url 'user_detail' pk=user.pk %}">{{ user.username }}</a></li>
+        {% endfor %}
+    </ul>
+{% endblock %}

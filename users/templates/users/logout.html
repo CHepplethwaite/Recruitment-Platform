@@ -1,10 +1,5 @@
-{% extends 'job_app/footer_only_base.html' %}
-
-
-{% block title %}
-<title>Log out</title>
-{% endblock title %}
-
+{% extends 'job_app/site_base.html' %}
+{% block title %}<title>Logged out</title>{% endblock title %}
 
 
 {% block content %}
@@ -13,9 +8,11 @@
 
 <div class="border-top pt-3 justfy-content-center align-items-center d-flex flex-column " >
     <small class="text-muted">Thanks for spending time on Tumpe today.
-        <a class="ml-2" href="{% url 'log_in' %}">Log in again</a>
+        <a class="ml-2" href="{% url 'login' %}">Log in again</a>
     </small>
 </div>
 </div>
 <br>
 {% endblock content %}
+
+class="content-section 

@@ -15,13 +15,19 @@
             {{ form|crispy }}
         </fieldset>
         <div class="form-group d-flex flex-column justfy-content-center align-items-center">
+            <small>
+                By clicking Sign up, you agree to our
+            <a href="{% url 'contact' %}">Terms of Use</a> and our
+            <a href="{% url 'contact' %}">Privacy Policy</a>.
+            </small>
             <button class="btn btn-outline-success" type="submit">Sign up</button>
             <br>
         </div>
     </form>
+
     <div class="border-top pt-3">
         <small class="text-muted">Already have an account?
-            <a class="ml-2" href="{% url 'log_in' %}">Sign in</a>
+            <a class="ml-2" href="{% url 'login' %}">Sign in</a>
         </small>
     </div>
 </div>

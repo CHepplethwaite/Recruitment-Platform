@@ -1,0 +1,21 @@
+{% extends 'job_app/footer_only_base.html' %}
+{% block content %}
+    <h1>Create User</h1>
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Save</button>
+    </form>
+{% endblock %}
+
+
+
+{% extends 'base.html' %}
+{% block content %}
+    <h1>Edit User</h1>
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Save</button>
+    </form>
+{% endblock %}

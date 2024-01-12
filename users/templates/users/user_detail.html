@@ -1,0 +1,16 @@
+{% extends 'job_app/footer_only_base.html' %}
+{% block content %}
+    <h1>User Detail</h1>
+    <h2>{{ user.username }}</h2>
+    <p>{{ user.first_name }}</p>
+    <p>{{ user.last_name }}</p>
+    <p>{{ user.email }}</p>
+    <p>{{ user.phone }}</p>
+    <p>{{ user.address }}</p>
+    <p>{{ user.city }}</p>
+    <p>{{ user.state }}</p>
+    <p>{{ user.zip_code }}</p>
+    <p>{{ user.country }}</p>
+    <p><a href="{% url 'user_edit' pk=user.pk %}">Edit</a></p>
+    <p><a href="{% url 'user_delete' pk=user.pk %}">Delete</a></p>
+{% endblock %}
