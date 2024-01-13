@@ -4,8 +4,18 @@
 {% endblock title %}
 
 {% block content %}
+{% load static %}
 <h1 class="text-center">Education and Training</h1>
+<br>
 
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 d-block mx-auto">
+            <img src="{% static 'job_app/images/education.jpg' %}" alt="education" class="img-fluid">
+        </div>
+    </div>
+</div>
+<br>
 <p>Education and training are essential for many careers. Whether you need a college degree, certification, or vocational training program, investing in your education can help you gain the skills and knowledge you need to succeed. Here are some factors to consider when deciding on your education and training:</p>
 
 <ul>
@@ -17,4 +27,6 @@
 
 <li><b>Look for financial aid:</b> Education and training programs can be expensive, but there are many scholarships, grants, and other forms of financial aid available. Research your options and apply for as many as you can to help reduce your costs.</li>
 </ul>
+
+
 {% endblock content %}
