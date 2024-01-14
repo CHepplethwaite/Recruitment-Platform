@@ -5,8 +5,19 @@
 {% endblock title %}
 
 {% block content %}
-<h1 class="text-center">Resume and Cover Letter Writing</h1>
 
+{% load static %}
+<h1 class="text-center">Resume and Cover Letter Writing</h1>
+<br>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 d-block mx-auto">
+            <img src="{% static 'job_app/images/resume.jpg' %}" alt="Man writing resume." class="img-fluid">
+        </div>
+    </div>
+</div>
+<br>
 <p>Creating effective resumes and cover letters is essential for landing job interviews. Here are some tips to help you create compelling job application materials:</p>
 <ul>
 <li><b>Tailor your materials:</b> Customize your resume and cover letter for each job you apply to. This can help you highlight the skills and experience that are most relevant to the position.</li>
