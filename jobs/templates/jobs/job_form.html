@@ -1,0 +1,26 @@
+{% extends 'job_app/footer_only_no_logo_base.html' %}
+{% load crispy_forms_tags %}
+{% block title %}
+<title>Job</title>
+{% endblock %}
+{% block head %}
+{% endblock %}
+{% block body %}    
+
+{% block content %}
+    <div class="content-section d-flex flex-column justfy-content-center align-items-center">
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <fieldset class="form-group">
+            <legend class="border-bottom mb-4 text-center">Job</legend>
+            {{ form|crispy }}
+        </fieldset>
+        <div class="form-group text-center">
+            <button class="btn btn-outline-info" type="submit">Enter</button>
+        </div>
+    </form>
+    <br>
+    </div>
+{% endblock %}
+{% endblock %}
+```

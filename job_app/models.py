@@ -3,6 +3,7 @@ from django.urls import reverse
 from django.template.defaultfilters import slugify
 import datetime
 from django.conf import settings
+from PIL import Image
 
 
 class job(models.Model):
@@ -410,7 +411,8 @@ class job(models.Model):
         blank=True,
         null=True,
     )
-    company = models.CharField(max_length=50)
+    organisation = models.CharField(max_length=50)
+    logo = models.ImageField(default='logos_default.jpg', upload_to='media/logos')
     url = models.URLField(max_length=200, default="www.tumpetech.com")
     email = models.EmailField(default = 'info@tumpetech.com')
     job_title = models.CharField(max_length=50)
@@ -467,3 +469,13 @@ class job(models.Model):
         today = datetime.date.today()
         margin = datetime.timedelta(days = 1)
         return today - margin <= self.post_date <= today + margin
+    
+    def save(self, *args, **kwargs):
+        super().save()
+
+        img = Image.open(self.image.path)
+
+        if img.height > 150 or img.width > 150:
+            output_size = (150, 150)
+            img.thumbnail(output_size)
+            img.save(self.image.path)

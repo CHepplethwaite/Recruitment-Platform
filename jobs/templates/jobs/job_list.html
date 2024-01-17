@@ -1,0 +1,16 @@
+{% extends 'job_app/footer_only_no_logo_base.html' %}
+{% block content %}
+    <h1 class="text-center">Admin Panel</h1>
+    <br>
+    <h2 class="text-center">Your Jobs</h2>
+   
+    <ul>
+        {% for job in jobs %}
+        {% if job.approved == True %}
+            <li><a href="{% url 'job_detail' pk=job.pk %}">{{ job.name }}</a></li>
+            {% endif %}
+        {% endfor %}
+    </ul>
+
+    
+{% endblock %}
