@@ -417,12 +417,7 @@ class job(models.Model):
         blank=True,
         null=True,
     )
-    organisation = models.CharField(max_length=50)
     logo = models.ImageField(default='logos_default.jpg', upload_to='media/logos')
-    url = models.URLField(max_length=200, default="https://www.pathirty.com")
-    city = models.CharField(max_length=50, default="Lusaka")
-    country = models.CharField(max_length=50, default="Zambia")
-    email = models.EmailField(default = 'info@tumpetech.com')
     job_title = models.CharField(max_length=50)
     slug = models.SlugField(max_length=250,null=False, default="")
     post_date = models.DateField(auto_now=False, auto_now_add=True)
