@@ -6,7 +6,6 @@ from django.conf import settings
 from PIL import Image
 from ckeditor.fields import RichTextField
 
-
 class job(models.Model):
     #Job categories
     OTHER = "OTH"
@@ -417,20 +416,11 @@ class job(models.Model):
         blank=True,
         null=True,
     )
-    logo = models.ImageField(default='logos_default.jpg', upload_to='media/logos')
+    logo = models.ImageField(default='default_logo.png', upload_to='media/logos')
     job_title = models.CharField(max_length=50)
     slug = models.SlugField(max_length=250,null=False, default="")
     post_date = models.DateField(auto_now=False, auto_now_add=True)
     closing_date = models.DateField()
-
-    district = models.CharField(choices=district_choices,
-                                max_length=30,
-                                default=LUSAKA,
-                                )
-    province = models.CharField(choices=province_choices,
-                                max_length=30,
-                                default=LUSAKA_P,
-                                )
     industry = models.CharField(choices=industry_choices,
                                 max_length=30,
                                 default=ACADEMIA,
@@ -438,14 +428,14 @@ class job(models.Model):
     details = RichTextField(blank=True, null=True)
 
     def __str__(self):
-        return self.job_title+" - "+self.company
+        return self.job_title+" - "+self.closing_date.strftime("%d-%m-%Y")
         
     def get_absolute_url(self):
         return reverse("job_detail", kwargs={"slug": self.slug})
 
     def save(self, *args,**kwargs):
         if not self.slug:
-            self.slug  = slugify(self.job_title+" - "+self.company)
+            self.slug  = slugify(self.job_title+" - "+self.employment_type)
         return super().save(*args,**kwargs)
     
     @property
@@ -476,9 +466,9 @@ class job(models.Model):
     def save(self, *args, **kwargs):
         super().save()
 
-        img = Image.open(self.image.path)
+        img = Image.open(self.logo.path)
 
         if img.height > 150 or img.width > 150:
             output_size = (150, 150)
             img.thumbnail(output_size)
-            img.save(self.image.path)
+            img.save(self.logo.path)

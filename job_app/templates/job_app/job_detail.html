@@ -7,10 +7,7 @@
 
 
 <H1 class="text-center"> {{ object.job_title }}</H1>
-<p>Company: {{ object.company }}</p>
 <p>Employment type: {{ object.get_employment_type_display }}</p>
-<p>District: {{ object.get_district_display}}
-<p>Province: {{ object.get_province_display}}
 <p>Date posted: {{ object.post_date }}</p>
 
 
@@ -26,8 +23,8 @@
       {% endif %}
 
 {% endif %}
-
-<p>Details: {{ object.details }}</p>
+<br>
+{{ object.details|safe}}
 
 {% if object.is_closed  %}
 <!-- blank space -->

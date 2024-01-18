@@ -23,12 +23,23 @@
 </style>
 
 {% if user.is_authenticated %}
+
+<!-- log out button start -->
 <form id="logout-form" method="post" action="{% url 'admin:logout' %}">
   {% csrf_token %}
   <button type="submit">{% translate "Log out" %}</button>
 </form>
+<!-- log out button end -->
+
+<a href="{% url 'login' %}"></a>
+
+
 {% else %}
+
+<!-- log in button start -->
 <a href="{% url 'login' %}">Log in</a>
+<!-- log in button end -->
+
 {% endif %}
 
 <br>

@@ -2,26 +2,16 @@
 {% block content %}
 {% if job.approved == True %}
 <br>
-<h1 class="text-center">{{ object.name }}</h1>
+<h1 class="text-center">{{ object.job_title }}</h1>
     <div class="media text-center">
-        <img class="rounded" src="{{ job.image.url }}">
+        <img class="rounded" src="{{ job.logo.url }}">
     </div class="media-body">
             <br>
-    <p>Description: {{ object.description }}</p>
-    <p>Location: {{ object.location }}</p>
-    <p>Start Date: {{ object.start_date }}</p>
-    <p>End Date: {{ object.end_date }}</p>
-    <p>Venue: {{ object.venue_name }}</p>
-    <p>Venue Postcode: {{ object.venue_postcode }}</p>
-    <p>Venue Country: {{ object.venue_country }}</p>
-    <p>Platform: {{ object.platform }}</p>
-    <p>Start Time: {{ object.start_time }}</p>
-    <p>End Time: {{ object.end_time }}</p>
-    <p>Price: ZMW {{ object.price }}</p>
-    <p>Tickets available: {{ object.tickets_available }}</p>
-    <p>Tickets sold: {{ object.tickets_sold }}</p>
-    <p>{{ job.image.url }}</p>
-        <p><a href="#">Buy Ticket</a></p>
+    <p>Job title: {{ object.job_title }}</p>
+    <p>Post date: {{ object.post_date }}</p>
+    <p>Closing date: {{ object.closing_date }}</p>
+    <br>
+     {{ object.details|safe }}
     <p><a href="{% url 'job_list' %}">Back to job List</a></p>
             {% if user.is_staff %}
             <p><a href="{% url 'create_job' %}">Create New job</a></p>
@@ -31,21 +21,15 @@
 {% else %}
 {% if user.is_staff %}
     <br>
-    <h1 class="text-center">Job Detail</h1>
-    <p>Description: {{ object.description }}</p>
-    <p>Location: {{ object.location }}</p>
-    <p>Start Date: {{ object.start_date }}</p>
-    <p>End Date: {{ object.end_date }}</p>
-    <p>Venue: {{ object.venue_name }}</p>
-    <p>Venue Postcode: {{ object.venue_postcode }}</p>
-    <p>Venue Country: {{ object.venue_country }}</p>
-    <p>Platform: {{ object.platform }}</p>
-    <p>Start Time: {{ object.start_time }}</p>
-    <p>End Time: {{ object.end_time }}</p>
-    <p>Price: ZMW {{ object.price }}</p>
-    <p>Tickets available: {{ object.tickets_available }}</p>
-    <p>Tickets sold: {{ object.tickets_sold }}</p>
-    <p>{{ job.image.url }}</p>
+    <h1 class="text-center">{{ object.job_title }}</h1>
+    <div class="media text-center">
+        <img class="rounded" src="{{ job.logo.url }}">
+    </div class="media-body">
+    <p>Post date: {{ object.post_date }}</p>
+    <p>Closing date: {{ object.closing_date }}</p>
+    <br>
+   {{ object.details|safe}}
+    <p>{{ job.logo.url }}</p>
         <p><a href="#">Buy Ticket</a></p>
     <p><a href="{% url 'job_list' %}">Back to Job List</a></p>
     <p><a href="{% url 'create_job' %}">Create New Job</a></p>

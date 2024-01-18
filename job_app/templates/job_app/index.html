@@ -29,7 +29,7 @@
   <button type="submit">{% translate "Log out" %}</button>
 </form>
 &nbsp;
-<a href="#">Manage jobs</a>
+<a href="{% url 'job_list_admin_panel' %}">Manage jobs</a>
 {% else %}
 &nbsp;
 <a href="{% url 'login' %}">Log in</a>
