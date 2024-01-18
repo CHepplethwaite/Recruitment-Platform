@@ -9,5 +9,5 @@ urlpatterns = [
     path("samisongo1986_ykw/", admin.site.urls),
     path('',include('job_app.urls')),
     path('users/', include('users.urls')),
-    path('jobs-admin-panel/', include('jobs.urls')),
+    path('admin-panel/', include('jobs.urls')),
 ]

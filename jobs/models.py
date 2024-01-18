@@ -1,5 +1,4 @@
 from django.db import models
-from django.urls import reverse
 from PIL import Image
     
 class organisation(models.Model):

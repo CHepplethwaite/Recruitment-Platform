@@ -4,10 +4,12 @@ from django.template.defaultfilters import slugify
 import datetime
 from django.conf import settings
 from PIL import Image
+from ckeditor.fields import RichTextField
 
 
 class job(models.Model):
     #Job categories
+    OTHER = "OTH"
     ACADEMIA = "EDU"
     ACCOUNTANCY = "ACC"
     ADMINISTRATION = "ADM"
@@ -33,6 +35,7 @@ class job(models.Model):
     INTERNSHIP = "INT"
 
     #Provinces
+    NA = "N/A"
     CENTRAL = "CP"
     COPPERBELT = "CB"
     EASTERN = "EP"
@@ -254,6 +257,7 @@ class job(models.Model):
     SIOMA_D = "SIOMD"
  
     industry_choices = [
+        ("OTHER","Other"),
         ("ACADEMIA","Academia"),
         ("ACCOUNTANCY","Accountancy"),
         ("ADMINISTRATION","Administration"),
@@ -266,7 +270,6 @@ class job(models.Model):
         ("ICT_AND_TELCO","ICT and Telco"),
         ("LAW","Law"),
         ("MANUFACTURING_FMCG","Manufacturing/FMCG"),
-        ("OTHER","Other"),
         ("PUBLIC_SECTOR","Public Sector"),
         ("RETAIL_AND_SALES","Retail and Sales"),
         ("TRANSPORT_AND_LOGISTICS","Transport and Logistics"),
@@ -276,6 +279,7 @@ class job(models.Model):
         (False,"Pending"),
     ]
     employment_choices = [
+        ("N/A","n/a"),
         ("FULL_TIME","Full-time"),
         ("PART_TIME","Part-time"),
         ("CONTRACT","Contract"),
@@ -283,6 +287,7 @@ class job(models.Model):
         ("INTERSHIP","Internship"),
     ]
     province_choices = [
+        ("N/A","n/a"),
         ("CENTRAL","Central"),
         ("COPPERBELT","Copperbelt"),
         ("EASTERN","Eastern"),
@@ -296,6 +301,7 @@ class job(models.Model):
     ]
 
     district_choices = [
+        ("N/A","n/a"),
         ("CHADIZA", "Chadiza"),
         ("CHAMA", "Chama"),
         ("CHANDESI", "Chandesi"),
@@ -413,7 +419,9 @@ class job(models.Model):
     )
     organisation = models.CharField(max_length=50)
     logo = models.ImageField(default='logos_default.jpg', upload_to='media/logos')
-    url = models.URLField(max_length=200, default="www.tumpetech.com")
+    url = models.URLField(max_length=200, default="https://www.pathirty.com")
+    city = models.CharField(max_length=50, default="Lusaka")
+    country = models.CharField(max_length=50, default="Zambia")
     email = models.EmailField(default = 'info@tumpetech.com')
     job_title = models.CharField(max_length=50)
     slug = models.SlugField(max_length=250,null=False, default="")
@@ -432,7 +440,7 @@ class job(models.Model):
                                 max_length=30,
                                 default=ACADEMIA,
                                 )
-    details = models.TextField()
+    details = RichTextField(blank=True, null=True)
 
     def __str__(self):
         return self.job_title+" - "+self.company

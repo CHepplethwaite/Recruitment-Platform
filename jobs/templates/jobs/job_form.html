@@ -1,7 +1,7 @@
 {% extends 'job_app/footer_only_no_logo_base.html' %}
 {% load crispy_forms_tags %}
 {% block title %}
-<title>Job</title>
+<title>Create job</title>
 {% endblock %}
 {% block head %}
 {% endblock %}
@@ -12,11 +12,12 @@
     <form method="POST" enctype="multipart/form-data">
         {% csrf_token %}
         <fieldset class="form-group">
-            <legend class="border-bottom mb-4 text-center">Job</legend>
+            <legend class="border-bottom mb-4 text-center">Create job post</legend>
+            {{ form.media }}
             {{ form|crispy }}
         </fieldset>
         <div class="form-group text-center">
-            <button class="btn btn-outline-info" type="submit">Enter</button>
+            <button class="btn btn-outline-info" type="submit">Post</button>
         </div>
     </form>
     <br>

@@ -7,6 +7,7 @@ from django.shortcuts import redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.urls import reverse_lazy
+from .forms import JobForm
 
 # job list view
 class jobListView(ListView):
@@ -22,22 +23,10 @@ class jobDetailView(DetailView):
  
 # job create view 
 class jobCreateView(LoginRequiredMixin, CreateView):
-    description = forms.CharField()
     model = job
     template_name = 'jobs/job_form.html'
-    fields = ['job_title','organisation','url','email','closing_date','district','province','industry','details',]
-    widgets = {
-        'job_title': forms.TextInput(attrs={'class': 'form-control'}),
-        'organisation': forms.TextInput(attrs={'class': 'form-control'}),
-        'url': forms.TextInput(attrs={'class': 'form-control'}),
-        'email': forms.TextInput(attrs={'class': 'form-control'}),
-        'closing_date': forms.DateInput(attrs={'class': 'form-control'}),
-        'district': forms.TextInput(attrs={'class': 'form-control'}),
-        'province': forms.TextInput(attrs={'class': 'form-control'}),
-        'industry': forms.TextInput(attrs={'class': 'form-control'}),
-        'details': forms.Textarea(attrs={'class': 'form-control'}),
-        'logo': forms.FileInput(attrs={'class': 'form-control'}),
-    }
+    form_class = JobForm
+    
     def form_valid(self, form):
         form.instance.user = self.request.user
         return super().form_valid(form)
@@ -47,19 +36,7 @@ class jobCreateView(LoginRequiredMixin, CreateView):
 class jobUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = job
     template_name = 'jobs/job_form.html'
-    fields = ['job_title','organization','url','email','closing_date','district','province','industry','details',]
-    widgets = {
-        'job_title': forms.TextInput(attrs={'class': 'form-control'}),
-        'organization': forms.TextInput(attrs={'class': 'form-control'}),
-        'url': forms.TextInput(attrs={'class': 'form-control'}),
-        'email': forms.TextInput(attrs={'class': 'form-control'}),
-        'closing_date': forms.DateInput(attrs={'class': 'form-control'}),
-        'district': forms.TextInput(attrs={'class': 'form-control'}),
-        'province': forms.TextInput(attrs={'class': 'form-control'}),
-        'industry': forms.TextInput(attrs={'class': 'form-control'}),
-        'details': forms.Textarea(attrs={'class': 'form-control'}),
-        'logo': forms.FileInput(attrs={'class': 'form-control'}),
-    }
+    form_class = JobForm
 
     def form_valid(self, form):
         form.instance.user = self.request.user.username
@@ -80,7 +57,7 @@ class jobDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
 
     def test_func(self):
         job = self.get_object()
-        if self.request.user.username == job.author:
+        if self.request.user.username == job.user:
             return True
         return False
 
