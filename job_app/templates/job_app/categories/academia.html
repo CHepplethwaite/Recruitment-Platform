@@ -19,10 +19,10 @@
     {% endfor %}
   </select>
 
-  <select name="district">
-    <option value="">All Districts</option>
-    {% for district in districts %}
-      <option value="{{ district.value }}">{{ district.label }}</option>
+  <select name="location">
+    <option value="">All locations</option>
+    {% for location in locations %}
+      <option value="{{ location.value }}">{{ location.label }}</option>
     {% endfor %}
   </select>
 
@@ -88,7 +88,7 @@
                 </div>
                 <div>
                   <p><b>Employment type:</b> {{object.get_employment_type_display}}<br>
-                  <b>Location:</b> {{object.get_district_display}}<br>
+                  <b>Location:</b> {{object.get_location_display}}<br>
                 
                     {% if object.is_closed  %}
                       <b>Closing date:</b> {{object.closing_date}} <span class="badge text-bg-danger">Closed</span></p>
