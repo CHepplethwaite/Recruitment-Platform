@@ -19,28 +19,18 @@ class jobsListView(ListView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        
-        province_choices = job.province_choices
-        province_choices = [{'value': value, 'label': label} for value, label in province_choices]
-        
         location_choices = job.location_choices
         location_choices = [{'value': value, 'label': label} for value, label in location_choices]
-        
-        context["provinces"] = province_choices
         context["locations"] = location_choices
-        
         return context
 
     def get_queryset(self):
         queryset = super().get_queryset()
 
         location = self.request.GET.get('location')
-        province = self.request.GET.get('province')
 
         if location:
             queryset = queryset.filter(location=location)
-        if province:
-            queryset = queryset.filter(province=province)
 
         return queryset
 
