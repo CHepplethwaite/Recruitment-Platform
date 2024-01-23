@@ -12,12 +12,6 @@
 <!-- begin filter -->
 
 <form method="GET" action="{% url 'dev' %}">
-  <select name="province">
-    <option value="">All Provinces</option>
-    {% for province in provinces %}
-      <option value="{{ province.value }}">{{ province.label }}</option>
-    {% endfor %}
-  </select>
 
   <select name="location">
     <option value="">All locations</option>
@@ -25,7 +19,6 @@
       <option value="{{ location.value }}">{{ location.label }}</option>
     {% endfor %}
   </select>
-
   
   <button type="submit">Filter</button>
 </form>

@@ -12,13 +12,7 @@
 <!-- begin filter -->
 
 <form method="GET" action="{% url 'health' %}">
-  <select name="province">
-    <option value="">All Provinces</option>
-    {% for province in provinces %}
-      <option value="{{ province.value }}">{{ province.label }}</option>
-    {% endfor %}
-  </select>
-
+  
   <select name="location">
     <option value="">All locations</option>
     {% for location in locations %}
