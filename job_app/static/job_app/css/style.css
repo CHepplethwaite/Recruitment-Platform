@@ -1,4 +1,4 @@
-logout-form {
+.logout-form {
     display: inline;
   }
   logout-form button {
@@ -7,4 +7,8 @@ logout-form {
     cursor: pointer;
     padding: 0;
     text-decoration: underline;
+}
+
+.link-space {
+  margin-right: 10px; /* Adjust as needed */
 }

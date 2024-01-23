@@ -1,7 +1,6 @@
 from django.shortcuts import render
 from job_app.models import job
-from django import forms
-from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
+from django.views.generic import CreateView, UpdateView, DeleteView, ListView, DetailView
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.shortcuts import redirect
 from django.contrib.auth.decorators import login_required
@@ -9,18 +8,49 @@ from django.contrib import messages
 from django.urls import reverse_lazy
 from .forms import JobForm
 
-# job list view
-class jobListView(ListView):
-    model = job
-    template_name = 'jobs/job_list.html'
-    context_object_name = 'jobs'
-    ordering = ['-post_date']
 
-# job detail view
-class jobDetailView(DetailView):
+
+class jobsListView(ListView):
+    model = job
+    paginate_by = 10
+    template_name = 'jobs/job_list.html'
+    ordering = ['-post_date']
+    queryset=job.objects.filter(status__exact=f"{True}")
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        
+        province_choices = job.province_choices
+        province_choices = [{'value': value, 'label': label} for value, label in province_choices]
+        
+        location_choices = job.location_choices
+        location_choices = [{'value': value, 'label': label} for value, label in location_choices]
+        
+        context["provinces"] = province_choices
+        context["locations"] = location_choices
+        
+        return context
+
+    def get_queryset(self):
+        queryset = super().get_queryset()
+
+        location = self.request.GET.get('location')
+        province = self.request.GET.get('province')
+
+        if location:
+            queryset = queryset.filter(location=location)
+        if province:
+            queryset = queryset.filter(province=province)
+
+        return queryset
+
+
+class jobsDetailView(DetailView):
     model = job
     template_name = 'jobs/job_detail.html'
- 
+    context_object_name = 'job'
+
+
 # job create view 
 class jobCreateView(LoginRequiredMixin, CreateView):
     model = job
@@ -76,3 +106,6 @@ def jobs_approval(request):
     else:
         messages.warning(request, f'You do not have permission to view this page.')
         return redirect('home')
+    
+    
+    

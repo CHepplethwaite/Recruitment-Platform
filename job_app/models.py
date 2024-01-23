@@ -6,6 +6,7 @@ from django.conf import settings
 from PIL import Image
 from ckeditor.fields import RichTextField
 
+
 class job(models.Model):
     #Job categories
     OTHER = "OTH"
@@ -132,7 +133,7 @@ class job(models.Model):
     ZAMBEZI = "ZMB"
     ZIMBA = "ZMB"
 
-    #Copperbelt districts
+    #Copperbelt locations
     CHILILABOMBWE_D = "CHLD"
     CHINGOLA_D = "CHGD"
     KALULUSHI_D = "KALD"
@@ -144,7 +145,7 @@ class job(models.Model):
     MUFULIRA_D = "MFD"
     NDOLA_D = "NDL"
 
-    #Eastern districts 
+    #Eastern locations 
     CHADIZA_D = "CHAD"
     CHAMA_D = "CHMD"
     CHASEFU_D = "CHSD"
@@ -161,7 +162,7 @@ class job(models.Model):
     SINDA_D = "SND"
     VUBWI_D = "VBD"
 
-    #Luapula districts
+    #Luapula locations
     CHEMBE_D = "CHBD"
     CHIENGI_D = "CHID"
     CHIFUNABULI_D = "CHFD"
@@ -175,7 +176,7 @@ class job(models.Model):
     NCHEKENGE_D = "NCHD"
     SAMFYA_D = "SAMD"
 
-    #Lusaka districts
+    #Lusaka locations
     CHILANGA_D = "CHLD"
     CHONGWE_D = "CHND"
     KAFUE_D = "KAFD"
@@ -183,7 +184,7 @@ class job(models.Model):
     LUSAKA_D = "LSKD"
     RUFUNSA_D = "RFD"
 
-    #Muchinga districts
+    #Muchinga locations
     CHINSALI_D = "CSLD"
     ISOKA_D = "ISD"
     KANCHIBIYA_D = "KD"
@@ -193,7 +194,7 @@ class job(models.Model):
     NAKONDE_D = "NKD"
     SHIWANG_ANDU_D = "SHGD"
 
-    #Northern districts
+    #Northern locations
     CHILUBI_D = "CHLBD"
     KAPUTA_D = "KPTD"
     KASAMA_D = "KSMD"
@@ -207,7 +208,7 @@ class job(models.Model):
     NSAMA = "NSMD"
     SENGA_D = "SND"
 
-    #North-western districts
+    #North-western locations
     CHAVUMA_D = "CHVD"
     IKELENGE_D = "IKED"
     KABOMPO_D = "KABD"
@@ -220,7 +221,7 @@ class job(models.Model):
     SOLWEZI_D = "SOLWD"
     ZAMBEZI_D = "ZMBZD"
 
-    #Southern province districtspip install crispy-bootstrap5
+    #Southern province locationspip install crispy-bootstrap5
     CHIKANKATA_D = "CHIKD"
     CHIRUNDU_D = "CHIRD"
     CHOMA_D = "CHMD"
@@ -237,7 +238,7 @@ class job(models.Model):
     SINAZONGWE_D = "SNZWD"
     ZIMBA_D = "ZMBD"
 
-    #Western province districts
+    #Western province locations
     KALABO_D = "KLBOD"
     KAOMA_D = "KOMAD"
     LIMULUNGA_D = "LMGAD"
@@ -299,7 +300,7 @@ class job(models.Model):
         ("SOUTHERN","Southern"),
     ]
 
-    district_choices = [
+    location_choices = [
         ("N/A","n/a"),
         ("CHADIZA", "Chadiza"),
         ("CHAMA", "Chama"),
@@ -417,27 +418,31 @@ class job(models.Model):
         null=True,
     )
     logo = models.ImageField(default='default_logo.png', upload_to='media/logos')
-    job_title = models.CharField(max_length=50)
-    slug = models.SlugField(max_length=250,null=False, default="")
+    job_title = models.CharField(max_length=50,null=False, default="")
     post_date = models.DateField(auto_now=False, auto_now_add=True)
     closing_date = models.DateField()
+    province = models.CharField(choices=province_choices,
+                                max_length=30,
+                                default=NA,
+                                )
+    location = models.CharField(choices=location_choices,
+                                max_length=30,
+                                default=NA,
+                                )
     industry = models.CharField(choices=industry_choices,
                                 max_length=30,
                                 default=ACADEMIA,
                                 )
-    details = RichTextField(blank=True, null=True)
+    details = RichTextField(blank=True, 
+                            null=True,
+                            )
+    
+    def get_absolute_url(self):
+        return reverse('job_detail', args=[str(self.id)])
 
     def __str__(self):
         return self.job_title+" - "+self.closing_date.strftime("%d-%m-%Y")
         
-    def get_absolute_url(self):
-        return reverse("job_detail", kwargs={"slug": self.slug})
-
-    def save(self, *args,**kwargs):
-        if not self.slug:
-            self.slug  = slugify(self.job_title+" - "+self.employment_type)
-        return super().save(*args,**kwargs)
-    
     @property
     def is_closed(self):
         return datetime.date.today() > self.closing_date
@@ -462,13 +467,3 @@ class job(models.Model):
         today = datetime.date.today()
         margin = datetime.timedelta(days = 1)
         return today - margin <= self.post_date <= today + margin
-    
-    def save(self, *args, **kwargs):
-        super().save()
-
-        img = Image.open(self.logo.path)
-
-        if img.height > 150 or img.width > 150:
-            output_size = (150, 150)
-            img.thumbnail(output_size)
-            img.save(self.logo.path)

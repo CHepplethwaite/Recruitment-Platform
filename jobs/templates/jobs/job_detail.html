@@ -6,18 +6,18 @@
     <div class="media text-center">
         <img class="rounded" src="{{ job.logo.url }}">
     </div class="media-body">
-            <br>
+    <br>
     <p>Job title: {{ object.job_title }}</p>
     <p>Post date: {{ object.post_date }}</p>
     <p>Closing date: {{ object.closing_date }}</p>
     <br>
      {{ object.details|safe }}
-    <p><a href="{% url 'job_list' %}">Back to job List</a></p>
-            {% if user.is_staff %}
-            <p><a href="{% url 'create_job' %}">Create New job</a></p>
-            <p><a href="{% url 'edit_job' pk=job.pk %}">Update</a></p>
-            <p><a href="{% url 'delete_job' pk=job.pk %}">Delete</a></p>
-            {% endif %}
+     <p class="text-center">
+        <a href="{% url 'job_list' %}">Back to job list</a>&nbsp;
+        <a href="{% url 'create_job' pk=job.pk %}">Create new job</a>&nbsp;
+        <a href="{% url 'edit_job' pk=job.pk %}">Edit job</a>&nbsp;
+        <a href="{% url 'delete_job' pk=job.pk %}">Delete job</a>&nbsp;
+      </p>
 {% else %}
 {% if user.is_staff %}
     <br>
