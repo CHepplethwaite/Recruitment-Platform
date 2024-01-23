@@ -14,7 +14,7 @@
      {{ object.details|safe }}
      <p class="text-center">
         <a href="{% url 'job_list' %}">Back to job list</a>&nbsp;
-        <a href="{% url 'create_job' pk=job.pk %}">Create new job</a>&nbsp;
+        <a href="{% url 'create_job' %}">Create new job</a>&nbsp;
         <a href="{% url 'edit_job' pk=job.pk %}">Edit job</a>&nbsp;
         <a href="{% url 'delete_job' pk=job.pk %}">Delete job</a>&nbsp;
       </p>

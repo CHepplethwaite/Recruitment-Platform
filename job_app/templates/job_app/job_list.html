@@ -7,7 +7,7 @@
 {% load static %}
 
 <h1 id="all_jobs" class="text-center">All Jobs</h1>
-<small><p class="text-center"><a href="{% url 'contact' %}">[ Post a job ]</a></p></small>
+<small><p class="text-center"><a href="{% url 'create_job' %}">[ Post a job ]</a></p></small>
 
 <!-- begin filter -->
 
@@ -77,6 +77,7 @@
         
       
       </div>
+      <div>
       <p><b>Employment type:</b> {{object.get_employment_type_display}}<br>
       <b>Location:</b> {{object.get_district_display}}<br>
     
