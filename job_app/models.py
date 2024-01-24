@@ -1,10 +1,9 @@
 from django.db import models
 from django.urls import reverse
-from django.template.defaultfilters import slugify
 import datetime
 from django.conf import settings
 from PIL import Image
-from ckeditor.fields import RichTextField
+from ckeditor.fields import RichTextUploadingField
 
 
 class job(models.Model):
@@ -433,7 +432,7 @@ class job(models.Model):
                                 max_length=30,
                                 default=ACADEMIA,
                                 )
-    details = RichTextField(blank=True, 
+    details = RichTextUploadingField(blank=True, 
                             null=True,
                             )
     
