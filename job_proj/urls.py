@@ -1,9 +1,7 @@
 from django.contrib import admin
 from django.urls import path,include
-from users import views as user_views
-from django.contrib.auth import views as auth_views
-from job_app import views as job_app_views
-
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path("samisongo1986_ykw/", admin.site.urls),
@@ -11,3 +9,7 @@ urlpatterns = [
     path('users/', include('users.urls')),
     path('your-posts/', include('jobs.urls')),
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+
