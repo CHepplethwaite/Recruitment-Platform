@@ -10,7 +10,7 @@ from .forms import JobForm
 
 
 
-class jobsListView(ListView):
+class jobsListView(ListView, UserPassesTestMixin, LoginRequiredMixin):
     model = job
     paginate_by = 10
     template_name = 'jobs/job_list.html'
@@ -26,13 +26,16 @@ class jobsListView(ListView):
 
     def get_queryset(self):
         queryset = super().get_queryset()
-
         location = self.request.GET.get('location')
-
         if location:
             queryset = queryset.filter(location=location)
-
-        return queryset
+        return queryset.filter(user=self.request.user)
+    
+    def test_func(self):
+        job = self.get_object()
+        if self.request.user.username == job.user:
+            return True
+        return False
 
 
 class jobsDetailView(DetailView):
@@ -64,7 +67,7 @@ class jobUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     
     def test_func(self):
         job = self.get_object()
-        if self.request.user.username == job.user:
+        if self.request.user.username == job.user.username:
             return True
         return False
 
@@ -73,11 +76,11 @@ class jobUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
 class jobDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     model = job
     template_name = 'jobs/job_confirm_delete.html'
-    success_url = reverse_lazy('job_list')
+    success_url = reverse_lazy('job_list_admin_panel')
 
     def test_func(self):
         job = self.get_object()
-        if self.request.user.username == job.user:
+        if self.request.user.username == job.user.username:
             return True
         return False
 

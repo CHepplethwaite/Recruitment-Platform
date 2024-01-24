@@ -38,7 +38,7 @@
   {% for object in page_obj %}
 
 <div class="list-group">
-    <a href="{% url 'job_detail' pk=object.id %}" class="list-group-item list-group-item-action" aria-current="true">
+    <a href="{% url 'job_detail_admin_panel' pk=object.id %}" class="list-group-item list-group-item-action" aria-current="true">
    
       
       {% if object.posted_today  %}
@@ -66,6 +66,7 @@
       </div>
       <p><b>Employment type:</b> {{object.get_employment_type_display}}<br>
       <b>Location:</b> {{object.get_location_display}}<br>
+      <b>Posted by:</b> {{object.user | capfirst }}<br>
     
         {% if object.is_closed  %}
           <b>Closing date:</b> {{object.closing_date}} <span class="badge text-bg-danger">Closed</span></p>

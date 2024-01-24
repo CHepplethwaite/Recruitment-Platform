@@ -1,6 +1,14 @@
 {% extends 'job_app/footer_only_no_logo_base.html' %}
 {% block content %}
-{% if job.approved == True %}
+
+<p class="text-center">
+    <a href="{% url 'job_list_admin_panel' %}">Your posts</a>&nbsp;
+    <a href="{% url 'create_job' %}">Create new job</a>&nbsp;
+    <a href="{% url 'edit_job' pk=job.pk %}">Edit job</a>&nbsp;
+    <a href="{% url 'delete_job' pk=job.pk %}">Delete job</a>&nbsp;
+  </p>
+
+{% if job.status == True %}
 <br>
 <h1 class="text-center">{{ object.job_title }}</h1>
     <div class="media text-center">
@@ -13,30 +21,12 @@
     <br>
      {{ object.details|safe }}
      <p class="text-center">
-        <a href="{% url 'job_list' %}">Back to job list</a>&nbsp;
+        <a href="{% url 'job_list_admin_panel' %}">Your jobs</a>&nbsp;
         <a href="{% url 'create_job' %}">Create new job</a>&nbsp;
         <a href="{% url 'edit_job' pk=job.pk %}">Edit job</a>&nbsp;
         <a href="{% url 'delete_job' pk=job.pk %}">Delete job</a>&nbsp;
       </p>
 {% else %}
-{% if user.is_staff %}
-    <br>
-    <h1 class="text-center">{{ object.job_title }}</h1>
-    <div class="media text-center">
-        <img class="rounded" src="{{ job.logo.url }}">
-    </div class="media-body">
-    <p>Post date: {{ object.post_date }}</p>
-    <p>Closing date: {{ object.closing_date }}</p>
-    <br>
-   {{ object.details|safe}}
-    <p>{{ job.logo.url }}</p>
-        <p><a href="#">Buy Ticket</a></p>
-    <p><a href="{% url 'job_list' %}">Back to Job List</a></p>
-    <p><a href="{% url 'create_job' %}">Create New Job</a></p>
-    <p><a href="{% url 'edit_job' pk=job.pk %}">Update</a></p>
-    <p><a href="{% url 'delete_job' pk=job.pk %}">Delete</a></p>
-{% else %}
-    <h2 class="text-center">You are not authorized to view this page.</h2>
-{% endif %}
+    <h2 class="text-center ">You are not authorized to view this page.</h2>
 {% endif %}
 {% endblock %}

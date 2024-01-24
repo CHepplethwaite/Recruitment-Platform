@@ -42,7 +42,6 @@ class jobListView(ListView):
         location_choices = job.location_choices
         location_choices = [{'value': value, 'label': label} for value, label in location_choices]
         context["locations"] = location_choices
-        
         return context
 
     def get_queryset(self):
@@ -149,7 +148,6 @@ class bankingListView(ListView):
         location_choices = job.location_choices
         location_choices = [{'value': value, 'label': label} for value, label in location_choices]
         context["locations"] = location_choices
-        
         return context
 
     def get_queryset(self):

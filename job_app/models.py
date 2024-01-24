@@ -439,6 +439,16 @@ class job(models.Model):
     
     def get_absolute_url(self):
         return reverse('job_detail', args=[str(self.id)])
+    
+    def save(self, *args, **kwargs):
+        super().save()
+
+        img = Image.open(self.logo.path)
+
+        if img.height > 150 or img.width > 150:
+            output_size = (150, 150)
+            img.thumbnail(output_size)
+            img.save(self.logo.path)
 
     def __str__(self):
         return self.job_title+" - "+self.closing_date.strftime("%d-%m-%Y")
