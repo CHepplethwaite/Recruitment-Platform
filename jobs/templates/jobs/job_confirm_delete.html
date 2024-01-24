@@ -1,0 +1,20 @@
+{% extends 'job_app/footer_only_no_logo_base.html' %}
+{% block title %}job{% endblock %}
+
+
+{% block content %}
+    <div class="content-section">
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <fieldset class="form-group">
+            <legend class="border-bottom mb-4 text-center">Delete job</legend>
+            <H2 class="text-center">Are you sure you want to delete "{{ object.name }}"?</H2>
+        </fieldset>
+        <div class="form-group text-center">
+            <button class="btn btn-outline-danger" type="submit">Yes, Delete</button>
+            <a class="btn btn-outline-info" href="{% url 'job_detail' pk=object.pk %}">No, Cancel</a>
+        </div>
+    </form>
+    <br>
+    </div>
+{% endblock %}

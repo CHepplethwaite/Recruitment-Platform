@@ -12,17 +12,11 @@
 <!-- begin filter -->
 
 <form method="GET" action="{% url 'technology' %}">
-  <select name="province">
-    <option value="">All Provinces</option>
-    {% for province in provinces %}
-      <option value="{{ province.value }}">{{ province.label }}</option>
-    {% endfor %}
-  </select>
 
-  <select name="district">
-    <option value="">All Districts</option>
-    {% for district in districts %}
-      <option value="{{ district.value }}">{{ district.label }}</option>
+  <select name="location">
+    <option value="">All locations</option>
+    {% for location in locations %}
+      <option value="{{ location.value }}">{{ location.label }}</option>
     {% endfor %}
   </select>
   
@@ -57,7 +51,7 @@
 {% for object in page_obj %}
 
 <div class="list-group">
-    <a href="{% url 'job_detail' slug=object.slug pk=object.id %}" class="list-group-item list-group-item-action" aria-current="true">
+    <a href="{% url 'job_detail' pk=object.id %}" class="list-group-item list-group-item-action" aria-current="true">
    
       
       {% if object.posted_today  %}
@@ -82,22 +76,21 @@
         <h5 class="mb-1"> {{object.job_title}}</h5> 
         
         </div>
-        <p>Company: {{object.company}}</p>
-        <p>Employment type: {{object.get_employment_type_display}}</p>
-        <p>District: {{object.get_district_display}}</p>
-        <p>Province: {{object.get_province_display}}</p>
-      
-          {% if object.is_closed  %}
-            <p>Closing date: {{object.closing_date}} <span class="badge text-bg-danger">Closed</span></p>
-          {% else %}
-                
-                  {% if object.closing_soon  %}
-                  <p>Closing date: <mark>{{object.closing_date}}</mark> <span class="badge text-bg-warning">Closing soon</span></p>
-                  {% else %}
-                  <p>Closing date: {{object.closing_date}} <span class="badge text-bg-success">Available</span></p>
-                  {% endif %}
-            {% endif %}
-          </div>
+        <div>
+          <p><b>Employment type:</b> {{object.get_employment_type_display}}<br>
+          <b>Location:</b> {{object.get_location_display}}<br>
+        
+            {% if object.is_closed  %}
+              <b>Closing date:</b> {{object.closing_date}} <span class="badge text-bg-danger">Closed</span></p>
+            {% else %}
+                  
+                    {% if object.closing_soon  %}
+                    <b>Closing date:</b> <mark>{{object.closing_date}}</mark> <span class="badge text-bg-warning">Closing soon</span></p>
+                    {% else %}
+                    <b>Closing date:</b> {{object.closing_date}} <span class="badge text-bg-success">Available</span></p>
+                    {% endif %}
+              {% endif %}
+            </div>
     </a>
 
  <!-- end list template -->

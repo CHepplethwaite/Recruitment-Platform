@@ -27,9 +27,10 @@
 <form id="logout-form" method="post" action="{% url 'logout' %}">
   {% csrf_token %}
   <button type="submit">{% translate "Log out" %}</button>
+  <a href="{% url 'job_list_admin_panel' %}">Your posts</a>
 </form>
 &nbsp;
-<a href="{% url 'manage-jobs:index' %}">Manage jobs</a>
+
 {% else %}
 &nbsp;
 <a href="{% url 'login' %}">Log in</a>
