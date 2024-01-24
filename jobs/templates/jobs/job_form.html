@@ -1,5 +1,11 @@
 {% extends 'job_app/footer_only_no_logo_base.html' %}
 {% load crispy_forms_tags %}
+
+{% block extrahead %}
+<script>window.CKEDITOR_BASEPATH = '/static/ckeditor/ckeditor/';</script>
+{{ block.super }}
+{% endblock %}
+
 {% block title %}
 <title>Create job</title>
 {% endblock %}
