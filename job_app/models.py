@@ -421,10 +421,6 @@ class job(models.Model):
     post_date = models.DateField(auto_now=False, auto_now_add=True)
     closing_date = models.DateField()
     organisation = models.CharField(max_length=50,null=False, default="")
-    province = models.CharField(choices=province_choices,
-                                max_length=30,
-                                default=NA,
-                                )
     location = models.CharField(choices=location_choices,
                                 max_length=30,
                                 default=NA,
