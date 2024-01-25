@@ -62,7 +62,7 @@ class jobUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     form_class = JobForm
 
     def form_valid(self, form):
-        form.instance.user = self.request.user.username
+        form.instance.user = self.request.user
         return super().form_valid(form)
     
     def test_func(self):
