@@ -144,7 +144,7 @@ class job(models.Model):
     MUFULIRA_D = "MFD"
     NDOLA_D = "NDL"
 
-    #Eastern locations 
+    #Eastern locations
     CHADIZA_D = "CHAD"
     CHAMA_D = "CHMD"
     CHASEFU_D = "CHSD"
@@ -165,7 +165,7 @@ class job(models.Model):
     CHEMBE_D = "CHBD"
     CHIENGI_D = "CHID"
     CHIFUNABULI_D = "CHFD"
-    CHIPILI_D = "CPD" 
+    CHIPILI_D = "CPD"
     KAWAMBWA_D = "KWD"
     LUNGA_D = "LNGD"
     MANSA_D = "MAND"
@@ -254,7 +254,7 @@ class job(models.Model):
     SHANG_OMBO_D = "SHNBD"
     SIKONGO_D = "SKGO"
     SIOMA_D = "SIOMD"
- 
+
     industry_choices = [
         ("OTHER","Other"),
         ("ACADEMIA","Academia"),
@@ -433,13 +433,13 @@ class job(models.Model):
                                 max_length=30,
                                 default=ACADEMIA,
                                 )
-    details = RichTextField(blank=True, 
+    details = RichTextField(blank=True,
                             null=True,
                             )
-    
+
     def get_absolute_url(self):
         return reverse('job_detail', args=[str(self.id)])
-    
+
     def save(self, *args, **kwargs):
         super().save()
 
@@ -452,17 +452,17 @@ class job(models.Model):
 
     def __str__(self):
         return self.job_title+" - "+self.closing_date.strftime("%d-%m-%Y")
-        
+
     @property
     def is_closed(self):
         return datetime.date.today() > self.closing_date
-    
+
     @property
     def closing_soon(self):
         today = datetime.date.today()
         margin = datetime.timedelta(days = 1)
         return today - margin <= self.closing_date <= today + margin
-    
+
     @property
     def get_x_days_ago(self):
         today = str(datetime.date.today())
@@ -471,7 +471,7 @@ class job(models.Model):
         post_date1 = datetime.datetime.strptime(post_date, "%Y-%m-%d").date()
         delta =  (todays_date - post_date1).days - 0
         return delta
-    
+
     @property
     def posted_today(self):
         today = datetime.date.today()
