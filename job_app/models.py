@@ -417,9 +417,10 @@ class job(models.Model):
         null=True,
     )
     logo = models.ImageField(default='default_logo.png', upload_to='media/logos')
-    job_title = models.CharField(max_length=50,null=False, default="")
+    job_title = models.CharField(max_length=60,null=False, default="")
     post_date = models.DateField(auto_now=False, auto_now_add=True)
     closing_date = models.DateField()
+    organisation = models.CharField(max_length=50,null=False, default="")
     province = models.CharField(choices=province_choices,
                                 max_length=30,
                                 default=NA,

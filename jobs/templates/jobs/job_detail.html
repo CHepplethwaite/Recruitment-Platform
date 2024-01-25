@@ -15,9 +15,11 @@
         <img class="rounded" src="{{ job.logo.url }}">
     </div class="media-body">
     <br>
-    <p>Job title: {{ object.job_title }}</p>
-    <p>Post date: {{ object.post_date }}</p>
-    <p>Closing date: {{ object.closing_date }}</p>
+    <p><b>Job title:</b> {{ object.job_title }}</p>
+    <p><b>Post date:</b> {{ object.post_date }}</p>
+    <p><b>Closing date:</b> {{ object.closing_date }}</p>
+    <p><b>Location:</b> {{ object.location }}</p>
+    <p><b>Organisation:</b> {{ object.organisation }}</p>
     <br>
      {{ object.details|safe }}
      <p class="text-center">

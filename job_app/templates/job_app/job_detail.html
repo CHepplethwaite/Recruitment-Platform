@@ -9,6 +9,8 @@
 <H1 class="text-center"> {{ object.job_title }}</H1>
 <p><b>Employment type:</b> {{ object.get_employment_type_display }}</p>
 <p><b>Date posted:</b> {{ object.post_date }}</p>
+<p><b>Location:</b> {{ object.location }}</p>
+<p><b>Organisation:</b> {{ object.organisation }}</p>
 
 
 {% if object.is_closed  %}
