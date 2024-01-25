@@ -285,19 +285,7 @@ class job(models.Model):
         ("TEMPORARY","Temporary"),
         ("INTERSHIP","Internship"),
     ]
-    province_choices = [
-        ("N/A","n/a"),
-        ("CENTRAL","Central"),
-        ("COPPERBELT","Copperbelt"),
-        ("EASTERN","Eastern"),
-        ("LUAPULA","Luapula"),
-        ("LUSAKA_P","Lusaka"),
-        ("NORTHERN","Northern"),
-        ("NORTH_WESTERN","North Western"),
-        ("MUCHINGA","Muchinga"),
-        ("WESTERN","Western"),
-        ("SOUTHERN","Southern"),
-    ]
+
 
     location_choices = [
         ("N/A","n/a"),
@@ -401,6 +389,16 @@ class job(models.Model):
         ("SOLWEZI", "Solwezi"),
         ("ZAMBEZI", "Zambezi"),
         ("ZIMBA", "Zimba"),
+        ("CENTRAL","Central"),
+        ("COPPERBELT","Copperbelt"),
+        ("EASTERN","Eastern"),
+        ("LUAPULA","Luapula"),
+        ("LUSAKA_P","Lusaka Province"),
+        ("NORTHERN","Northern"),
+        ("NORTH_WESTERN","North Western"),
+        ("MUCHINGA","Muchinga"),
+        ("WESTERN","Western"),
+        ("SOUTHERN","Southern"),
     ]
 
 
@@ -421,10 +419,6 @@ class job(models.Model):
     post_date = models.DateField(auto_now=False, auto_now_add=True)
     closing_date = models.DateField()
     organisation = models.CharField(max_length=50,null=False, default="")
-    province = models.CharField(choices=province_choices,
-                                max_length=30,
-                                default=NA,
-                                )
     location = models.CharField(choices=location_choices,
                                 max_length=30,
                                 default=NA,
