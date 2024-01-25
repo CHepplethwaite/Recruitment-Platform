@@ -285,19 +285,7 @@ class job(models.Model):
         ("TEMPORARY","Temporary"),
         ("INTERSHIP","Internship"),
     ]
-    province_choices = [
-        ("N/A","n/a"),
-        ("CENTRAL","Central"),
-        ("COPPERBELT","Copperbelt"),
-        ("EASTERN","Eastern"),
-        ("LUAPULA","Luapula"),
-        ("LUSAKA_P","Lusaka"),
-        ("NORTHERN","Northern"),
-        ("NORTH_WESTERN","North Western"),
-        ("MUCHINGA","Muchinga"),
-        ("WESTERN","Western"),
-        ("SOUTHERN","Southern"),
-    ]
+
 
     location_choices = [
         ("N/A","n/a"),
@@ -401,6 +389,16 @@ class job(models.Model):
         ("SOLWEZI", "Solwezi"),
         ("ZAMBEZI", "Zambezi"),
         ("ZIMBA", "Zimba"),
+        ("CENTRAL","Central"),
+        ("COPPERBELT","Copperbelt"),
+        ("EASTERN","Eastern"),
+        ("LUAPULA","Luapula"),
+        ("LUSAKA_P","Lusaka Province"),
+        ("NORTHERN","Northern"),
+        ("NORTH_WESTERN","North Western"),
+        ("MUCHINGA","Muchinga"),
+        ("WESTERN","Western"),
+        ("SOUTHERN","Southern"),
     ]
 
 
