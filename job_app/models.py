@@ -1,6 +1,5 @@
 from django.db import models
 from django.urls import reverse
-from django.template.defaultfilters import slugify
 import datetime
 from django.conf import settings
 from PIL import Image
