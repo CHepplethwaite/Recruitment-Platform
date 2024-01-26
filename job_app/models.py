@@ -4,6 +4,7 @@ import datetime
 from django.conf import settings
 from PIL import Image
 from ckeditor.fields import RichTextField
+from django_countries.fields import CountryField
 
 
 class job(models.Model):
@@ -401,7 +402,6 @@ class job(models.Model):
         ("SOUTHERN","Southern"),
     ]
 
-
     status = models.BooleanField(choices=approval_choices,default=False)
     employment_type = models.CharField(
         choices=employment_choices,
@@ -423,6 +423,7 @@ class job(models.Model):
                                 max_length=30,
                                 default=NA,
                                 )
+    country = CountryField(blank_label="(select country)", default="")
     industry = models.CharField(choices=industry_choices,
                                 max_length=30,
                                 default=ACADEMIA,
