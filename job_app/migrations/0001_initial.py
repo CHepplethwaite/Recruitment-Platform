@@ -20,7 +20,7 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('status', models.BooleanField(choices=[(True, 'Approved'), (False, 'Pending')], default=False)),
-                ('employment_type', models.CharField(choices=[('N/A', 'n/a'), ('FULL_TIME', 'Full-time'), ('PART_TIME', 'Part-time'), ('CONTRACT', 'Contract'), ('TEMPORARY', 'Temporary'), ('INTERSHIP', 'Internship')], default='FT', max_length=15)),
+                ('employment_type', models.CharField(choices=[('N/A', 'n/a'), ('FULL_TIME', 'Full-time'), ('PART_TIME', 'Part-time'), ('CONTRACT', 'Contract'), ('TEMPORARY', 'Temporary'), ('INTERSHIP', 'Internship')], default='Full-time', max_length=15)),
                 ('logo', models.ImageField(default='default_logo.png', upload_to='media/logos')),
                 ('job_title', models.CharField(default='', max_length=60)),
                 ('post_date', models.DateField(auto_now_add=True)),
