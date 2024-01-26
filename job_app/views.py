@@ -2,7 +2,7 @@ from django.views.generic.detail import DetailView
 from django.views.generic import ListView
 from .models import job
 from django.shortcuts import render
-
+ 
 
 
 # site views
@@ -125,7 +125,6 @@ class agricultureListView(ListView):
         location_choices = job.location_choices
         location_choices = [{'value': value, 'label': label} for value, label in location_choices]
         context["locations"] = location_choices
-        
         return context
 
     def get_queryset(self):
