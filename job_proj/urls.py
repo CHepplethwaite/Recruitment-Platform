@@ -8,6 +8,7 @@ urlpatterns = [
     path('',include('job_app.urls')),
     path('users/', include('users.urls')),
     path('your-posts/', include('jobs.urls')),
+
 ]
 
 if settings.DEBUG:
