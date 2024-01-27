@@ -19,7 +19,7 @@
     <p><b>Post date:</b> {{ object.post_date }}</p>
     <p><b>Closing date:</b> {{ object.closing_date }}</p>
     <p><b>Location:</b> {{ object.location }}</p>
-    <p><b>Country:</b> {{ object.country }}</p>
+    <p><b>Country:</b> {{ object.get_country_display }}</p>
     <p><b>Organisation:</b> {{ object.organisation }}</p>
     <br>
      {{ object.details|safe }}

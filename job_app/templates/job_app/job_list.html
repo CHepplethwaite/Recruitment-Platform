@@ -81,7 +81,7 @@
       <p><b>Employment type:</b> {{object.get_employment_type_display}}<br>
       <b>Location:</b> {{object.get_location_display}}<br>
       <b>Organisation:</b> {{object.organisation | capfirst}}<br>
-      <b>Country:</b> {{ object.country }}<br>
+      <b>Country:</b> {{ object.get_country_display }}<br>
     
         {% if object.is_closed  %}
           <b>Closing date:</b> {{object.closing_date}} <span class="badge text-bg-danger">Closed</span></p>
