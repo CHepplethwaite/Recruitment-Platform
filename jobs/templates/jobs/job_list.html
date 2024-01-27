@@ -1,10 +1,10 @@
 {% extends 'job_app/footer_only_no_logo_base.html' %}
 
     {% block title %}
+    <title>Your posts</title>
     {% endblock title %}
     
     {% block content %}
-    {% load static %}
 
     <h1 class="text-center">Your posts</h1>
 
@@ -20,15 +20,13 @@
       <option value="{{ location.value }}">{{ location.label }}</option>
     {% endfor %}
   </select>
-  
   <button type="submit">Filter</button>
 </form>
-
 <!-- end filter -->
+
 <br>
 
     <!-- begin top pagination -->
-    
     <div class="pagination">
       {% if page_obj.has_previous %}
           <a href="?page=1">&laquo; first</a> &nbsp;
@@ -45,7 +43,6 @@
       {% endif %}
     </span>
     <br>
-    
     </div>
     <!--end top pagination-->
     

@@ -31,7 +31,7 @@
               <!-- start nav -->
               <nav class="navbar navbar-expand-lg bg-body-tertiary">
                 <div class="container-fluid">
-                  <a class="navbar-brand" href="#">Pa30</a>
+                  <a class="navbar-brand" href="{% url 'job_list' %}">Pa30</a>
                   <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                   </button>
@@ -46,8 +46,7 @@
                         </a>
                         <ul class="dropdown-menu">
                           <li><a class="dropdown-item" href="{% url 'exploration' %}">Career exploration</a></li>
-                          <li><a class="dropdown-item" href="{% url 'education' %}">Career exploration</a></li>
-                          <li><a class="dropdown-item" href="{% url 'interviews' %}">Education and Training</a></li>
+                        <li><a class="dropdown-item" href="{% url 'education' %}">Education and Training</a></li>
                           <li><a class="dropdown-item" href="{% url 'interviews' %}">Job Interviewing Skills</a></li>
                           <li><a class="dropdown-item" href="{% url 'job_market' %}">Job Market Trends</a></li>
                           <li><a class="dropdown-item" href="{% url 'networking' %}">Networking</a></li>
