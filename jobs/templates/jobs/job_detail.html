@@ -18,7 +18,7 @@
     <p><b>Job title:</b> {{ object.job_title }}</p>
     <p><b>Post date:</b> {{ object.post_date }}</p>
     <p><b>Closing date:</b> {{ object.closing_date }}</p>
-    <p><b>Location:</b> {{ object.location }}</p>
+    <p><b>Location:</b> {{ object.get_location_display }}</p>
     <p><b>Country:</b> {{ object.get_country_display }}</p>
     <p><b>Organisation:</b> {{ object.organisation }}</p>
     <br>
