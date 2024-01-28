@@ -95,6 +95,17 @@
   <a href="{% url 'job_list'%}" alt="Pa Thirty logo"><img src="{% static 'job_app/images/pa_thirty_transparent_logo.png' %}" alt="Tumpe logo" width="250" height="250"></a>
 </div>
 
+<!-- start quote -->
+<figure class="text-center">
+  <blockquote class="blockquote">
+    <p>A well-known quote, contained in a blockquote element.</p>
+  </blockquote>
+  <figcaption class="blockquote-footer">
+    Someone famous in <cite title="Source Title">Source Title</cite>
+  </figcaption>
+</figure>
+<!-- end quote -->
+
 
 <!-- start message  -->
 {% if messages %}
@@ -112,7 +123,7 @@
     What is Pa Thirty?
   </div>
   <div class="card-body">
-    <blockquote class="blockquote mb-0">
+    <blockquote class="blockquote mb-0 lead">
   Pa Thirty is a job board that connects employers with suitably qualified candidates. Finding people with the right skills to fit into your organisations' plans and its culture is challenging and we are here to help.
   Please do not forget to visit the <a href="{% url 'career_advice' %}">career advice</a> section and read our <a href="{% url 'legal' %}">disclaimer</a>.
       
