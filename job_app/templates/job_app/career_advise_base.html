@@ -91,16 +91,6 @@
   body { background: #EEF2FF !important; } /* Adding !important forces the browser to overwrite the default style applied by Bootstrap */
 </style>
 
-{% if user.is_authenticated %}
-<form id="logout-form" method="post" action="{% url 'admin:logout' %}">
-  {% csrf_token %}
-  <button type="submit">{% translate "Log out" %}</button>
-</form>
-{% else %}
-<a href="{% url 'login' %}">Log in</a>
-{% endif %}
-
-
 <!-- start message  -->
 {% if messages %}
   {% for message in messages %}
