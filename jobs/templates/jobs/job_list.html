@@ -85,19 +85,19 @@
       <b>Posted by:</b> {{object.user | capfirst }}<br>
     
         {% if object.is_closed  %}
-          <b>Closing date:</b> {{object.closing_date}} <span class="badge text-bg-danger">Closed</span></p>
+          <b>Closing date:</b> {{object.closing_date}}</p>
           <div class="text-center">
             <button type="button" class="btn btn-danger">View more</button>
         </div>
         {% else %}
               
                 {% if object.closing_soon  %}
-                <b>Closing date:</b> <mark>{{object.closing_date}}</mark> <span class="badge text-bg-warning">Closing soon</span></p>
+                <b>Closing date:</b> <mark>{{object.closing_date}}</mark></p>
                 <div class="text-center">
                   <button type="button" class="btn btn-warning">View more</button>
               </div>
                 {% else %}
-                <b>Closing date:</b> {{object.closing_date}} <span class="badge text-bg-success">Available</span></p>
+                <b>Closing date:</b> {{object.closing_date}}</p>
                 <div class="text-center">
                   <button type="button" class="btn btn-success">View more</button>
               </div>
