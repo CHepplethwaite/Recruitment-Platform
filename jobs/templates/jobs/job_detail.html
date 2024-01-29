@@ -1,36 +1,8 @@
 {% extends 'job_app/footer_only_no_logo_base.html' %}
 
 {% block head %}
-<head>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-VFVLWE5VYT"></script>
-<script>
-window.dataLayer = window.dataLayer || [];
-function gtag(){dataLayer.push(arguments);}
-gtag('js', new Date());
-
-gtag('config', 'G-VFVLWE5VYT');
-</script>
-
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="This job expires on {{ object.closing_date}}. Apply now!">
-  <meta name="keywords" content="Pa Thirty, Pa30, Pa Thirty Job Board, Job Board, Job Board in Africa, Job Board in Africa, Job Board in the world, Job Board in the universe, Job Board in the galaxy, Job Board in the solar system, Job Board in the milky way, Job Board in Zambia, Job Board in the multiverse, Job Board in the omniverse, Job Board in the metaverse, Job Board in the xenoverse, Job Board in the hyperverse, Job Board in the ultraverse, Job Board in the archverse, Job Board in the megaverse, Job Board in the gigaverse, Job Board in the teraverse, Job Board in the exaverse, Job Board in the endaverse, Job Board in the pandaverse, Job Board in the holoverse, Job Board in the permaverse, Job Board in the omniverse, Job Board in the universe, Job Board in the multiverse, Job Board in the omniverse, Job Board in the metaverse, Job Board in the xenoverse, Job Board in the hyperverse, Job Board in the ultraverse, Job Board in the archverse, Job Board in the megaverse, Job Board in the gigaverse, Job Board in the teraverse, Job Board in the exaverse, Job Board in the endaverse, Job Board in the pandaverse, Job Board in the holoverse, Job Board in the permaverse, Job Board in the omniverse, Job Board in the universe, Job Board in the multiverse, Job Board in the omniverse, Job Board in the metaverse, Job Board in the xenoverse, Job Board in the hyperverse, Job Board in the ultraverse, Job Board in the archverse, Job Board in the megaverse, Job Board in the gigaverse, Job Board in the teraverse, Job Board in the exaverse, Job Board in the endaverse, Job Board in the pandaverse, Job Board in the holoverse, Job Board in the permaverse, Job Board in the omniverse, Job Board in the universe, Job Board in the multiverse, Job Board in the omniverse, Job Board in the metaverse, Job Board in the xenoverse, Job Board in the hyperverse, Job Board in the ultraverse, Job Board in the archverse, Job Board in the megaverse, Job Board in the gig" />
-  <meta name="author" content="Clifford Hepplethwaite">
-  <meta name="robots" content="index, follow">
-  <meta name="geo.region" content="AF" />
-  <meta name="geo.placename" content="Africa" />
-
-
-  {% block title %}
-  <title>Pa30 | {{ object.job_title}} at {{ object.organisation }} in {{ object.get_location_display}}, {{ object.get_country_display }}.</title>
-  {% endblock title %}
-  
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
-</head>
-{% endblock head %}
-
-
+<meta name="description" content="This job expires on {{ object.closing_date}}. Apply now!">
+{% endblock %}
 
 {% block content %}
 
