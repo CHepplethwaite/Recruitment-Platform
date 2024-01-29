@@ -85,7 +85,9 @@
     
         {% if object.is_closed  %}
           <b>Closing date:</b> {{object.closing_date}} <span class="badge text-bg-danger">Closed</span></p>
-          <button type="button" class="btn btn-danger">View more</button>
+          <div class="text-center">
+            <button type="button" class="btn btn-danger">View more</button>
+        </div>
         {% else %}
               
                 {% if object.closing_soon  %}
