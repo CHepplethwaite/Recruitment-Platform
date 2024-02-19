@@ -2,7 +2,7 @@
 
 
 {% block content %}
-
+{% load static %}
 
 <H1 class="text-center"> {{ object.job_title }}</H1>
 <p><b>Employment type:</b> {{ object.get_employment_type_display }}</p>
@@ -25,6 +25,7 @@
 
 {% endif %}
 <br>
+
 {{ object.details|safe}}
   
   <!-- Copy Link Script -->
@@ -40,7 +41,16 @@
 
     </button>
   </div>
-  
+  <br>
+ 
+  <div class="d-flex justify-content-center">
+    <figure class="figure">
+      <img src="{% static 'job_app/images/Bed.webp' %}" class="figure-img img-fluid rounded" alt="...">
+      <figcaption class="figure-caption"><b>Advert:</b> Firm and durable matresses for sale. 
+        <br>Free delivery within Lusaka. Call <a href="tel:+260950003942">09650003942</a></figcaption>
+    </figure>
+    </div>
+
   <script>
     const copyLinkBtn = document.querySelector('#copyLinkBtn');
     const shareUrl = window.location.href;

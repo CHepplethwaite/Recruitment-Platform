@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from job_app.models import job
 from django.views.generic import CreateView, UpdateView, DeleteView, ListView, DetailView
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
@@ -99,6 +99,18 @@ def jobs_approval(request):
     else:
         messages.warning(request, f'You do not have permission to view this page.')
         return redirect('home')
+    
+def job_like(request, pk):
+    if request.user.is_authenticated:
+        job_obj = get_object_or_404(job, id=pk)
+        if job_obj.likes.filter(id=request.user.id):
+            job_obj.likes.remove(request.user)
+        else:
+            job_obj.likes.add(request.user)
+        return redirect('job_list')
+    else:
+        messages.success(request, ("You must be logged in to like this job. Create a free account."))
+        return redirect("job_list")
     
     
     

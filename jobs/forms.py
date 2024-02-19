@@ -4,6 +4,7 @@ from job_app.models import job
 
 class JobForm(forms.ModelForm):
     class Meta:
+        exclude = ['user','status','post_date','likes']
         model = job
         fields = ['job_title','organisation','closing_date','industry','location','country',"logo",'details']
         widgets = {
@@ -15,4 +16,5 @@ class JobForm(forms.ModelForm):
             'country': forms.Select(attrs={'class': 'form-control'}),
             'logo': forms.FileInput(attrs={'class': 'form-control'}),
             'details': forms.Textarea(attrs={'class': 'form-control'}),
+            'likes': forms.SelectMultiple(attrs={'class': 'form-control'}),
         }

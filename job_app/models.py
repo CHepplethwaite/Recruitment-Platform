@@ -4,6 +4,7 @@ import datetime
 from django.conf import settings
 from PIL import Image
 from ckeditor.fields import RichTextField
+from django.contrib.auth.models import User
 
 
 class job(models.Model):
@@ -664,6 +665,10 @@ class job(models.Model):
     details = RichTextField(blank=True,
                             null=True,
                             )
+    likes = models.ManyToManyField(User, related_name="job_like", blank=True)
+    
+    def number_of_likes(self):
+        return self.likes.count()
 
     def get_absolute_url(self):
         return reverse('job_detail', args=[str(self.id)])

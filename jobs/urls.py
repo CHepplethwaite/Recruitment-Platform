@@ -8,4 +8,5 @@ urlpatterns = [
     path('', job_views.jobsListView.as_view(), name="job_list_admin_panel"),
     path('<int:pk>/', job_views.jobsDetailView.as_view(), name="job_detail_admin_panel"),
     path('jobs-approval/', job_views.jobs_approval, name="jobs_approval"),
+    path('job_like/<int:pk>', job_views.job_like, name="job_like"),
 ]
