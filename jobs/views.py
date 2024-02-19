@@ -10,7 +10,7 @@ from .forms import JobForm
 
 
 
-class jobsListView(ListView, UserPassesTestMixin, LoginRequiredMixin):
+class jobsListView(ListView, UserPassesTestMixin):
     model = job
     paginate_by = 10
     template_name = 'jobs/job_list.html'
@@ -38,7 +38,7 @@ class jobsListView(ListView, UserPassesTestMixin, LoginRequiredMixin):
         return False
 
 
-class jobsDetailView(DetailView):
+class jobsDetailView(LoginRequiredMixin, DetailView):
     model = job
     template_name = 'jobs/job_detail.html'
     context_object_name = 'job'

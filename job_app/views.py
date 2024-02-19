@@ -2,6 +2,7 @@ from django.views.generic.detail import DetailView
 from django.views.generic import ListView
 from .models import job
 from django.shortcuts import render
+from django.contrib.auth.mixins import LoginRequiredMixin
  
 
 
@@ -52,7 +53,7 @@ class jobListView(ListView):
         return queryset
 
 
-class jobDetailView(DetailView):
+class jobDetailView(LoginRequiredMixin, DetailView):
     model = job
     template_name = 'job_app/job_detail.html'
     slug_field = 'slug'
