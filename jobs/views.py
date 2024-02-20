@@ -40,7 +40,7 @@ class jobsListView(ListView, UserPassesTestMixin):
         return False
 
 
-class jobsDetailView(LoginRequiredMixin, DetailView):
+class jobsDetailView(DetailView):
     model = job
     template_name = 'jobs/job_detail.html'
     context_object_name = 'job'

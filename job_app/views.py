@@ -53,7 +53,7 @@ class jobListView(ListView):
         return queryset
 
 
-class jobDetailView(LoginRequiredMixin, DetailView):
+class jobDetailView(DetailView):
     model = job
     template_name = 'job_app/job_detail.html'
     slug_field = 'slug'
