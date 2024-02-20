@@ -7,6 +7,8 @@ from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.urls import reverse_lazy
 from .forms import JobForm
+from django.utils.safestring import mark_safe
+from django.urls import reverse
 
 
 
@@ -109,7 +111,9 @@ def job_like(request, pk):
             job_obj.likes.add(request.user)
         return redirect('job_list')
     else:
-        messages.success(request, ("You must be logged in to like this job. Create a free account."))
+        register_url = reverse('register')
+        message = mark_safe(f"You must be logged in to like this job. Create a free account: <a href='{register_url}'>Register</a>")
+        messages.success(request, message)
         return redirect("job_list")
     
     
