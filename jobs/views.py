@@ -112,8 +112,9 @@ def job_like(request, pk):
         return redirect('job_list')
     else:
         register_url = reverse('register')
-        message = mark_safe(f"You must be logged in to like this job. Create a free account: <a href='{register_url}'>Register</a>")
-        messages.success(request, message)
+        login_url = reverse('login')
+        message = mark_safe(f"You must be logged in to like this job. <a href='{login_url}'>Log in</a> <a href='{register_url}'>Register</a>")
+        messages.info(request, message)
         return redirect("job_list")
     
     
