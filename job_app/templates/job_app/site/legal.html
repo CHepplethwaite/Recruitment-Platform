@@ -5,18 +5,34 @@ Legal
 {% endblock title %}
 
 {% block content %}
+{% load static %}
 <div class="w-100 p-3">
 <div class="card">
     <div class="card-header">
-    Privacy Policy
+    Privacy & Terms
     </div>
     <div class="card-body">
       <blockquote class="blockquote mb-0 lead ">
         <blockquote class="blockquote mb-0">
-          <p>
-            <strong>Privacy Policy</strong>
+          <p class="text-center">
+            <strong>Pathirty Privacy Policy</strong>
           </p>
+          <br>
         </blockquote>
+
+        <div class="container">
+          <div class="row">
+              <div class="col-md-6 d-block mx-auto">
+                  <img src="{% static 'job_app/images/legal.jpg' %}" alt="Man filling in an education related document." class="img-fluid">
+              </div>
+          </div>
+      </div>
+      <br>
+      <p>By using our services, you’re trusting us with your information. We understand this is a major responsibility and we strive to protect your information and put you in control.</p>
+      <small>This Privacy Policy is meant to help you understand what information we collect, why we collect it, and how you can update, manage, export, and delete your information.</small>
+      <br>
+      <br>
+      <small>Effective 13th October, 2023: <a href="{% url 'privacy_policy' %}">Download PDF</a></small>
         </div>
         </div>
  

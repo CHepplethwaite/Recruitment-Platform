@@ -2,6 +2,9 @@ from django.views.generic.detail import DetailView
 from django.views.generic import ListView
 from .models import job
 from django.shortcuts import render
+from django.http import FileResponse
+from django.conf import settings
+import os
  
 
 
@@ -436,7 +439,19 @@ def self_assessment(request):
 def writing(request):
     return render(request,'job_app/career_articles/writing.html',{})
 
-# view for filtering results
+# privacy policy views
+
+def download_pdf(request):
+    # Path to your PDF file
+    pdf_path = os.path.join(settings.STATIC_ROOT, 'privacy_policy_pathirty.pdf')
+    # Open the PDF file and serve it as a response
+    f = open(pdf_path, 'rb')
+    response = FileResponse(f, content_type='application/pdf')
+    response['Content-Disposition'] = 'attachment; filename="privacy_policy_pathirty.pdf"'
+    return response
+    
+    
+
 
 
 

@@ -9,7 +9,7 @@ urlpatterns =[
     path('career-advice/', job_views.career_advice, name="career_advice"),
     path('contact/', job_views.contact, name="contact"),
     path('education/',job_views.education, name="education"),
-    path('disclaimer/', job_views.legal, name="legal"),
+    path('legal/', job_views.legal, name="legal"),
    
    # category urls
     path('job-categories/academia-and-research/',job_views.academiaListView.as_view(),name="academia"),
@@ -38,4 +38,8 @@ urlpatterns =[
     path('career-advice/negotiation-and-salary/',job_views.salary,name="salary"),
     path('career-advice/self-assessment/',job_views.self_assessment,name="self_assessment"),
     path('career-advice/resume-and-cover-letter-writing/',job_views.writing,name="writing"),
+    
+    #downloads
+    
+    path('download-privacy-policy-pdf/',job_views.download_pdf,name="privacy_policy"),
 ]
