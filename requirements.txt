@@ -1,6 +1,11 @@
-asgiref
-crispy-bootstrap5
-Django
-django-crispy-forms
-python-decouple
-sqlparse
+asgiref==3.7.2
+crispy-bootstrap5==2024.2
+Django==4.2.11
+django-ckeditor==6.7.1
+django-crispy-forms==2.1
+django-js-asset==2.2.0
+pillow==10.2.0
+python-decouple==3.8
+six==1.16.0
+sqlparse==0.4.4
+typing_extensions==4.10.0
