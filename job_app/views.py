@@ -452,12 +452,12 @@ def download_pdf(request):
     return response
 
 def search_jobs(request):
+    search = request.POST.get('search', '').strip()  # Get search query and strip whitespace
+    jobs = job.objects.filter(details__icontains=search)  # Filter jobs by details containing the search query (case-insensitive match)
+    paginator = Paginator(jobs, 10)
+    page_number = request.GET.get("page")
+    page_obj = paginator.get_page(page_number)
     if request.method == 'POST':
-        search = request.POST.get('search', '').strip()  # Get search query and strip whitespace
-        jobs = job.objects.filter(details__icontains=search)  # Filter jobs by details containing the search query (case-insensitive match)
-        paginator = Paginator(jobs, 10)
-        page_number = request.GET.get("page")
-        page_obj = paginator.get_page(page_number)
         return render(request, 'job_app/site/job_search.html', {'search': search, 'jobs': jobs, "page_obj": page_obj})
     else:
         return render(request, 'job_app/site/job_search.html', {})
