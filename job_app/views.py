@@ -5,7 +5,8 @@ from django.shortcuts import render
 from django.http import FileResponse
 from django.conf import settings
 import os
-from django.core.paginator import Paginator
+from django.http import Http404
+from django.db.models import Q
  
 
 
@@ -451,19 +452,30 @@ def download_pdf(request):
     response['Content-Disposition'] = 'attachment; filename="privacy_policy_pathirty.pdf"'
     return response
 
-def search_jobs(request):
-    search = request.POST.get('search', '').strip()  # Get search query and strip whitespace
-    jobs = job.objects.filter(details__icontains=search)  # Filter jobs by details containing the search query (case-insensitive match)
-    paginator = Paginator(jobs, 10)
-    page_number = request.GET.get("page")
-    page_obj = paginator.get_page(page_number)
-    if request.method == 'POST':
-        return render(request, 'job_app/site/job_search.html', {'search': search, 'jobs': jobs, "page_obj": page_obj})
-    else:
-        return render(request, 'job_app/site/job_search.html', {})
-    
-    
+class JobSearchView(ListView):
+    model = job
+    template_name = 'job_app/site/job_search.html'
+    context_object_name = 'jobs'
+    paginate_by = 10
+    ordering = ['-post_date']
 
+    def get_queryset(self):
+        search_term = self.request.GET.get('search', '').strip()
+        if search_term:
+            # Adding error handling for database query
+            try:
+                queryset = job.objects.filter(Q(details__icontains=search_term))
+            except Exception as e:
+                # Log the error or handle it appropriately
+                raise Http404("Database error occurred while retrieving jobs.")
+        else:
+            queryset = job.objects.all()
 
+        return queryset
 
-
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        # Sanitize search term to prevent potential injection attacks
+        search_term = self.request.GET.get('search', '').strip()
+        context['search'] = search_term
+        return context
