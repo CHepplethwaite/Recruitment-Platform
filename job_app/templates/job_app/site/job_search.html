@@ -32,7 +32,7 @@
 {% for job in jobs %}
       <li><a href="{% url 'job_detail' job.id %}">{{ job.job_title }}</a></li>
 {% empty %}
-      <li>No job matches</li>
+      <h4>No job matches</h4>
 {% endfor %}
 </ol>
 
