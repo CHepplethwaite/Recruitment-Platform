@@ -5,6 +5,7 @@ from django.shortcuts import render
 from django.http import FileResponse
 from django.conf import settings
 import os
+from django.http import HttpResponseBadRequest
  
 
 
@@ -449,6 +450,14 @@ def download_pdf(request):
     response = FileResponse(f, content_type='application/pdf')
     response['Content-Disposition'] = 'attachment; filename="privacy_policy_pathirty.pdf"'
     return response
+
+def search_jobs(request):
+    if request.method == 'POST':
+        search = request.POST.get('search', '').strip()  # Get search query and strip whitespace
+        jobs = job.objects.filter(details__icontains=search)  # Filter jobs by details containing the search query (case-insensitive match)
+        return render(request, 'job_app/site/job_search.html', {'search': search, 'jobs': jobs})
+    else:
+        return render(request, 'job_app/site/job_search.html', {})
     
     
 

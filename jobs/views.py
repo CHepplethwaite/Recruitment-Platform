@@ -11,7 +11,6 @@ from django.utils.safestring import mark_safe
 from django.urls import reverse
 
 
-
 class jobsListView(ListView, UserPassesTestMixin):
     model = job
     paginate_by = 10

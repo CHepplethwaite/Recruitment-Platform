@@ -1,0 +1,70 @@
+{% extends 'job_app/footer_only_no_logo_base.html' %}
+
+{% block content %}
+
+<center>
+{% if search %}
+<h1 class="text-center">Search results for "{{ search }}"</h1>
+<br>
+
+<!-- begin top pagination -->
+<div class="pagination">
+  {% if page_obj.has_previous %}
+      <a href="?page=1">&laquo; first</a> &nbsp;
+      <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+  {% endif %}
+
+  <span class="current">
+    &nbsp;   Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+  </span>
+
+  {% if page_obj.has_next %}
+  &nbsp; <a href="?page={{ page_obj.next_page_number }}">next</a>&nbsp;
+      <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+  {% endif %}
+</span>
+<br>
+</div>
+<!--end top pagination-->
+
+<br>
+<ol>
+{% for job in jobs %}
+      <li><a href="{% url 'job_detail' job.id %}">{{ job.job_title }}</a></li>
+{% empty %}
+      <li>No job matches</li>
+{% endfor %}
+</ol>
+
+
+
+
+<!-- begin bottom pagination -->
+
+<p class="text-center">
+<div class="pagination">
+      {% if page_obj.has_previous %}
+          <a href="?page=1">&laquo; first</a> &nbsp;
+          <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+      {% endif %}
+
+      <span class="current">
+        &nbsp;  Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+      </span>
+
+      {% if page_obj.has_next %}
+      &nbsp; <a href="?page={{ page_obj.next_page_number }}">next</a>&nbsp;
+          <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+      {% endif %}
+  </span>
+</div>
+<!-- end bottom pagination -->
+
+<br>
+
+{% else %}
+<h1 class="text-center">Enter a search query</h1>
+{% endif %}
+</center>
+
+{% endblock content %}

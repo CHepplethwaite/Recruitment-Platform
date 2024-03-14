@@ -42,4 +42,5 @@ urlpatterns =[
     #downloads
     
     path('download-privacy-policy-pdf/',job_views.download_pdf,name="privacy_policy"),
+    path('search-results/', job_views.search_jobs, name='search_jobs'),
 ]
