@@ -42,5 +42,5 @@ urlpatterns =[
     #downloads
     
     path('download-privacy-policy-pdf/',job_views.download_pdf,name="privacy_policy"),
-    path('search-results/', job_views.JobSearchView.as_view(), name='search_jobs'),
+    path('search-results/', job_views.SearchView.as_view(), name='search_jobs'),
 ]

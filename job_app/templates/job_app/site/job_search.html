@@ -2,25 +2,28 @@
 
 {% block content %}
 <center>
-  {% if search %}
-    <h1 class="text-center">Search results for "{{ search }}"</h1>
 
-    <br>
-    <ol>
-      {% for job in page_obj %}
-        <li><a href="{% url 'job_detail' job.id %}">{{ job.job_title }}</a></li>
-      {% empty %}
-        <!-- Display no match message outside the ol tag -->
-      {% endfor %}
-    </ol>
+  {% if results %}
+  <ul>
+  {% for result in results %}
+      <li>
+          <h2>{{ result.job_title }}</h2>
+          <p>{{ result.organisation }}</p>
+      </li>
+  {% endfor %}
+  </ul>
+{% else %}
+  <p>No results found</p>
+{% endif %}
+
 
     <!-- begin bottom pagination -->
     {% if is_paginated %}
       <div class="pagination">
         <span class="step-links">
           {% if page_obj.has_previous %}
-            <a href="?search={{ search|urlencode }}&page=1">&laquo; first</a>
-            <a href="?search={{ search|urlencode }}&page={{ page_obj.previous_page_number }}">previous</a>
+            <a href="?query={{ query|urlencode }}&page=1">&laquo; first</a>
+            <a href="?query={{ query|urlencode }}&page={{ page_obj.previous_page_number }}">previous</a>
           {% endif %}
 
           <span class="current">
@@ -28,16 +31,16 @@
           </span>
 
           {% if page_obj.has_next %}
-            <a href="?search={{ search|urlencode }}&page={{ page_obj.next_page_number }}">next</a>
-            <a href="?search={{ search|urlencode }}&page={{ paginator.num_pages }}">last &raquo;</a>
+            <a href="?query={{ query|urlencode }}&page={{ page_obj.next_page_number }}">next</a>
+            <a href="?query={{ query|urlencode }}&page={{ paginator.num_pages }}">last &raquo;</a>
           {% endif %}
         </span>
       </div>
       <br>
     {% endif %}
     <!-- end bottom pagination -->
-  {% else %}
-    <h1 class="text-center">Enter a search query</h1>
-  {% endif %}
+
+
 </center>
+
 {% endblock content %}

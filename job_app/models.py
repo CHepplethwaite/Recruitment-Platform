@@ -5,6 +5,7 @@ from django.conf import settings
 from PIL import Image
 from ckeditor.fields import RichTextField
 from django.contrib.auth.models import User
+from django.contrib.postgres.search import SearchVectorField, SearchVector, SearchQuery, SearchRank, SearchHeadline
 
 
 class job(models.Model):
@@ -666,6 +667,7 @@ class job(models.Model):
                             null=True,
                             )
     likes = models.ManyToManyField(User, related_name="job_like", blank=True)
+    search_vector = SearchVectorField(null=True)
     
     def number_of_likes(self):
         return self.likes.count()
@@ -674,7 +676,8 @@ class job(models.Model):
         return reverse('job_detail', args=[str(self.id)])
 
     def save(self, *args, **kwargs):
-        super().save()
+        super().save(*args, **kwargs)
+        self.update_search_vector()
 
         img = Image.open(self.logo.path)
 
@@ -685,6 +688,29 @@ class job(models.Model):
 
     def __str__(self):
         return self.job_title+" - "+self.closing_date.strftime("%d-%m-%Y")
+    
+    def update_search_vector(self):
+        vector = SearchVector('employment_type',
+                               'job_title',
+                               'organisation',
+                               'location',
+                               'country',
+                               'industry',
+                               'details',
+                               )  
+        job.objects.filter(id=self.id).update(search_vector=vector)
+
+    @classmethod
+    def search(cls, text):
+        query = SearchQuery(text)
+        rank = SearchRank(models.F('search_vector'), query)
+        headline = SearchHeadline(
+            models.F('description'),
+            query,
+            start_sel='<strong>',
+            stop_sel='</strong>',
+        )
+        return cls.objects.annotate(rank=rank, headline=headline).filter(search_vector=query).order_by('-rank')
 
     @property
     def is_closed(self):

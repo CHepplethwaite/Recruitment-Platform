@@ -5,8 +5,10 @@ from django.shortcuts import render
 from django.http import FileResponse
 from django.conf import settings
 import os
-from django.http import Http404
-from django.db.models import Q
+from django.views import View
+from .forms import SearchForm
+from django.contrib.postgres.search import SearchVector, SearchRank, SearchQuery
+
  
 
 
@@ -452,30 +454,20 @@ def download_pdf(request):
     response['Content-Disposition'] = 'attachment; filename="privacy_policy_pathirty.pdf"'
     return response
 
-class JobSearchView(ListView):
-    model = job
-    template_name = 'job_app/site/job_search.html'
-    context_object_name = 'jobs'
-    paginate_by = 10
-    ordering = ['-post_date']
 
-    def get_queryset(self):
-        search_term = self.request.GET.get('search', '').strip()
-        if search_term:
-            # Adding error handling for database query
-            try:
-                queryset = job.objects.filter(Q(details__icontains=search_term))
-            except Exception as e:
-                # Log the error or handle it appropriately
-                raise Http404("Database error occurred while retrieving jobs.")
+class SearchView(View):
+    def get(self, request):
+        form = SearchForm(request.GET)
+        message = ""  # Initialize message variable
+        results = []
+        if form.is_valid():
+            query = form.cleaned_data['query']
+            if query:  # Check if the query is not empty
+                vector = SearchVector('employment_type', 'job_title', 'organisation', 'location', 'country','industry','details')
+                results = job.objects.annotate(rank=SearchRank(vector, query)).order_by('-rank')
+            else:
+                message = "Please enter a search query."
         else:
-            queryset = job.objects.all()
+            message = "Please enter a valid search query."
 
-        return queryset
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        # Sanitize search term to prevent potential injection attacks
-        search_term = self.request.GET.get('search', '').strip()
-        context['search'] = search_term
-        return context
+        return render(request, 'job_app/site/job_search.html', {'form': form, 'results': results, 'message': message})
