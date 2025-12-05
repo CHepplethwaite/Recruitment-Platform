@@ -1,8 +1,9 @@
 ---
+![Status](https://img.shields.io/badge/Status-In%20Development-yellow) 
 
-# Django Job Board Platform
+# Django Recruitement Platform
 
-A modern, production-ready **job board application built with Django**.
+A modern, production-ready **recruitment platform built with Django**.
 It enables employers to post job listings, candidates to apply, and recruiters to manage talent pipelines.
 The platform includes user profiles, application workflow, authentication, and scalable backend architecture.
 
@@ -103,3 +104,4 @@ Please open an issue before submitting major changes.
 To be added
 
 ---
+
