@@ -45,7 +45,7 @@ class jobsDetailView(DetailView):
 # job create view 
 class jobCreateView(LoginRequiredMixin, CreateView):
     model = job
-    template_name = 'jobs/job_form.html'
+    template_name = 'job_app/job_form.html'
     form_class = JobForm
     
     def form_valid(self, form):
@@ -56,7 +56,7 @@ class jobCreateView(LoginRequiredMixin, CreateView):
 # job update view
 class jobUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = job
-    template_name = 'jobs/job_form.html'
+    template_name = 'job_app/job_form.html'
     form_class = JobForm
 
     def form_valid(self, form):
