@@ -3,8 +3,8 @@ from django.urls import reverse
 import datetime
 from django.conf import settings
 from PIL import Image
-from ckeditor.fields import RichTextField
 from django.contrib.auth.models import User
+from django_prose_editor.fields import ProseEditorField
 from django.contrib.postgres.search import SearchVectorField, SearchVector, SearchQuery, SearchRank, SearchHeadline
 
 
@@ -663,9 +663,10 @@ class job(models.Model):
                                 max_length=30,
                                 default=ACADEMIA,
                                 )
-    details = RichTextField(blank=True,
-                            null=True,
-                            )
+    details = ProseEditorField(
+        extensions={"Bold": True, "Italic": True, "BulletList": True, "OrderedList": True},
+        sanitize=True
+    )
     likes = models.ManyToManyField(User, related_name="job_like", blank=True)
     search_vector = SearchVectorField(null=True)
     

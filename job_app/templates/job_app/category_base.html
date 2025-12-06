@@ -37,7 +37,7 @@
 
     <title>
     {% block title %}
-   Pa30 Job Board
+    Jobs in Zambia | Job Search | Zizojobs.com
     {% endblock title %}
   </title>
     
@@ -111,19 +111,10 @@
   body { background: #EEF2FF !important; } /* Adding !important forces the browser to overwrite the default style applied by Bootstrap */
 </style>
 
-{% if user.is_authenticated %}
-<form id="logout-form" method="post" action="{% url 'admin:logout' %}">
-  {% csrf_token %}
-  <button type="submit">{% translate "Log out" %}</button>
-</form>
-{% else %}
-<a href="{% url 'login' %}">Log in</a>
-{% endif %}
-
 <br>
-<h1 class="text-center">&#x1F422; 
+<h1 class="text-center"> 
   <br>
-  Pa30</h1>
+  Zizo Jobs</h1>
 <br>
 
 <!-- start message  -->
