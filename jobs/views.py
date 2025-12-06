@@ -11,12 +11,15 @@ from django.utils.safestring import mark_safe
 from django.urls import reverse
 
 
-class jobsListView(ListView, UserPassesTestMixin):
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.views.generic import ListView
+
+class jobsListView(LoginRequiredMixin, ListView):
     model = job
     paginate_by = 10
     template_name = 'jobs/job_list.html'
     ordering = ['-post_date']
-    queryset=job.objects.filter(status__exact=f"{True}")
+    login_url = '/login/'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -26,17 +29,11 @@ class jobsListView(ListView, UserPassesTestMixin):
         return context
 
     def get_queryset(self):
-        queryset = super().get_queryset()
+        queryset = job.objects.filter(status=True, user=self.request.user)
         location = self.request.GET.get('location')
         if location:
             queryset = queryset.filter(location=location)
-        return queryset.filter(user=self.request.user)
-    
-    def test_func(self):
-        job = self.get_object()
-        if self.request.user == job.user:
-            return True
-        return False
+        return queryset
 
 
 class jobsDetailView(DetailView):
