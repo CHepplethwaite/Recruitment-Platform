@@ -99,9 +99,5 @@ Please open an issue before submitting major changes.
 
 ---
 
-## 📄 License
 
-To be added
-
----
 
