@@ -6,7 +6,6 @@ certbot-nginx==2.1.0
 certifi==2022.9.24
 chardet==5.1.0
 charset-normalizer==3.0.1
-cloud-init==22.4.2
 ConfigArgParse==1.5.3
 configobj==5.0.8
 cryptography==38.0.4
